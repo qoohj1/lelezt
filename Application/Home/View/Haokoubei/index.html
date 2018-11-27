@@ -1293,11 +1293,12 @@ var app = function(e) {
         },
         onComplete: function() {
             $(".loading").removeClass("active")
+            document.addEventListener(  'WeixinJSBridgeReady',  function() {    document.getElementById("video-1").play();  },  false);
 
-            $('.black').on('touchstart',function(){
-              console.log(1);
-              document.getElementById("video-1").play();
-            })
+            // $('.black').on('touchstart',function(){
+            //   console.log(1);
+            //   document.getElementById("video-1").play();
+            // })
             document.getElementById("video-1").addEventListener("ended",
             function(){
               $(".page-video").removeClass("active")
