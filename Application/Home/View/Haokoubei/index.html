@@ -1553,7 +1553,9 @@ var app = function(e) {
         },
         onComplete: function() {
             $(".loading").removeClass("active")
-            document.addEventListener(  'WeixinJSBridgeReady',  function() {    document.getElementById("video-1").play();document.getElementById("bgMusic").pause();  },  false);
+            document.addEventListener(  'WeixinJSBridgeReady',  function() {
+            // document.getElementById("video-1").play();
+            document.getElementById("bgMusic").play();  },  false);
 
             // $('.black').on('touchend',function(){
             //   console.log(1);
