@@ -1567,8 +1567,8 @@ var app = function(e) {
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
               $('#audio-music').css('display','block');
               $(".page-video").removeClass("active")
-              e.musics.bg &&document.getElementById(e.musics.bg).paused()&&document.getElementById(e.musics.bg).play()
               $(".p1").addClass("active")
+              e.musics.bg &&document.getElementById(e.musics.bg).paused()&&document.getElementById(e.musics.bg).play()
               setTimeout(function() {
                   $('.step1').css('display','none');
                   $('.step2').css('display','block');
@@ -1587,8 +1587,8 @@ var app = function(e) {
               $('#audio-music').css('display','block');
               this.webkitExitFullScreen();
               $(".page-video").removeClass("active")
-              e.musics.bg &&document.getElementById(e.musics.bg).paused()&&document.getElementById(e.musics.bg).play()
               $(".p1").addClass("active")
+              e.musics.bg &&document.getElementById(e.musics.bg).paused()&&document.getElementById(e.musics.bg).play()
               setTimeout(function() {
                   $('.step1').css('display','none');
                   $('.step2').css('display','block');
