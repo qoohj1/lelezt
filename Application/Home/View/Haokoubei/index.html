@@ -307,6 +307,7 @@ a,img {
   background: url(__PUBLIC__/img/haokoubei/ship3.png) no-repeat;
 }
 .p1 .p-content .doctor1{
+  -webkit-animation: fadeInRight 3s ease 0s forwards;
   width: 176px;
   height: 100%;
   position: absolute;
@@ -999,7 +1000,7 @@ a,img {
       </div>
       <div class="page page-video page-video-1 active">
         <!-- <div class="black" style='width:100px;height:100px;background-color:black;position: absolute;z-index:9999'></div> -->
-       <video id="video-1" width="750" height="1333" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true"  x5-video-orientation="portraint" preload="preload" autoplay>
+       <video id="video-1" muted width="750" height="1333" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true"  x5-video-orientation="portraint" preload="preload" autoplay>
         <source src="__PUBLIC__/video/h5_3.mp4" type="video/mp4"></source>
        </video>
       </div>
@@ -1441,7 +1442,7 @@ var app = function(e) {
             $(".loading").removeClass("active")
             document.addEventListener(  'WeixinJSBridgeReady',  function() {    document.getElementById("video-1").play();  },  false);
 
-            // $('.black').on('touchstart',function(){
+            // $('.black').on('touchend',function(){
             //   console.log(1);
             //   document.getElementById("video-1").play();
             // })
@@ -1493,8 +1494,8 @@ var app = function(e) {
             this.preventDefault(),
 
             // 抽奖
-            $('.pop3 .confirm').on('touchstart', function(){$('.pop3').removeClass('active');})
-            $('.pop1 .submit').on('touchstart', function(){
+            $('.pop3 .confirm').on('touchend', function(){$('.pop3').removeClass('active');})
+            $('.pop1 .submit').on('touchend', function(){
               console.log($('.tel1').val());
               if(!e.utils.checkMobile($('.tel1').val()))
               {alert('请输入正确的手机格式');}
@@ -1524,7 +1525,7 @@ var app = function(e) {
 
               }
             })
-            $('.pop2 .submit').on('touchstart', function(){
+            $('.pop2 .submit').on('touchend', function(){
               if(!e.utils.checkMobile($('.tel2').val()))
               {alert('请输入正确的手机格式');}
               else{
@@ -1556,230 +1557,230 @@ var app = function(e) {
 
             })
 
-            $('.pop1-1').on("touchstart",
+            $('.pop1-1').on("touchend",
             function(){
               $('.p1').removeClass('active');
               $('.p2').addClass('active');
             }),
-            $('.pop1-2').on("touchstart",
+            $('.pop1-2').on("touchend",
             function(){
               $('.p1').removeClass('active');
               $('.p3').addClass('active');
             }),
-            $('.pop1-3').on("touchstart",
+            $('.pop1-3').on("touchend",
             function(){
               $('.p1').removeClass('active');
               $('.p4').addClass('active');
             }),
-            $('.return-btn').on("touchstart",
+            $('.return-btn').on("touchend",
             function(){
               $('.p3').removeClass('active');
               $('.p2').removeClass('active');
               $('.p1').addClass('active');
             }),
-            $('.info-btn').on("touchstart",
+            $('.info-btn').on("touchend",
             function(){
               $('.p3').removeClass('active');
               $('.p2').addClass('active');
             }),
-            $('.service-btn').on("touchstart",
+            $('.service-btn').on("touchend",
             function(){
               $('.p2').removeClass('active');
               $('.p3').addClass('active');
             }),
-            $('.vote-btn').on("touchstart",
+            $('.vote-btn').on("touchend",
             function(){
               $('.p2').removeClass('active');
               $('.p3').removeClass('active');
               $('.p4').addClass('active');
             }),
-            $('.item1>.detail-btn').on("touchstart",
+            $('.item1>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote1').addClass('active');
             }),
-            $('.item2>.detail-btn').on("touchstart",
+            $('.item2>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote2').addClass('active');
             }),
-            $('.item3>.detail-btn').on("touchstart",
+            $('.item3>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote3').addClass('active');
             }),
-            $('.item4>.detail-btn').on("touchstart",
+            $('.item4>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote4').addClass('active');
             }),
-            $('.item5>.detail-btn').on("touchstart",
+            $('.item5>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote5').addClass('active');
             }),
-            $('.item6>.detail-btn').on("touchstart",
+            $('.item6>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote6').addClass('active');
             }),
-            $('.item7>.detail-btn').on("touchstart",
+            $('.item7>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote7').addClass('active');
             }),
-            $('.item8>.detail-btn').on("touchstart",
+            $('.item8>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote8').addClass('active');
             }),
-            $('.item9>.detail-btn').on("touchstart",
+            $('.item9>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote9').addClass('active');
             }),
-            $('.item10>.detail-btn').on("touchstart",
+            $('.item10>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote10').addClass('active');
             }),
-            $('.item11>.detail-btn').on("touchstart",
+            $('.item11>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote11').addClass('active');
             }),
-            $('.item12>.detail-btn').on("touchstart",
+            $('.item12>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote12').addClass('active');
             }),
-            $('.item13>.detail-btn').on("touchstart",
+            $('.item13>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote13').addClass('active');
             }),
-            $('.item14>.detail-btn').on("touchstart",
+            $('.item14>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote14').addClass('active');
             }),
-            $('.item15>.detail-btn').on("touchstart",
+            $('.item15>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote15').addClass('active');
             }),
-            $('.item16>.detail-btn').on("touchstart",
+            $('.item16>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote16').addClass('active');
             }),
-            $('.item17>.detail-btn').on("touchstart",
+            $('.item17>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote17').addClass('active');
             }),
-            $('.item18>.detail-btn').on("touchstart",
+            $('.item18>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote18').addClass('active');
             }),
-            $('.item19>.detail-btn').on("touchstart",
+            $('.item19>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote19').addClass('active');
             }),
-            $('.item20>.detail-btn').on("touchstart",
+            $('.item20>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote20').addClass('active');
             }),
-            $('.item21>.detail-btn').on("touchstart",
+            $('.item21>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote21').addClass('active');
             }),
-            $('.item22>.detail-btn').on("touchstart",
+            $('.item22>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote22').addClass('active');
             }),
-            $('.item23>.detail-btn').on("touchstart",
+            $('.item23>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote23').addClass('active');
             }),
-            $('.item24>.detail-btn').on("touchstart",
+            $('.item24>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote24').addClass('active');
             }),
-            $('.item25>.detail-btn').on("touchstart",
+            $('.item25>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote25').addClass('active');
             }),
-            $('.item26>.detail-btn').on("touchstart",
+            $('.item26>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote26').addClass('active');
             }),
-            $('.item27>.detail-btn').on("touchstart",
+            $('.item27>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote27').addClass('active');
             }),
-            $('.item28>.detail-btn').on("touchstart",
+            $('.item28>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote28').addClass('active');
             }),
-            $('.item29>.detail-btn').on("touchstart",
+            $('.item29>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote29').addClass('active');
             }),
-            $('.item30>.detail-btn').on("touchstart",
+            $('.item30>.detail-btn').on("touchend",
             function(){
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote30').addClass('active');
             }),
-            $('.return-btn2').on("touchstart",
+            $('.return-btn2').on("touchend",
             function(){
               $('.vote').removeClass('active');
               $('.p4').addClass('active');
 
             }),
-            $('.item>.vote-btn2').on("touchstart",function(e){
+            $('.item>.vote-btn2').on("touchend",function(e){
               var i = $(this).data('index');
               $.ajax({
                 url:'/haokoubei/vote',
@@ -1816,7 +1817,7 @@ var app = function(e) {
             var num = 0; //转圈结束后停留的度数
             var lottery;
             var offOn=true
-            oPointer.on("touchstart",function(){
+            oPointer.on("touchend",function(){
                 if (offOn) {
                     oTurntable.css('transform','rotate(0deg)');
                     offOn = !offOn;
