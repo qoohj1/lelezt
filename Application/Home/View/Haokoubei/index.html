@@ -2062,6 +2062,59 @@ var app = function(e) {
         }
     },
     e.main = function() {
+        $.ajax({
+    				url:"http://www.shegurz.com/jssdk/jssdk.php",
+    				dataType:"jsonp",
+    				data: {
+    					url: location.href.split('#')[0]
+    				},
+    				jsonp: 'callback',
+    				jsonpCallback: 'success_jsonpCallback',
+    				success:function(jsondata){
+    						wx.config({
+    								debug: false,
+    								appId: jsondata.appId,
+    								timestamp: jsondata.timestamp,
+    								nonceStr: jsondata.nonceStr,
+    								signature: jsondata.signature,
+    								jsApiList: [
+    										'onMenuShareTimeline', 'onMenuShareAppMessage'
+    								]
+    						});
+    						wx.ready(function () {
+    								wx.onMenuShareTimeline({
+    										title: '宝安区好口碑社区健康服务中心评选', // 分享标题
+    										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+    										success: function (res) {
+
+    										},
+    										cancel: function (res) {
+
+    										}
+    								});
+
+    								wx.onMenuShareAppMessage({
+    										title: '宝安区好口碑社区健康服务中心评选', // 分享标题
+    										desc: '快来为你心目中的好口碑社康中心投一票吧', // 分享描述
+    										link: 'http://zt2.shegurz.com/haokoubei', // 分享链接
+    										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+    										type: '',
+    										dataUrl: '',
+    										success: function () {
+
+    										},
+    										cancel: function () {
+
+    										}
+    								});
+    								wx.error(function(res){
+    										console.log(JSON.stringify(res));
+    								});
+    						})
+
+    				}
+    		})
+
         e.utils.loadImages(["http://n.sinaimg.cn/gd/jobs2018/loading_icon.png"],
         function() {
             e.preload.sources = [],
