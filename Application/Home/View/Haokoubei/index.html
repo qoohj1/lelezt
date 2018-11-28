@@ -1565,10 +1565,10 @@ var app = function(e) {
 
             // 监听视频退出全屏操作
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
+              e.musics.bg &&document.getElementById(e.musics.bg).pause()&&document.getElementById(e.musics.bg).play()
               $('#audio-music').css('display','block');
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
-              e.musics.bg &&document.getElementById(e.musics.bg).pause()&&document.getElementById(e.musics.bg).play()
               setTimeout(function() {
                   $('.step1').css('display','none');
                   $('.step2').css('display','block');
@@ -1584,11 +1584,11 @@ var app = function(e) {
             // 监听视频播放完操作
             document.getElementById("video-1").addEventListener("ended",
             function(){
+              e.musics.bg &&document.getElementById(e.musics.bg).pause()&&document.getElementById(e.musics.bg).play()
               $('#audio-music').css('display','block');
               this.webkitExitFullScreen();
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
-              e.musics.bg &&document.getElementById(e.musics.bg).pause()&&document.getElementById(e.musics.bg).play()
               setTimeout(function() {
                   $('.step1').css('display','none');
                   $('.step2').css('display','block');
