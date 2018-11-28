@@ -33,6 +33,24 @@
 video::-webkit-media-controls {
   display:none !important;
 }
+#audio-music {
+  position: absolute;
+  width: 78px;
+  height: 78px;
+  right: 20px;
+  top: 20px;
+  z-index: 9999;
+  background: url(http://n.sinaimg.cn/gd/jobs2018/icon_music.png) center center no-repeat
+}
+#audio-music img{
+  width: 100%
+}
+
+#audio-music.animating {
+  -webkit-animation: music_shake 4s linear infinite;
+  animation: music_shake 4s linear infinite
+}
+
 * {
   word-wrap: break-word
 }
@@ -1073,7 +1091,12 @@ a,img {
 }
 </style>
 <body>
+  <div id="audio-music" class="animating">
+    <audio id="bgMusic" preload="auto" autoplay="" loop src="__PUBLIC__/music/music1.mp3"></audio>
+  </div>
+
   <div class="container">
+
       <div class="loading page active">
           <div class="loading-icon">
               <div class="loading-icon-img"></div>
@@ -1582,6 +1605,37 @@ var app = function(e) {
             })
         }
     },
+    e.musics = {
+        bg: "bgMusic",
+        others: [],
+        main: function() {
+            if (this.bg || this.others.length) {
+                var i = this,
+                s = document.getElementById(this.bg),
+                a = !0;
+                $(s).parent().on("touchstart",
+                function() {
+                    a = !1;
+                    var n = $(this);
+                    event.stopPropagation(),
+                    n.hasClass("animating") ? (n.removeClass("animating"), s.pause()) : (n.addClass("animating"), s.play())
+                }),
+                $(document).one("touchstart",
+                function() {
+                    s && s.paused && a && (s.play(), s.paused && $(document).one("touchend",
+                    function() {
+                        s.play()
+                    }));
+                    for (var n = 0; n < i.others.length; n++) {
+                        var t = document.getElementById(i.others[n]);
+                        t.play(),
+                        t.pause()
+                    }
+                })
+            }
+        }
+    },
+
     e.events = {
         preventDefault: function() {
             $(document).on("touchmove",
@@ -2003,12 +2057,13 @@ var app = function(e) {
         }
     },
     e.main = function() {
+      e.musics.bg && document.getElementById(e.musics.bg).play(),      
         e.utils.loadImages(["http://n.sinaimg.cn/gd/jobs2018/loading_icon.png"],
         function() {
             e.preload.sources = [],
             e.preload.main()
         }),
-        // e.musics.main(),
+        e.musics.main(),
         e.events.main()
     },
     e
