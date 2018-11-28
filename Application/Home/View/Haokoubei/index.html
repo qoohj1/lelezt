@@ -1566,7 +1566,7 @@ var app = function(e) {
             // 监听视频退出全屏操作
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
               $('#audio-music').css('display','block');
-              e.musics.bg && document.getElementById(e.musics.bg).play()
+              e.musics.bg &&document.getElementById(e.musics.bg).paused()&&document.getElementById(e.musics.bg).play()
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
               setTimeout(function() {
@@ -1586,7 +1586,7 @@ var app = function(e) {
             function(){
               $('#audio-music').css('display','block');
               this.webkitExitFullScreen();
-              e.musics.bg && document.getElementById(e.musics.bg).play()
+              e.musics.bg &&document.getElementById(e.musics.bg).paused()&&document.getElementById(e.musics.bg).play()
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
               setTimeout(function() {
