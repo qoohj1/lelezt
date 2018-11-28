@@ -76,7 +76,7 @@ a,img {
   max-height: 1310px
 }
 
-.page,.pop {
+.page,.pop,.pop1,.pop2,.pop3 {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -85,7 +85,99 @@ a,img {
   display: none
 }
 
-.page.active,.pop.active,.p4.active {
+.pop .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/turntable.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop .p-content .pointer{
+  width: 143px;
+  height: 174px;
+  position: absolute;
+  left: 304px;
+  top:637px;
+  z-index: 99;
+  background: url(__PUBLIC__/img/haokoubei/pointer.png) no-repeat;
+}
+.pop .p-content .oturntable{
+  transition: all 4s;
+  width: 404px;
+  height: 405px;
+  position: absolute;
+  left: 173px;
+  top:541px;
+  background: url(__PUBLIC__/img/haokoubei/oturntable.png) no-repeat;
+}
+.pop1 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery1.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop2 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery2.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop3 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery3.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop1 .p-content .submit,.pop2 .p-content .submit{
+  width: 459px;
+	height: 62px;
+	position: absolute;
+	left: 144px;
+	top: 899px;
+  background: url(__PUBLIC__/img/haokoubei/submit.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop1 .p-content .tel1,.pop2 .p-content .tel2{
+  width: 459px;
+	height: 62px;
+	position: absolute;
+	left: 144px;
+	top: 817px;
+  background: url(__PUBLIC__/img/haokoubei/input.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop3 .p-content .confirm{
+  width: 458px;
+	height: 62px;
+	position: absolute;
+	left: 154px;
+	top: 861px;
+  background: url(__PUBLIC__/img/haokoubei/confirm.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop2 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery2.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop3 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery3.png) no-repeat rgba(0,0,0,.8)!important;
+}
+
+
+.page.active,.pop.active,.pop1.active,.pop2.active,.pop3.active,.p4.active {
   display: block
 }
 
@@ -110,6 +202,12 @@ a,img {
 
 .p1 {
   z-index: 4
+}
+.pop{
+  z-index: 99
+}
+.pop1,.pop2,.pop3{
+  z-index: 99
 }
 
 .p1 .p-content {
@@ -289,10 +387,29 @@ a,img {
   top:283px;
   background: url(__PUBLIC__/img/haokoubei/doctor3.png) no-repeat;
 }
+.p1 .p-content .dialog3{
+  width: 294px;
+  height: 185px;
+  position: absolute;
+  left: 258px;
+  top:251px;
+  background: url(__PUBLIC__/img/haokoubei/dialog3.png) no-repeat;
+}
+.p1 .p-content .qrcode{
+  width: 129px;
+  height: 129px;
+  position: absolute;
+  left: 324px;
+  top:440px;
+  background: url(__PUBLIC__/img/haokoubei/qrcode.png) no-repeat;
+}
 .p1 .p-content .step2{
   display: none;
 }
 .p1 .p-content .step3{
+  display: none;
+}
+.p1 .p-content .step4{
   display: none;
 }
 
@@ -886,6 +1003,29 @@ a,img {
         <source src="__PUBLIC__/video/h5_3.mp4" type="video/mp4"></source>
        </video>
       </div>
+      <div class="pop">
+        <div class="p-content">
+          <div class="pointer"></div>
+          <div class="oturntable"></div>
+        </div>
+      </div>
+      <div class="pop1">
+        <div class="p-content">
+            <input class='tel1' type="text" style='border:0;font-size:32px;'>
+          <div class="submit"></div>
+        </div>
+      </div>
+      <div class="pop2">
+        <div class="p-content">
+          <input class='tel2' type="text" style='border:0;font-size:32px;'>
+          <div class="submit"></div>
+        </div>
+      </div>
+      <div class="pop3">
+        <div class="p-content">
+          <div class="confirm"></div>
+        </div>
+      </div>
       <div class="p1 page">
           <div class="p-content">
               <div class="plane"></div>
@@ -906,6 +1046,9 @@ a,img {
               <div class="pop1-2 step3"></div>
               <div class="pop1-3 step3"></div>
               <div class="doctor3 step3"></div>
+              <div class="doctor1 step4"></div>
+              <div class="dialog3 step4"></div>
+              <div class="qrcode step4"></div>
           </div>
       </div>
       <div class="p2 page">
@@ -1228,7 +1371,6 @@ a,img {
           </div>
       </div>
 
-
   </div>
 </body>
 </html>
@@ -1238,6 +1380,10 @@ a,img {
 "use strict";
 var app = function(e) {
     return e.utils = {
+        checkMobile: function(phone) {
+          var telReg = !!phone.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/);
+          return telReg;
+        },
         topFunction: function(){
           document.body.scrollTop = 0;
           document.documentElement.scrollTop = 0;
@@ -1299,31 +1445,22 @@ var app = function(e) {
             //   console.log(1);
             //   document.getElementById("video-1").play();
             // })
-            document.getElementById("video-1").addEventListener("ended",
-            function(){
-              $(".page-video").removeClass("active")
-              $(".p1").addClass("active")
-              setTimeout(function() {
-                  $('.step1').css('display','none');
-                  $('.step2').css('display','block');
-              },
-              3e3),
-              setTimeout(function() {
-                  $('.step2').css('display','none');
-                  $('.step3').css('display','block');
-              },
-              7e3)
-
-            });
-            // setTimeout(function() {
-            //     $(".p1").addClass("fadeOut"),
-            //     $(".p2").addClass("active")
-            // },
-            // 9500),
-            // setTimeout(function() {
-            //     $(".p1").removeClass("active").removeClass("fadeOut")
-            // },
-            // 10500)
+            // document.getElementById("video-1").addEventListener("ended",
+            // function(){
+            //   $(".page-video").removeClass("active")
+            //   $(".p1").addClass("active")
+            //   setTimeout(function() {
+            //       $('.step1').css('display','none');
+            //       $('.step2').css('display','block');
+            //   },
+            //   3e3),
+            //   setTimeout(function() {
+            //       $('.step2').css('display','none');
+            //       $('.step3').css('display','block');
+            //   },
+            //   7e3)
+            //
+            // });
         },
         main: function() {
             e.utils.loadImages(this.sources, {
@@ -1340,6 +1477,7 @@ var app = function(e) {
             })
         },
         main: function() {
+
           // $(".p1").addClass("active")
           // setTimeout(function() {
           //     $('.step1').css('display','none');
@@ -1353,6 +1491,71 @@ var app = function(e) {
           // 7e3),
 
             this.preventDefault(),
+
+            // 抽奖
+            $('.pop3 .confirm').on('touchstart', function(){$('.pop3').removeClass('active');})
+            $('.pop1 .submit').on('touchstart', function(){
+              console.log($('.tel1').val());
+              if(!e.utils.checkMobile($('.tel1').val()))
+              {alert('请输入正确的手机格式');}
+              else{
+                $.ajax({
+                  url:'/haokoubei/winnerlist',
+                  type:'post',
+                  data: {
+                    item: 20,
+                    tel: $('.tel1').val()
+                  },
+                  dataType:'json',
+                  success:function(jsondata){
+                    if(jsondata.error===0){
+                      alert(jsondata.data);
+                    }else if(jsondata.error===1){
+                      alert(jsondata.data);
+                    }
+                  },
+                  error:function(jsondata){
+                    // // console.log(jsondata.responseText.data)
+                    // // jsondata = JSON.parse(jsondata);
+                    // JSON.stringify(jsondata)
+                  }
+
+                })
+
+              }
+            })
+            $('.pop2 .submit').on('touchstart', function(){
+              if(!e.utils.checkMobile($('.tel2').val()))
+              {alert('请输入正确的手机格式');}
+              else{
+                $.ajax({
+                  url:'/haokoubei/winnerlist',
+                  type:'post',
+                  data: {
+                    item: 10,
+                    tel: $('.tel2').val()
+                  },
+                  dataType:'json',
+                  success:function(jsondata){
+                    if(jsondata.error===0){
+                      alert(jsondata.data);
+                    }else if(jsondata.error===1){
+                      alert(jsondata.data);
+                    }
+                  },
+                  error:function(jsondata){
+                    // // console.log(jsondata.responseText.data)
+                    // // jsondata = JSON.parse(jsondata);
+                    // JSON.stringify(jsondata)
+                  }
+
+                })
+
+              }
+
+
+            })
+
             $('.pop1-1').on("touchstart",
             function(){
               $('.p1').removeClass('active');
@@ -1578,7 +1781,6 @@ var app = function(e) {
             }),
             $('.item>.vote-btn2').on("touchstart",function(e){
               var i = $(this).data('index');
-              console.log(i);
               $.ajax({
                 url:'/haokoubei/vote',
                 type:'post',
@@ -1587,14 +1789,16 @@ var app = function(e) {
                 },
                 dataType:'json',
                 success:function(jsondata){
-                  // if(jsondata.error===0){
-                  //   lottery = jsondata.data
-                  //   console.log(lottery);
-                  //   ratating(lottery);
-
-                  // }else if(jsondata.error===1){
-                  //   // alert(jsondata.data)
-                  // }
+                  if(jsondata.error===0){
+                    alert(jsondata.data);
+                    $('.p4').removeClass('active');
+                    $('.step3').css('display','none');
+                    $('.step4').css('display','block');
+                    $('.p1').addClass('active');
+                    $('.pop').addClass('active');
+                  }else if(jsondata.error===1){
+                    alert(jsondata.data)
+                  }
                 },
                 error:function(jsondata){
                   // // console.log(jsondata.responseText.data)
@@ -1605,6 +1809,81 @@ var app = function(e) {
               })
 
             });
+
+            var oPointer = $('.pointer');
+            var oTurntable = $('.oturntable');
+            var cat = 60; //总共6个扇形区域，每个区域约60度
+            var num = 0; //转圈结束后停留的度数
+            var lottery;
+            var offOn=true
+            oPointer.on("touchstart",function(){
+                if (offOn) {
+                    oTurntable.css('transform','rotate(0deg)');
+                    offOn = !offOn;
+                    $.ajax({
+                      url:'/haokoubei/lottery',
+                			type:'post',
+                			dataType:'json',
+                			success:function(jsondata){
+                        console.log(jsondata);
+                        if(jsondata.error===0){
+                          lottery = jsondata.data
+                          console.log(lottery);
+                          ratating(lottery);
+
+                        }else if(jsondata.error===1){
+                          alert(jsondata.data)
+                        }
+                			},
+                			error:function(jsondata){
+                        console.log(jsondata);
+                        // // console.log(jsondata.responseText.data)
+                        // // jsondata = JSON.parse(jsondata);
+                        // JSON.stringify(jsondata)
+
+
+                			}
+
+                    })
+                }
+                //旋转
+                function ratating(lottery) {
+                    var oTurntable = $('.oturntable');
+                    var timer = null;
+                    var index; //命中区域
+                    var rdm;
+                    var ratateArr = ['10元话费','谢谢参与','20元话费','谢谢参与','10元话费','谢谢参与']
+                    clearInterval(timer);
+                    // timer = setInterval(function () {
+                      // console.log(Math.random());
+                        // if (Math.floor(rdm / 360) < 3) { rdm = Math.floor(Math.random() * 3600); console.log(rdm);}
+                          // console.log(rdm);
+                          console.log(lottery);
+                            index = ratateArr.indexOf(lottery)
+                            console.log(index);
+
+                            rdm = cat*index+Math.random()*cat/2+360
+                            oTurntable.css('transform','rotate('+ -rdm +'deg)');
+                            setTimeout(function () {
+                                // offOn = !offOn;
+
+                                // console.log(rdm);
+                                num = rdm % 360;
+                                console.log(num);
+                                $('.pop').removeClass('active');
+                                if (num <= cat * 1) { alert("10元话费"); $('.pop2').addClass('active');}
+                                else if (num <= cat * 2) { alert("谢谢参与"); $('.pop3').addClass('active');}
+                                else if (num <= cat * 3) { alert("20元话费"); $('.pop1').addClass('active');}
+                                else if (num <= cat * 4) { alert("谢谢参与"); }
+                                else if (num <= cat * 5) { alert("10元话费"); }
+                                else if (num <= cat * 6) { alert("谢谢参与"); }
+                            }, 4000);
+                    // }, 30);
+
+                }
+
+            })
+
 
         }
     },
