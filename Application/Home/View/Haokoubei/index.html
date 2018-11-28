@@ -1554,8 +1554,9 @@ var app = function(e) {
         onComplete: function() {
             $(".loading").removeClass("active")
             document.addEventListener(  'WeixinJSBridgeReady',  function() {
-            // document.getElementById("video-1").play();
-            document.getElementById("bgMusic").play();  },  false);
+            document.getElementById("video-1").play();
+            document.getElementById("bgMusic").pause();
+            },  false);
 
             // $('.black').on('touchend',function(){
             //   console.log(1);
@@ -1567,7 +1568,7 @@ var app = function(e) {
 
             // 监听视频退出全屏操作
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
-              document.getElementById('bgMusic').paused&&document.getElementById('bgMusic').play()
+              document.getElementById('bgMusic').play();
               $('#audio-music').css('display','block');
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
@@ -1586,7 +1587,7 @@ var app = function(e) {
             // 监听视频播放完操作
             document.getElementById("video-1").addEventListener("ended",
             function(){
-              document.getElementById('bgMusic').paused&&document.getElementById('bgMusic').play()
+              document.getElementById('bgMusic').play()
               $('#audio-music').css('display','block');
               this.webkitExitFullScreen();
               $(".page-video").removeClass("active")
