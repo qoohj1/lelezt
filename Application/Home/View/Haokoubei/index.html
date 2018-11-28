@@ -34,6 +34,7 @@ video::-webkit-media-controls {
   display:none !important;
 }
 #audio-music {
+  display: none;
   position: absolute;
   width: 78px;
   height: 78px;
@@ -1092,7 +1093,7 @@ a,img {
 </style>
 <body>
   <div id="audio-music" class="animating">
-    <audio id="bgMusic" preload="auto" autoplay="" loop src="__PUBLIC__/music/music1.mp3"></audio>
+    <audio id="bgMusic" preload="auto" autoplay="" loop src="__PUBLIC__/music/music2.mp3"></audio>
   </div>
 
   <div class="container">
@@ -1564,7 +1565,8 @@ var app = function(e) {
 
             // 监听视频退出全屏操作
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
-              e.musics.bg && document.getElementById(e.musics.bg).play(),      
+              $('#audio-music').css('display','block');
+              e.musics.bg && document.getElementById(e.musics.bg).play()
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
               setTimeout(function() {
@@ -1582,8 +1584,9 @@ var app = function(e) {
             // 监听视频播放完操作
             document.getElementById("video-1").addEventListener("ended",
             function(){
+              $('#audio-music').css('display','block');
               this.webkitExitFullScreen();
-              e.musics.bg && document.getElementById(e.musics.bg).play(),
+              e.musics.bg && document.getElementById(e.musics.bg).play()
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
               setTimeout(function() {
