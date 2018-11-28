@@ -358,6 +358,9 @@ a,img {
   top:260px;
   background: url(__PUBLIC__/img/haokoubei/text2.png) no-repeat;
 }
+.pop1-1.active,.pop1-2.active,.pop1-3.active{
+  -webkit-animation: fadeIn 1.5s ease 0s forwards;
+}
 .p1 .p-content .pop1-1{
   width: 254px;
   height: 99px;
@@ -423,7 +426,7 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-	background: url(__PUBLIC__/img/haokoubei/info.jpg) no-repeat;
+	background: url(__PUBLIC__/img/haokoubei/info_2.jpg) no-repeat;
 }
 .p3 .p-content {
 	width: 100%;
@@ -431,7 +434,7 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-	background: url(__PUBLIC__/img/haokoubei/service.jpg) no-repeat;
+	background: url(__PUBLIC__/img/haokoubei/service_2.jpg) no-repeat;
 }
 .p2 .p-content .doctor_info{
   -webkit-animation: fadeInRight 3s ease 0s forwards;
@@ -1508,6 +1511,7 @@ var app = function(e) {
               setTimeout(function() {
                   $('.step2').css('display','none');
                   $('.step3').css('display','block');
+                  $('.step3').addClass('active');
               },
               7e3)
              });
@@ -1525,6 +1529,7 @@ var app = function(e) {
               setTimeout(function() {
                   $('.step2').css('display','none');
                   $('.step3').css('display','block');
+                  $('.step3').addClass('active');
               },
               7e3)
 
@@ -1862,6 +1867,7 @@ var app = function(e) {
                     alert(jsondata.data);
                     $('.p4').removeClass('active');
                     $('.step3').css('display','none');
+                    $('.step3').removeClass('active');
                     $('.step4').css('display','block');
                     $('.p1').addClass('active');
                     $('.pop').addClass('active');
