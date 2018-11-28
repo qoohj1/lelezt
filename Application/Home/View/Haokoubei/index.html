@@ -1564,6 +1564,7 @@ var app = function(e) {
 
             // 监听视频退出全屏操作
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
+              e.musics.bg && document.getElementById(e.musics.bg).play(),      
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
               setTimeout(function() {
@@ -1582,6 +1583,7 @@ var app = function(e) {
             document.getElementById("video-1").addEventListener("ended",
             function(){
               this.webkitExitFullScreen();
+              e.musics.bg && document.getElementById(e.musics.bg).play(),
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
               setTimeout(function() {
@@ -2057,7 +2059,6 @@ var app = function(e) {
         }
     },
     e.main = function() {
-      e.musics.bg && document.getElementById(e.musics.bg).play(),      
         e.utils.loadImages(["http://n.sinaimg.cn/gd/jobs2018/loading_icon.png"],
         function() {
             e.preload.sources = [],
