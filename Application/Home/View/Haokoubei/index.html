@@ -433,6 +433,45 @@ a,img {
 	top: 0;
 	background: url(__PUBLIC__/img/haokoubei/service.jpg) no-repeat;
 }
+.p2 .p-content .doctor_info{
+  -webkit-animation: fadeInRight 3s ease 0s forwards;
+  width: 276px;
+  height: 521px;
+  position: absolute;
+  left: 477px;
+  top:703px;
+  background: url(__PUBLIC__/img/haokoubei/doctor_info.png) no-repeat;
+}
+.p2 .p-content .text_info{
+  -webkit-animation: fadeIn 3s ease 1s forwards;
+  width: 535px;
+  height: 523px;
+  position: absolute;
+  left: 102px;
+  top:464px;
+  opacity: 0;
+  background: url(__PUBLIC__/img/haokoubei/text_info.png) no-repeat;
+}
+.p3 .p-content .doctor_service{
+  -webkit-animation: fadeInLeft 3s ease 0s forwards;
+  width: 319px;
+  height: 524px;
+  position: absolute;
+  left: 48px;
+  top:700px;
+  background: url(__PUBLIC__/img/haokoubei/doctor_service.png) no-repeat;
+}
+.p3 .p-content .text_service{
+  -webkit-animation: fadeIn 3s ease 1s forwards;
+  width: 608px;
+  height: 403px;
+  position: absolute;
+  left: 57px;
+  top:470px;
+  opacity: 0;
+  background: url(__PUBLIC__/img/haokoubei/text_service.png) no-repeat;
+}
+
 .p2 .p-content .return-btn,.p3 .p-content .return-btn{
   width: 238px;
   height: 100%;
@@ -1057,6 +1096,8 @@ a,img {
       </div>
       <div class="p2 page">
           <div class="p-content">
+              <div class="text_info"></div>
+              <div class="doctor_info"></div>
               <div class="return-btn"></div>
               <div class="service-btn"></div>
               <div class="vote-btn"></div>
@@ -1064,6 +1105,8 @@ a,img {
       </div>
       <div class="p3 page">
           <div class="p-content">
+              <div class="text_service"></div>
+              <div class="doctor_service"></div>
               <div class="return-btn"></div>
               <div class="info-btn"></div>
               <div class="vote-btn"></div>
@@ -1452,6 +1495,8 @@ var app = function(e) {
             // document.getElementById("video-1").addEventListener('webkitbeginfullscreen', function() {
             //      alert(1);
             //  });
+
+            // 监听视频退出全屏操作
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
@@ -1466,7 +1511,7 @@ var app = function(e) {
               },
               7e3)
              });
-
+            // 监听视频播放完操作
             document.getElementById("video-1").addEventListener("ended",
             function(){
               this.webkitExitFullScreen();
