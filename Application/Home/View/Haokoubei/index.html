@@ -1449,8 +1449,27 @@ var app = function(e) {
             //   console.log(1);
             //   document.getElementById("video-1").play();
             // })
+            // document.getElementById("video-1").addEventListener('webkitbeginfullscreen', function() {
+            //      alert(1);
+            //  });
+            document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
+              $(".page-video").removeClass("active")
+              $(".p1").addClass("active")
+              setTimeout(function() {
+                  $('.step1').css('display','none');
+                  $('.step2').css('display','block');
+              },
+              3e3),
+              setTimeout(function() {
+                  $('.step2').css('display','none');
+                  $('.step3').css('display','block');
+              },
+              7e3)
+             });
+
             document.getElementById("video-1").addEventListener("ended",
             function(){
+              this.webkitExitFullScreen();
               $(".page-video").removeClass("active")
               $(".p1").addClass("active")
               setTimeout(function() {
@@ -1481,6 +1500,7 @@ var app = function(e) {
             })
         },
         main: function() {
+
 
           // $(".p1").addClass("active")
           // setTimeout(function() {
