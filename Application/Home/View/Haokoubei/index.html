@@ -133,6 +133,14 @@ a,img {
   top:541px;
   background: url(__PUBLIC__/img/haokoubei/oturntable.png) no-repeat;
 }
+.pop-qr .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/qrcode_2.png) no-repeat rgba(0,0,0,.8)!important;
+}
 .pop1 .p-content {
   width: 100%;
 	height: 100%;
@@ -199,7 +207,7 @@ a,img {
 }
 
 
-.page.active,.pop.active,.pop1.active,.pop2.active,.pop3.active,.p4.active {
+.page.active,.pop.active,.pop1.active,.pop2.active,.pop3.active,.p4.active,.pop-qr.active {
   display: block
 }
 
@@ -237,7 +245,7 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-	background: url(__PUBLIC__/img/haokoubei/enter.jpg) no-repeat;
+	background: url(__PUBLIC__/img/haokoubei/enter_2.jpg) no-repeat;
 }
 .p0 .p-content .enter{
   width: 415px;
@@ -1147,6 +1155,9 @@ a,img {
           <div class="oturntable"></div>
         </div>
       </div>
+      <div class="pop-qr">
+        <div class="p-content"></div>
+      </div>
       <div class="pop1">
         <div class="p-content">
             <input class='tel1' type="text" style='border:0;font-size:32px;'>
@@ -1185,8 +1196,6 @@ a,img {
               <div class="pop1-3 step3"></div>
               <div class="doctor3 step3"></div>
               <div class="doctor1 step4"></div>
-              <div class="dialog3 step4"></div>
-              <div class="qrcode step4"></div>
           </div>
       </div>
       <div class="p2 page">
@@ -1692,7 +1701,7 @@ var app = function(e) {
             this.preventDefault(),
 
             // 抽奖
-            $('.pop3 .confirm').on('touchend', function(){$('.pop3').removeClass('active');})
+            $('.pop3 .confirm').on('touchend', function(){$('.pop3').removeClass('active');$('.pop-qr').addClass('active')})
             $('.pop1 .submit').on('touchend', function(){
               console.log($('.tel1').val());
               if(!e.utils.checkMobile($('.tel1').val()))
@@ -1709,6 +1718,8 @@ var app = function(e) {
                   success:function(jsondata){
                     if(jsondata.error===0){
                       alert(jsondata.data);
+                      $('.pop1').removeClass('active');
+                      $('.pop-qr').addClass('active');
                     }else if(jsondata.error===1){
                       alert(jsondata.data);
                     }
@@ -1738,6 +1749,8 @@ var app = function(e) {
                   success:function(jsondata){
                     if(jsondata.error===0){
                       alert(jsondata.data);
+                      $('.pop2').removeClass('active');
+                      $('.pop-qr').addClass('active');
                     }else if(jsondata.error===1){
                       alert(jsondata.data);
                     }
