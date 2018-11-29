@@ -1142,7 +1142,7 @@ a,img {
       </div>
       <div class="page page-video page-video-1 active">
         <!-- <div class="black" style='width:100px;height:100px;background-color:black;position: absolute;z-index:9999'></div> -->
-       <video id="video-1" width="750" height="1333" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true"  x5-video-orientation="portraint" preload="preload" autoplay>
+       <video id="video-1" width="750" height="1333" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true"  x5-video-orientation="portraint" preload="none" autoplay>
         <source src="__PUBLIC__/video/h5_3.mp4" type="video/mp4"></source>
        </video>
       </div>
@@ -1615,7 +1615,7 @@ var app = function(e) {
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
               // $('#audio-music').css('display','block');
               document.getElementById("video-1").pause();
-              document.getElementById("video-1").unload();
+              // document.getElementById("video-1").unload();
               $(".page-video").removeClass("active")
               $('.p0').addClass('active');
              });
