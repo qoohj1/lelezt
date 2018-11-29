@@ -1615,6 +1615,7 @@ var app = function(e) {
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
               // $('#audio-music').css('display','block');
               document.getElementById("video-1").pause();
+              document.getElementById("video-1").unload();
               $(".page-video").removeClass("active")
               $('.p0').addClass('active');
              });
