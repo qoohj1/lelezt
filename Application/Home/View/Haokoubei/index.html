@@ -1611,6 +1611,16 @@ var app = function(e) {
             //      alert(1);
             //  });
 
+            var locked = false;
+            window.addEventListener('touchmove', function(ev){
+                locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+            }, true);
+            function stopTouchendPropagation(ev){
+                ev.stopPropagation();
+                window.removeEventListener('touchend', stopTouchendPropagation, true);
+                locked = false;
+            }
+
             // 监听视频退出全屏操作
             document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
               // $('#audio-music').css('display','block');
