@@ -1786,9 +1786,9 @@ var app = function(e) {
             })
         },
         main: function() {
-
+            var item;
           // $(".page-video").removeClass("active")
-          //
+
           // $(".p1").addClass("active")
           //     $('.step3').css('display','block');
           // setTimeout(function() {
@@ -2095,49 +2095,54 @@ var app = function(e) {
               $('.p4').addClass('active');
 
             }),
+
+            $('.confirm-vote .confirm').on("touchend",function(e){
+
+              $.ajax({
+                url:'/haokoubei/vote',
+                type:'post',
+                data: {
+                  item: item
+                },
+                dataType:'json',
+                success:function(jsondata){
+                  if(jsondata.error===0){
+                    alert(jsondata.data);
+                    $('.p4').removeClass('active');
+                    $('.step3').css('display','none');
+                    $('.step3').removeClass('active');
+                    $('.step4').css('display','block');
+                    $('.p1').addClass('active');
+                    $('.pop').addClass('active');
+                  }else if(jsondata.error===1){
+                    alert(jsondata.data)
+                  }
+                },
+                error:function(jsondata){
+                  // // console.log(jsondata.responseText.data)
+                  // // jsondata = JSON.parse(jsondata);
+                  // JSON.stringify(jsondata)
+                }
+
+              })
+            })
             $('.vote .vote-btn3').on("touchend",function(e){
               var i = $(this).data('index');
+              item = i;
               console.log(1);
-              voteitem(i);
+              // voteitem(i);
               $('.confirm-vote').addClass('active');
               $('.p4').removeClass('active');
               $(this).parent().parent().removeClass('active');
 
             });
-            function voteitem(i){
-              $('.confirm-vote .confirm').on("touchend",function(e){
-                $.ajax({
-                  url:'/haokoubei/vote',
-                  type:'post',
-                  data: {
-                    item: i
-                  },
-                  dataType:'json',
-                  success:function(jsondata){
-                    if(jsondata.error===0){
-                      alert(jsondata.data);
-                      $('.p4').removeClass('active');
-                      $('.step3').css('display','none');
-                      $('.step3').removeClass('active');
-                      $('.step4').css('display','block');
-                      $('.p1').addClass('active');
-                      $('.pop').addClass('active');
-                    }else if(jsondata.error===1){
-                      alert(jsondata.data)
-                    }
-                  },
-                  error:function(jsondata){
-                    // // console.log(jsondata.responseText.data)
-                    // // jsondata = JSON.parse(jsondata);
-                    // JSON.stringify(jsondata)
-                  }
 
-                })
-              })
+            function voteitem(i){
             }
             $('.item>.vote-btn2').on("touchend",function(e){
               var i = $(this).data('index');
-              voteitem(i);
+              item = i
+              // voteitem(i);
               console.log(1);
               $('.confirm-vote').addClass('active');
               $('.p4').removeClass('active');
