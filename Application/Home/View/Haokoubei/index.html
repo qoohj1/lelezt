@@ -2009,7 +2009,8 @@ var app = function(e) {
               $('.p4').addClass('active');
 
             }),
-            $('.item>.vote-btn3').on("touchend",function(e){
+            $('.vote>.vote-btn3').on("touchend",function(e){
+              // console.log(1);
               var i = $(this).data('index');
               $.ajax({
                 url:'/haokoubei/vote',
