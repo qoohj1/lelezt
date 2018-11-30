@@ -1670,6 +1670,8 @@ var app = function(e) {
         onComplete: function() {
             $(".loading").removeClass("active")
             document.addEventListener(  'WeixinJSBridgeReady',  function() {
+            document.getElementById('bgMusic').play();
+            document.getElementById('bgMusic').pause();
             document.getElementById("video-1").play();
             },  false);
 
@@ -2284,7 +2286,7 @@ var app = function(e) {
     				}
     		})
 
-        e.utils.loadImages(["http://n.sinaimg.cn/gd/jobs2018/loading_icon.png"],
+        e.utils.loadImages([],
         function() {
             e.preload.sources = [],
             e.preload.main()
