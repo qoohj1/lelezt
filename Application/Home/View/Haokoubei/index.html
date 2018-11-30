@@ -2108,6 +2108,7 @@ var app = function(e) {
                 success:function(jsondata){
                   if(jsondata.error===0){
                     alert(jsondata.data);
+                    $('.confirm-vote').removeClass('active');
                     $('.p4').removeClass('active');
                     $('.step3').css('display','none');
                     $('.step3').removeClass('active');
