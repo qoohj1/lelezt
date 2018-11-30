@@ -1611,6 +1611,7 @@ var app = function(e) {
             //      alert(1);
             //  });
 
+            // 滑动禁止触发touchend
             var locked = false;
             window.addEventListener('touchmove', function(ev){
                 locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
@@ -1703,8 +1704,10 @@ var app = function(e) {
         },
         main: function() {
 
+          // $(".page-video").removeClass("active")
 
           // $(".p1").addClass("active")
+          //     $('.step3').css('display','block');
           // setTimeout(function() {
           //     $('.step1').css('display','none');
           //     $('.step2').css('display','block');
@@ -2009,8 +2012,8 @@ var app = function(e) {
               $('.p4').addClass('active');
 
             }),
-            $('.vote>.vote-btn3').on("touchend",function(e){
-              // console.log(1);
+            $('.vote .vote-btn3').on("touchend",function(e){
+              console.log(1);
               var i = $(this).data('index');
               $.ajax({
                 url:'/haokoubei/vote',
