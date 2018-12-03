@@ -395,8 +395,8 @@ a,img {
   width: 564px;
   height: 100%;
   position: absolute;
-  left: 6px;
-  top:203px;
+  left: 9px;
+  top:206px;
   background: url(__PUBLIC__/img/haokoubei/dialog1_2.png) no-repeat;
 }
 /* .p1 .p-content .text1{
@@ -419,11 +419,11 @@ a,img {
 }
 .p1 .p-content .dialog2{
   -webkit-animation: fadeIn 0.5s ease 0 forwards;
-  width: 224px;
+  width: 479px;
   height: 100%;
   position: absolute;
-  left: 42px;
-  top:212px;
+  left: 39px;
+  top:215px;
   background: url(__PUBLIC__/img/haokoubei/dialog2_2.png) no-repeat;
 }
 .p1 .p-content .text2{
@@ -1796,21 +1796,35 @@ var app = function(e) {
         },
         main: function() {
             var item;
+            // $(".p1").addClass("active")
+
+            // setTimeout(function() {
+            //     $('.step1').css('display','none');
+            //     $('.step2').css('display','block');
+            // },
+            // 3e3),
+            // setTimeout(function() {
+            //     $('.step2').css('display','none');
+            //     $('.step3').css('display','block');
+            //     $('.step3').addClass('active');
+            // },
+            // 7e3)
+
           // $(".page-video").removeClass("active")
           //
           // $(".p1").addClass("active")
           // $('.step2').css('display','block');
               // $('.step3').css('display','block');
-          setTimeout(function() {
-              $('.step1').css('display','none');
-              $('.step2').css('display','block');
-          },
-          3e3),
-          setTimeout(function() {
-              $('.step2').css('display','none');
-              $('.step3').css('display','block');
-          },
-          7e3),
+          // setTimeout(function() {
+          //     $('.step1').css('display','none');
+          //     $('.step2').css('display','block');
+          // },
+          // 3e3),
+          // setTimeout(function() {
+          //     $('.step2').css('display','none');
+          //     $('.step3').css('display','block');
+          // },
+          // 7e3),
 
             this.preventDefault(),
 
