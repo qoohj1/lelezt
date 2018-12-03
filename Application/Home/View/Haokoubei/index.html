@@ -1931,6 +1931,7 @@ var app = function(e) {
             }),
             $('.vote-btn').on("touchend",
             function(){
+              e.utils.topFunction();
               $('.p2').removeClass('active');
               $('.p3').removeClass('active');
               $('.p4').addClass('active');
