@@ -1733,15 +1733,14 @@ var app = function(e) {
         },
         onComplete: function() {
             $(".loading").removeClass("active")
-            // document.addEventListener(  'WeixinJSBridgeReady',  function() {
+            document.addEventListener(  'WeixinJSBridgeReady',  function() {
             // document.getElementById('bgMusic').play();
-            // document.getElementById('bgMusic').pause();
+            document.getElementById('bgMusic').pause();
             // document.getElementById("video-1").play();
-            // },  false);
+            },  false);
 
             $('.play').on('touchend', function(){
               $('.p0-0').removeClass('active');
-              document.getElementById('bgMusic').pause();
               document.getElementById("video-1").play();
 
             })
