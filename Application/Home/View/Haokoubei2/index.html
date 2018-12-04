@@ -1750,6 +1750,8 @@ var app = function(e) {
               document.getElementById("video-1").muted = false;
               $(".page-video").addClass('active');
               document.getElementById("video-1").play();
+
+              window.screen.lockOrientation(["portrait-primary","portrait-secondary"]);              
               document.getElementById("video-1").webkitRequestFullScreen();
               document.getElementById("video-1").mozRequestFullScreen();
             })
