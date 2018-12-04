@@ -1746,6 +1746,7 @@ var app = function(e) {
 
             $('.play').on('touchend', function(){
               $('.p0-0').removeClass('active');
+              document.getElementById('bgMusic').pause();
               document.getElementById("video-1").play();
 
             })
