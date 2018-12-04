@@ -1260,7 +1260,7 @@ a,img {
       </div>
       <div class="page page-video page-video-1">
         <!-- <div class="black" style='width:100px;height:100px;background-color:black;position: absolute;z-index:9999'></div> -->
-       <video id="video-1" width="100%"   x-webkit-airplay="allow" x5-video-player-fullscreen="true"  x5-video-orientation="portraint" preload controls>
+       <video muted id="video-1" width="100%"   x-webkit-airplay="allow" x5-video-player-fullscreen="true"  x5-video-orientation="portraint" preload controls>
         <source src="__PUBLIC__/video/h5_3.mp4" type="video/mp4"></source>
        </video>
       </div>
@@ -1738,7 +1738,7 @@ var app = function(e) {
             document.addEventListener(  'WeixinJSBridgeReady',  function() {
             // document.getElementById('bgMusic').play();
             document.getElementById('bgMusic').pause();
-            document.getElementById("video-1").play();
+            // document.getElementById("video-1").play();
             },  false);
 
             $('.play').on('touchend', function(){
