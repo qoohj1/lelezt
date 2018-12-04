@@ -225,6 +225,10 @@ a,img {
 	animation: fadeOut .5s linear 0s both
 }
 
+.loading{
+  background-color: #c6eaf3;
+}
+
 .loading-icon,.page .p-content{
 	width: 100%;
 	height: 100%;
@@ -1733,6 +1737,7 @@ var app = function(e) {
         },
         onComplete: function() {
             $(".loading").removeClass("active")
+            $('.p0-0').addClass('active');
             document.addEventListener(  'WeixinJSBridgeReady',  function() {
             // document.getElementById('bgMusic').play();
             document.getElementById('bgMusic').pause();
