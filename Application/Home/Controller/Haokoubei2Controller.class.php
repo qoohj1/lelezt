@@ -31,9 +31,11 @@ class Haokoubei2Controller extends Controller {
       if($res){
         jsonReturn(0,error,'每个ip只能投票一次');
       }else{
-        $server_ip->add($condition);
-        $votelist->where($data)->setInc('count');
-        jsonReturn(0,success,'投票成功');
+        $res2 = $votelist->where($data)->setInc('count');
+        if($res2){
+          $server_ip->add($condition);
+          jsonReturn(0,success,'投票成功');
+        }
       }
     }
     // 抽奖
