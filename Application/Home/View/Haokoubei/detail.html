@@ -1267,21 +1267,12 @@ a,img {
           </div>
           <div class="loading-text">loading...</div>
       </div>
-      <div class="page page-video page-video-1">
-        <!-- <div class="black" style='width:100px;height:100px;background-color:black;position: absolute;z-index:9999'></div> -->
-        <!-- <video id="video-1" width="750" height="1490" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true" webkit-playsinline="" playsinline="" x5-video-orientation="portraint" preload="preload">
-          <source src="http://n.sinaimg.cn/gd/20180629/ztwy/video_1.mp4" type="video/mp4"></source>
-         </video> -->
-       <video muted id="video-1" width="100%"   x-webkit-airplay="allow"  x5-video-orientation="portraint" x5-video-player-fullscreen="true"  preload controls>
-        <source src="__PUBLIC__/video/h5_4.mp4" type="video/mp4"></source>
-       </video>
-      </div>
-      <div class="p0-0 page active">
+      <!-- <div class="p0-0 page active">
         <div class="p-content">
           <div class="play"></div>
 
         </div>
-      </div>
+      </div> -->
       <div class="p0 page">
         <div class="p-content">
           <div class="enter"></div>
@@ -1343,24 +1334,6 @@ a,img {
               <div class="pop1-3 step3"></div>
               <div class="doctor3 step3"></div>
               <div class="doctor1 step4"></div>
-          </div>
-      </div>
-      <div class="p2">
-          <div class="p-content">
-              <div class="text_info"></div>
-              <div class="doctor_info"></div>
-              <div class="return-btn"></div>
-              <div class="service-btn"></div>
-              <div class="vote-btn"></div>
-          </div>
-      </div>
-      <div class="p3">
-          <div class="p-content">
-              <!-- <div class="text_service"></div>
-              <div class="doctor_service"></div> -->
-              <div class="return-btn"></div>
-              <div class="info-btn"></div>
-              <div class="vote-btn"></div>
           </div>
       </div>
       <div class="p4">
@@ -1831,24 +1804,23 @@ var app = function(e) {
         },
         onComplete: function() {
             $(".loading").removeClass("active")
-            $('.p0-0').addClass('active');
+            // $('.p0-0').addClass('active');
             document.addEventListener(  'WeixinJSBridgeReady',  function() {
-            // document.getElementById('bgMusic').play();
-            document.getElementById('bgMusic').pause();
+            // document.getElementById('bgMusic').pause();
             // document.getElementById("video-1").play();
             },  false);
 
-            $('.play').on('touchend', function(){
-              $('.p0-0').removeClass('active');
-              document.getElementById('bgMusic').pause();
-              document.getElementById("video-1").muted = false;
-              $(".page-video").addClass('active');
-              document.getElementById("video-1").play();
-
-              window.screen.lockOrientation(["portrait-primary","portrait-secondary"]);
-              document.getElementById("video-1").webkitRequestFullScreen();
-              document.getElementById("video-1").mozRequestFullScreen();
-            })
+            // $('.play').on('touchend', function(){
+            //   $('.p0-0').removeClass('active');
+            //   document.getElementById('bgMusic').pause();
+            //   document.getElementById("video-1").muted = false;
+            //   $(".page-video").addClass('active');
+            //   document.getElementById("video-1").play();
+            //
+            //   window.screen.lockOrientation(["portrait-primary","portrait-secondary"]);
+            //   document.getElementById("video-1").webkitRequestFullScreen();
+            //   document.getElementById("video-1").mozRequestFullScreen();
+            // })
 
 
             // $('.black').on('touchend',function(){
@@ -1884,39 +1856,39 @@ var app = function(e) {
             }
 
             // 监听视频退出全屏操作
-            document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
-              // $('#audio-music').css('display','block');
-              document.getElementById("video-1").pause();
-              // document.getElementById("video-1").unload();
-              $(".page-video").removeClass("active")
-              $('.p0').addClass('active');
-             });
+            // document.getElementById("video-1").addEventListener('webkitendfullscreen', function() {
+            //   // $('#audio-music').css('display','block');
+            //   document.getElementById("video-1").pause();
+            //   // document.getElementById("video-1").unload();
+            //   $(".page-video").removeClass("active")
+            //   $('.p0').addClass('active');
+            //  });
             // 监听视频播放完操作
-            document.getElementById("video-1").addEventListener("ended",
-            function(){
-              // document.getElementById('bgMusic').paused&&document.getElementById('bgMusic').play()
-              this.webkitExitFullScreen();
-              $(".page-video").removeClass("active")
-              $(".p0").addClass("active")
-            });
-            $('.p0 .enter').on('touchend', function(){
-              document.getElementById('bgMusic').paused&&document.getElementById('bgMusic').play()
-              $(".p0").removeClass("active")
-              $('#audio-music').css('display','block');
-              $(".p1").addClass("active")
-
-              setTimeout(function() {
-                  $('.step1').css('display','none');
-                  $('.step2').css('display','block');
-              },
-              3e3),
-              setTimeout(function() {
-                  $('.step2').css('display','none');
-                  $('.step3').css('display','block');
-                  $('.step3').addClass('active');
-              },
-              7e3)
-            })
+            // document.getElementById("video-1").addEventListener("ended",
+            // function(){
+            //   // document.getElementById('bgMusic').paused&&document.getElementById('bgMusic').play()
+            //   this.webkitExitFullScreen();
+            //   $(".page-video").removeClass("active")
+            //   $(".p0").addClass("active")
+            // });
+            // $('.p0 .enter').on('touchend', function(){
+            //   document.getElementById('bgMusic').paused&&document.getElementById('bgMusic').play()
+            //   $(".p0").removeClass("active")
+            //   $('#audio-music').css('display','block');
+            //   $(".p1").addClass("active")
+            //
+            //   setTimeout(function() {
+            //       $('.step1').css('display','none');
+            //       $('.step2').css('display','block');
+            //   },
+            //   3e3),
+            //   setTimeout(function() {
+            //       $('.step2').css('display','none');
+            //       $('.step3').css('display','block');
+            //       $('.step3').addClass('active');
+            //   },
+            //   7e3)
+            // })
         },
         main: function() {
             e.utils.loadImages(this.sources, {
@@ -1965,7 +1937,10 @@ var app = function(e) {
         },
         main: function() {
             var item;
-            // $(".p1").addClass("active")
+            $(".vote"+<?php echo($page);?>).addClass("active"),
+            // $(".p4").addClass("active"),
+            $('#audio-music').css('display','block'),
+            document.getElementById('bgMusic').play(),
 
             // setTimeout(function() {
             //     $('.step1').css('display','none');
@@ -1979,11 +1954,11 @@ var app = function(e) {
             // },
             // 7e3)
 
-          $(".page-video").removeClass("active")
-
-          $(".p1").addClass("active")
+          // $(".page-video").removeClass("active")
+          //
+          // $(".p1").addClass("active")
           // $('.step2').css('display','block');
-              $('.step3').css('display','block');
+              // $('.step3').css('display','block');
           // setTimeout(function() {
           //     $('.step1').css('display','none');
           //     $('.step2').css('display','block');

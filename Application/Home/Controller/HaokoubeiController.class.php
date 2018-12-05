@@ -3,7 +3,19 @@ namespace Home\Controller;
 use Think\Controller;
 class HaokoubeiController extends Controller {
     public function index(){
-      $this->display();
+      $page = I('page');
+      var_dump($page);
+      if($page){
+        $data = M('votelist')->select();
+        $this->assign('data',$data);
+        $this->assign('page',$page);
+        $this->display('detail');
+
+      }else{
+        $data = M('votelist')->select();
+        $this->assign('data',$data);
+        $this->display();
+      }
     }
     // 投票
     public function vote(){
