@@ -8,34 +8,39 @@ class HaokoubeiController extends Controller {
         $data = M('votelist')->select();
         $this->assign('data',$data);
         $this->assign('page',$page);
-        $this->display('detail');
+        $this->display('detail2');
 
       }else{
         $data = M('votelist')->select();
         $this->assign('data',$data);
-        $this->display();
+        $this->display('index2');
       }
     }
     // 投票
-    public function vote(){
-      // 获取投票选项
-      $data['id'] = I('item');
-      // 判断ip是否已投票
-      // 获取客户端ip
-      $condition['ip'] = $_SERVER['REMOTE_ADDR'];
-      $data['ip'] = $condition['ip'];
-      $server_ip = M('server_ip');
-      $votelist = M('votelist');
-      $res = $server_ip->where($condition)->find();
-      var_dump($res);
-      if($res){
-        jsonReturn(0,error,'每个ip只能投票一次');
-      }else{
-        $server_ip->add($condition);
-        $votelist->where($data)->setInc('count');
-        jsonReturn(0,success,'投票成功');
-      }
-    }
+    // public function vote(){
+    //   // 获取投票选项
+    //   $map['id'] = I('item');
+    //   // 判断ip是否已投票
+    //   // 获取客户端ip
+    //   $condition['ip'] = $_SERVER['REMOTE_ADDR'];
+    //   $data['ip'] = $condition['ip'];
+    //   $server_ip = M('server_ip');
+    //   $votelist = M('votelist');
+    //   $res = $server_ip->where($condition)->find();
+    //   // var_dump($res);
+    //   if($res){
+    //     jsonReturn(0,error,'每个ip只能投票一次');
+    //   }else{
+    //     $res2 = $votelist->where($map)->setInc('count');
+    //     // var_dump($res2);
+    //     if($res2){
+    //       $res3 = $server_ip->add($condition);
+    //       if($res3){
+    //         jsonReturn(0,success,'投票成功');
+    //       }
+    //     }
+    //   }
+    // }
     // 抽奖
     public function lottery(){
       // $prize_arr = array(
