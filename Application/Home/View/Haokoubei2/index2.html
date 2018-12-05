@@ -1966,6 +1966,7 @@ var app = function(e) {
         },
         main: function() {
             var item;
+            var offvote = false;
             // $(".p1").addClass("active")
 
             // setTimeout(function() {
@@ -2324,35 +2325,37 @@ var app = function(e) {
             }),
 
             $('.confirm-vote .confirm').on("touchend",function(e){
-
-              $.ajax({
-                url:'/haokoubei2/vote',
-                type:'post',
-                data: {
-                  item: item
-                },
-                dataType:'json',
-                success:function(jsondata){
-                  if(jsondata.error===0){
-                    alert(jsondata.data);
-                    $('.confirm-vote').removeClass('active');
-                    $('.p4').removeClass('active');
-                    $('.step3').css('display','none');
-                    $('.step3').removeClass('active');
-                    $('.step4').css('display','block');
-                    $('.p1').addClass('active');
-                    $('.pop').addClass('active');
-                  }else if(jsondata.error===1){
-                    alert(jsondata.data)
+              if(item){
+                $.ajax({
+                  url:'/haokoubei2/vote',
+                  type:'post',
+                  data: {
+                    item: item
+                  },
+                  dataType:'json',
+                  success:function(jsondata){
+                    if(jsondata.error===0){
+                      alert(jsondata.data);
+                      $('.confirm-vote').removeClass('active');
+                      $('.p4').removeClass('active');
+                      $('.step3').css('display','none');
+                      $('.step3').removeClass('active');
+                      $('.step4').css('display','block');
+                      $('.p1').addClass('active');
+                      $('.pop').addClass('active');
+                    }else if(jsondata.error===1){
+                      alert(jsondata.data)
+                    }
+                  },
+                  error:function(jsondata){
+                    // // console.log(jsondata.responseText.data)
+                    // // jsondata = JSON.parse(jsondata);
+                    // JSON.stringify(jsondata)
                   }
-                },
-                error:function(jsondata){
-                  // // console.log(jsondata.responseText.data)
-                  // // jsondata = JSON.parse(jsondata);
-                  // JSON.stringify(jsondata)
-                }
 
-              })
+                })
+
+              }
             })
             $('.vote .vote-btn3').on("touchend",function(e){
               var i = $(this).data('index');
