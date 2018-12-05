@@ -27,7 +27,7 @@ class Haokoubei2Controller extends Controller {
       $server_ip = M('server_ip');
       $votelist = M('votelist');
       $res = $server_ip->where($condition)->find();
-      // var_dump($res);
+      var_dump($res);
       if($res){
         jsonReturn(0,error,'每个ip只能投票一次');
       }else{
