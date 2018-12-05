@@ -4,7 +4,7 @@ use Think\Controller;
 class HaokoubeiController extends Controller {
     public function index(){
       $page = I('page');
-      if($page){
+      if($page>0){
         $data = M('votelist')->select();
         $this->assign('data',$data);
         $this->assign('page',$page);
