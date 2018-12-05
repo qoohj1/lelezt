@@ -1965,6 +1965,9 @@ var app = function(e) {
             })
         },
         main: function() {
+          var item;
+          var offvote = false;
+
             // $(".p1").addClass("active")
 
             // setTimeout(function() {
@@ -2464,8 +2467,6 @@ var app = function(e) {
         }
     },
     e.main = function() {
-        var item;
-        var offvote = false;
         e.utils.share('宝安区好口碑社区健康服务中心评选',0,'快来为你心目中的好口碑社康中心投一票吧'),
         e.utils.loadImages(['__PUBLIC__/img/haokoubei/loading.png'],
         function() {
