@@ -2325,6 +2325,7 @@ var app = function(e) {
             }),
 
             $('.confirm-vote .confirm').on("touchend",function(e){
+              var offvote = true;
               if(offvote){
                 $.ajax({
                   url:'/haokoubei2/vote',
@@ -2360,6 +2361,7 @@ var app = function(e) {
             $('.vote .vote-btn3').on("touchend",function(e){
               var i = $(this).data('index');
               item = i;
+
               console.log(1);
               // voteitem(i);
               $('.confirm-vote').addClass('active');
