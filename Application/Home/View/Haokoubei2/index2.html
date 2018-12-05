@@ -2325,7 +2325,7 @@ var app = function(e) {
             }),
 
             $('.confirm-vote .confirm').on("touchend",function(e){
-              if(item){
+              if(offvote){
                 $.ajax({
                   url:'/haokoubei2/vote',
                   type:'post',
