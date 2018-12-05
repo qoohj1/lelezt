@@ -1,7 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-class HaokoubeiController extends Controller {
+class Haokoubei2Controller extends Controller {
     public function index(){
       $page = I('page');
       if($page>0){
