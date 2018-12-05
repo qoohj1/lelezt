@@ -2068,12 +2068,14 @@ var app = function(e) {
             }),
             $('.item1>.detail-btn').on("touchend",
             function(){
+              e.utils.share('1');
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote1').addClass('active');
             }),
             $('.item2>.detail-btn').on("touchend",
             function(){
+              e.utils.share('2');
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote2').addClass('active');
