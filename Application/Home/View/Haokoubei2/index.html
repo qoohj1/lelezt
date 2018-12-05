@@ -1965,7 +1965,6 @@ var app = function(e) {
             })
         },
         main: function() {
-            var item;
             // $(".p1").addClass("active")
 
             // setTimeout(function() {
@@ -2325,9 +2324,9 @@ var app = function(e) {
 
             $('.confirm-vote .confirm').on("touchend",function(e){
               console.log(item);
-              if(item){
+              if(offvote){
                 console.log(item);
-                
+
                 $.ajax({
                   url:'/haokoubei2/vote',
                   type:'post',
@@ -2362,6 +2361,7 @@ var app = function(e) {
             $('.vote .vote-btn3').on("touchend",function(e){
               var i = $(this).data('index');
               item = i;
+              offvote = true;
               console.log(1);
               // voteitem(i);
               $('.confirm-vote').addClass('active');
@@ -2464,6 +2464,8 @@ var app = function(e) {
         }
     },
     e.main = function() {
+        var item;
+        var offvote = false;
         e.utils.share('宝安区好口碑社区健康服务中心评选',0,'快来为你心目中的好口碑社康中心投一票吧'),
         e.utils.loadImages(['__PUBLIC__/img/haokoubei/loading.png'],
         function() {
