@@ -2324,7 +2324,10 @@ var app = function(e) {
             }),
 
             $('.confirm-vote .confirm').on("touchend",function(e){
+              console.log(item);
               if(item){
+                console.log(item);
+                
                 $.ajax({
                   url:'/haokoubei2/vote',
                   type:'post',
