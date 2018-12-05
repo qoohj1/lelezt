@@ -26,19 +26,19 @@ class Haokoubei2Controller extends Controller {
       $data['ip'] = $condition['ip'];
       $server_ip = M('server_ip');
       $votelist = M('votelist');
-      var_dump($condition);
+      // var_dump($condition);
       $res = $server_ip->where($condition)->find();
-      var_dump($res);
+      // var_dump($res);
       if($res){
         jsonReturn(0,error,'每个ip只能投票一次');
       }else{
         $res2 = $votelist->where($map)->setInc('count');
         // var_dump($res2);
         if($res2){
-          // $res3 = $server_ip->add($condition);
-          // if($res3){
+          $res3 = $server_ip->add($condition);
+          if($res3){
             jsonReturn(0,success,'投票成功');
-          // }
+          }
         }
       }
     }
