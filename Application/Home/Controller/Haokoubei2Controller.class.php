@@ -19,7 +19,7 @@ class Haokoubei2Controller extends Controller {
     // 投票
     public function vote(){
       // 获取投票选项
-      $data['id'] = I('item');
+      $map['id'] = I('item');
       // 判断ip是否已投票
       // 获取客户端ip
       $condition['ip'] = $_SERVER['REMOTE_ADDR'];
@@ -31,7 +31,7 @@ class Haokoubei2Controller extends Controller {
       if($res){
         jsonReturn(0,error,'每个ip只能投票一次');
       }else{
-        $res2 = $votelist->where($data)->setInc('count');
+        $res2 = $votelist->where($map)->setInc('count');
         var_dump($res2);
         if($res2){
           $res3 = $server_ip->add($condition);
