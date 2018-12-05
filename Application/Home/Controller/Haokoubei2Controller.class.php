@@ -36,7 +36,7 @@ class Haokoubei2Controller extends Controller {
         if($res2){
           $res3 = $server_ip->add($condition);
           if($res3){
-            jsonReturn(0,success,'投票成功');            
+            jsonReturn(0,success,'投票成功');
           }
         }
       }
