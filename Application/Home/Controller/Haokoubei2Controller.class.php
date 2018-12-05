@@ -32,9 +32,12 @@ class Haokoubei2Controller extends Controller {
         jsonReturn(0,error,'每个ip只能投票一次');
       }else{
         $res2 = $votelist->where($data)->setInc('count');
+        var_dump($res2);
         if($res2){
-          $server_ip->add($condition);
-          jsonReturn(0,success,'投票成功');
+          $res3 = $server_ip->add($condition);
+          if($res3){
+            jsonReturn(0,success,'投票成功');            
+          }
         }
       }
     }
