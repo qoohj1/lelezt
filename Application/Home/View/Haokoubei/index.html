@@ -30,9 +30,6 @@
 </head>
 <link rel="stylesheet" href="__PUBLIC__/css/haokoubei/animation.css">
 <style>
-video::-webkit-media-controls {
-  display:none !important;
-}
 #audio-music {
   display: none;
   position: absolute;
@@ -225,6 +222,10 @@ a,img {
 	animation: fadeOut .5s linear 0s both
 }
 
+.loading{
+  background-color: #c6eaf3;
+}
+
 .loading-icon,.page .p-content{
 	width: 100%;
 	height: 100%;
@@ -233,6 +234,38 @@ a,img {
 	top: 0;
   /* z-index: 99 */
 }
+
+.loading-icon {
+  width: 500px;
+  height: 422px;
+  left: 50%;
+  margin-left: -250px;
+  top: 50%;
+  margin-top: -211px
+}
+
+.loading-icon .loading-icon-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(__PUBLIC__/img/haokoubei/loading.png) no-repeat;
+  /* opacity: 0 */
+}
+
+.loading-icon .loading-icon-dotted {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(__PUBLIC__/img/haokoubei/dotted.png) no-repeat;
+  /* opacity: 0 */
+}
+
+
+
 
 .p1 {
   z-index: 4
@@ -266,6 +299,24 @@ a,img {
   left: 165px;
   top:832px;
   background: url(__PUBLIC__/img/haokoubei/return_3.png) no-repeat;
+}
+.p0-0 .p-content {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #c6eaf3;
+}
+.p0-0 .p-content .play{
+  width: 254px;
+  height: 254px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -127px;
+  margin-top: -127px;
+  background: url(__PUBLIC__/img/haokoubei/play.png) no-repeat;
 }
 .p0 .p-content {
 	width: 100%;
@@ -1195,7 +1246,7 @@ a,img {
 </style>
 <body>
   <div id="audio-music" class="animating">
-    <audio id="bgMusic" preload="auto" autoplay="false" loop src="__PUBLIC__/music/music2.mp3"></audio>
+    <audio id="bgMusic" loop src="__PUBLIC__/music/music2.mp3"></audio>
   </div>
 
   <div class="container">
@@ -1203,14 +1254,24 @@ a,img {
       <div class="loading page active">
           <div class="loading-icon">
               <div class="loading-icon-img"></div>
+              <div class="loading-icon-dotted"></div>
           </div>
           <div class="loading-text">loading...</div>
       </div>
-      <div class="page page-video page-video-1 active">
+      <div class="page page-video page-video-1">
         <!-- <div class="black" style='width:100px;height:100px;background-color:black;position: absolute;z-index:9999'></div> -->
-       <video id="video-1" width="750" height="1333" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true"  x5-video-orientation="portraint" preload="none" autoplay>
-        <source src="__PUBLIC__/video/h5_3.mp4" type="video/mp4"></source>
+        <!-- <video id="video-1" width="750" height="1490" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true" webkit-playsinline="" playsinline="" x5-video-orientation="portraint" preload="preload">
+          <source src="http://n.sinaimg.cn/gd/20180629/ztwy/video_1.mp4" type="video/mp4"></source>
+         </video> -->
+       <video muted id="video-1" width="100%"   x-webkit-airplay="allow"  x5-video-orientation="portraint" x5-video-player-fullscreen="true"  preload controls>
+        <source src="__PUBLIC__/video/h5_4.mp4" type="video/mp4"></source>
        </video>
+      </div>
+      <div class="p0-0 page active">
+        <div class="p-content">
+          <div class="play"></div>
+
+        </div>
       </div>
       <div class="p0 page">
         <div class="p-content">
@@ -1617,6 +1678,61 @@ a,img {
 "use strict";
 var app = function(e) {
     return e.utils = {
+        share: function(t) {
+          $.ajax({
+      				url:"http://www.shegurz.com/jssdk/jssdk.php",
+      				dataType:"jsonp",
+      				data: {
+      					url: location.href.split('#')[0]
+      				},
+      				jsonp: 'callback',
+      				jsonpCallback: 'success_jsonpCallback',
+      				success:function(jsondata){
+      						wx.config({
+      								debug: false,
+      								appId: jsondata.appId,
+      								timestamp: jsondata.timestamp,
+      								nonceStr: jsondata.nonceStr,
+      								signature: jsondata.signature,
+      								jsApiList: [
+      										'onMenuShareTimeline', 'onMenuShareAppMessage'
+      								]
+      						});
+      						wx.ready(function () {
+      								wx.onMenuShareTimeline({
+      										title: t, // 分享标题
+      										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+      										success: function (res) {
+
+      										},
+      										cancel: function (res) {
+
+      										}
+      								});
+
+      								wx.onMenuShareAppMessage({
+      										title: t, // 分享标题
+      										desc: '快来为你心目中的好口碑社康中心投一票吧', // 分享描述
+      										link: 'http://zt2.shegurz.com/haokoubei', // 分享链接
+      										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+      										type: '',
+      										dataUrl: '',
+      										success: function () {
+
+      										},
+      										cancel: function () {
+
+      										}
+      								});
+      								wx.error(function(res){
+      										console.log(JSON.stringify(res));
+      								});
+      						})
+
+      				}
+      		})
+
+        },
         checkMobile: function(phone) {
           var telReg = !!phone.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/);
           return telReg;
@@ -1676,11 +1792,25 @@ var app = function(e) {
         },
         onComplete: function() {
             $(".loading").removeClass("active")
+            $('.p0-0').addClass('active');
             document.addEventListener(  'WeixinJSBridgeReady',  function() {
-            document.getElementById('bgMusic').play();
+            // document.getElementById('bgMusic').play();
             document.getElementById('bgMusic').pause();
-            document.getElementById("video-1").play();
+            // document.getElementById("video-1").play();
             },  false);
+
+            $('.play').on('touchend', function(){
+              $('.p0-0').removeClass('active');
+              document.getElementById('bgMusic').pause();
+              document.getElementById("video-1").muted = false;
+              $(".page-video").addClass('active');
+              document.getElementById("video-1").play();
+
+              window.screen.lockOrientation(["portrait-primary","portrait-secondary"]);
+              document.getElementById("video-1").webkitRequestFullScreen();
+              document.getElementById("video-1").mozRequestFullScreen();
+            })
+
 
             // $('.black').on('touchend',function(){
             //   console.log(1);
@@ -2258,62 +2388,10 @@ var app = function(e) {
         }
     },
     e.main = function() {
-        $.ajax({
-    				url:"http://www.shegurz.com/jssdk/jssdk.php",
-    				dataType:"jsonp",
-    				data: {
-    					url: location.href.split('#')[0]
-    				},
-    				jsonp: 'callback',
-    				jsonpCallback: 'success_jsonpCallback',
-    				success:function(jsondata){
-    						wx.config({
-    								debug: false,
-    								appId: jsondata.appId,
-    								timestamp: jsondata.timestamp,
-    								nonceStr: jsondata.nonceStr,
-    								signature: jsondata.signature,
-    								jsApiList: [
-    										'onMenuShareTimeline', 'onMenuShareAppMessage'
-    								]
-    						});
-    						wx.ready(function () {
-    								wx.onMenuShareTimeline({
-    										title: '宝安区好口碑社区健康服务中心评选', // 分享标题
-    										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
-    										success: function (res) {
-
-    										},
-    										cancel: function (res) {
-
-    										}
-    								});
-
-    								wx.onMenuShareAppMessage({
-    										title: '宝安区好口碑社区健康服务中心评选', // 分享标题
-    										desc: '快来为你心目中的好口碑社康中心投一票吧', // 分享描述
-    										link: 'http://zt2.shegurz.com/haokoubei', // 分享链接
-    										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
-    										type: '',
-    										dataUrl: '',
-    										success: function () {
-
-    										},
-    										cancel: function () {
-
-    										}
-    								});
-    								wx.error(function(res){
-    										console.log(JSON.stringify(res));
-    								});
-    						})
-
-    				}
-    		})
-
-        e.utils.loadImages([],
+        e.utils.share('宝安区好口碑社区健康服务中心评选'),
+        e.utils.loadImages(['__PUBLIC__/img/haokoubei/loading.png'],
         function() {
-            e.preload.sources = [],
+            e.preload.sources = ["__PUBLIC__/img/haokoubei/turntable.png","__PUBLIC__/img/haokoubei/pointer.png","__PUBLIC__/img/haokoubei/oturntable.png","__PUBLIC__/img/haokoubei/lottery1.png","__PUBLIC__/img/haokoubei/lottery2.png","__PUBLIC__/img/haokoubei/lottery3.png","__PUBLIC__/img/haokoubei/submit.png","__PUBLIC__/img/haokoubei/input.png","__PUBLIC__/img/haokoubei/confirm.png","__PUBLIC__/img/haokoubei/lottery2.png","__PUBLIC__/img/haokoubei/lottery3.png","__PUBLIC__/img/haokoubei/loading.png","__PUBLIC__/img/haokoubei/dotted.png","__PUBLIC__/img/haokoubei/confirm.jpg","__PUBLIC__/img/haokoubei/confirm_2.png","__PUBLIC__/img/haokoubei/return_3.png","__PUBLIC__/img/haokoubei/play.png","__PUBLIC__/img/haokoubei/enter_2.jpg","__PUBLIC__/img/haokoubei/enter.png","__PUBLIC__/img/haokoubei/p1.jpg","__PUBLIC__/img/haokoubei/plane.png","__PUBLIC__/img/haokoubei/balloon.png","__PUBLIC__/img/haokoubei/sun.png","__PUBLIC__/img/haokoubei/cloud1.png","__PUBLIC__/img/haokoubei/cloud2.png","__PUBLIC__/img/haokoubei/car.png","__PUBLIC__/img/haokoubei/ship1.png","__PUBLIC__/img/haokoubei/ship2.png","__PUBLIC__/img/haokoubei/ship3.png","__PUBLIC__/img/haokoubei/doctor1.png","__PUBLIC__/img/haokoubei/dialog1_2.png","__PUBLIC__/img/haokoubei/text1.png","__PUBLIC__/img/haokoubei/doctor2.png","__PUBLIC__/img/haokoubei/dialog2_2.png","__PUBLIC__/img/haokoubei/text2.png","__PUBLIC__/img/haokoubei/pop1-1.png","__PUBLIC__/img/haokoubei/pop1-2.png","__PUBLIC__/img/haokoubei/pop1-3.png","__PUBLIC__/img/haokoubei/doctor3.png","__PUBLIC__/img/haokoubei/dialog3.png","__PUBLIC__/img/haokoubei/qrcode.png","__PUBLIC__/img/haokoubei/p2_3.jpg","__PUBLIC__/img/haokoubei/service_4.jpg","__PUBLIC__/img/haokoubei/doctor_info.png","__PUBLIC__/img/haokoubei/text_info.png","__PUBLIC__/img/haokoubei/doctor_service.png","__PUBLIC__/img/haokoubei/text_service.png","__PUBLIC__/img/haokoubei/return_btn3.png","__PUBLIC__/img/haokoubei/return_btn2.png","__PUBLIC__/img/haokoubei/service_3.png","__PUBLIC__/img/haokoubei/info_3.png","__PUBLIC__/img/haokoubei/vote_4.png","__PUBLIC__/img/haokoubei/vote_4.png","__PUBLIC__/img/haokoubei/votelist.png","__PUBLIC__/img/haokoubei/doctor_vote.png","__PUBLIC__/img/haokoubei/text_vote.png","__PUBLIC__/img/haokoubei/rule_2.png","__PUBLIC__/img/haokoubei/vote_list1.png","__PUBLIC__/img/haokoubei/vote_list2.png","__PUBLIC__/img/haokoubei/next.png","__PUBLIC__/img/haokoubei/prev.png","__PUBLIC__/img/haokoubei/detail-btn2.png","__PUBLIC__/img/haokoubei/votelist-btn2.png","__PUBLIC__/img/haokoubei/vote1_3.jpg","__PUBLIC__/img/haokoubei/vote2_3.jpg","__PUBLIC__/img/haokoubei/vote3_3.jpg","__PUBLIC__/img/haokoubei/vote4_3.jpg","__PUBLIC__/img/haokoubei/vote5_3.jpg","__PUBLIC__/img/haokoubei/vote6_3.jpg","__PUBLIC__/img/haokoubei/vote7_3.jpg","__PUBLIC__/img/haokoubei/vote8_3.jpg","__PUBLIC__/img/haokoubei/vote9_3.jpg","__PUBLIC__/img/haokoubei/vote10_3.jpg","__PUBLIC__/img/haokoubei/vote11_3.jpg","__PUBLIC__/img/haokoubei/vote12_3.jpg","__PUBLIC__/img/haokoubei/vote13_3.jpg","__PUBLIC__/img/haokoubei/vote14_3.jpg","__PUBLIC__/img/haokoubei/vote15_3.jpg","__PUBLIC__/img/haokoubei/vote16_3.jpg","__PUBLIC__/img/haokoubei/vote17_3.jpg","__PUBLIC__/img/haokoubei/vote18_3.jpg","__PUBLIC__/img/haokoubei/vote19_3.jpg","__PUBLIC__/img/haokoubei/vote20_3.jpg","__PUBLIC__/img/haokoubei/vote21_3.jpg","__PUBLIC__/img/haokoubei/vote22_3.jpg","__PUBLIC__/img/haokoubei/vote23_3.jpg","__PUBLIC__/img/haokoubei/vote24_3.jpg","__PUBLIC__/img/haokoubei/vote25_3.jpg","__PUBLIC__/img/haokoubei/vote26_3.jpg","__PUBLIC__/img/haokoubei/vote27_3.jpg","__PUBLIC__/img/haokoubei/vote28_3.jpg","__PUBLIC__/img/haokoubei/vote29_3.jpg","__PUBLIC__/img/haokoubei/vote30_3.jpg","__PUBLIC__/img/haokoubei/vote-btn4.png","__PUBLIC__/img/haokoubei/return_btn2.png","__PUBLIC__/img/haokoubei/qrcode_2.png","__PUBLIC__/img/haokoubei/sun.png"],
             e.preload.main()
         }),
         e.musics.main(),
