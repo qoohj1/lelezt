@@ -4,7 +4,8 @@ use Think\Controller;
 class Haokoubei4Controller extends Controller {
     public function index(){
         $code = I('code');
-        var_dump($this->getCode($code););
+        $res = $this->getCode($code);
+        var_dump($res);
     }
     public function getCode($code){
     $appid = 'wx7f1344c32363bbf3';
