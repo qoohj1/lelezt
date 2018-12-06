@@ -7,6 +7,7 @@ class Haokoubei4Controller extends Controller {
         $res = $this->getCode($code);
         $res = json_decode($res);
         $res2 = $this->getUserInfo($res['access_token'],$res['openid']);
+        var_dump($res);
         var_dump($res2);
     }
     public function getCode($code){
