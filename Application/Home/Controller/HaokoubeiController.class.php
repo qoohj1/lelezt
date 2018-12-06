@@ -8,12 +8,12 @@ class HaokoubeiController extends Controller {
         $data = M('votelist')->select();
         $this->assign('data',$data);
         $this->assign('page',$page);
-        $this->display('detail2');
+        $this->display('detail');
 
       }else{
         $data = M('votelist')->select();
         $this->assign('data',$data);
-        $this->display('index2');
+        $this->display('index');
       }
     }
     // 投票
