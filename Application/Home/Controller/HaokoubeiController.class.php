@@ -52,7 +52,7 @@ class HaokoubeiController extends Controller {
       //     '5' => array('id'=>6,'prize'=>'10元话费','v'=>1),
       //     '6' => array('id'=>7,'prize'=>'谢谢参与','v'=>72)
       // );
-      $prize_arr = array('20元话费'=>0, '10元话费'=>0.26, '谢谢参与'=>0.74);
+      $prize_arr = array('20元话费'=>0, '10元话费'=>0, '谢谢参与'=>1);
       $res = $this->random($prize_arr);
       // var_dump($res);
       jsonReturn(0,success,$res);
