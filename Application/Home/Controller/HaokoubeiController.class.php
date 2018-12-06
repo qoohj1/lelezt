@@ -65,12 +65,12 @@ class HaokoubeiController extends Controller {
       $data['tel'] = I('tel');
       $map1['item'] = 20;
       $map2['item'] = 10;
-      $count1 = M('winnerlist')->where($map1)->count();
+      // $count1 = M('winnerlist')->where($map1)->count();
       $count2 = M('winnerlist')->where($map2)->count();
-      if($count1==2){
-        jsonReturn(1,error,'奖池已空');
-        return;
-      }
+      // if($count1==2){
+      //   jsonReturn(1,error,'奖池已空');
+      //   return;
+      // }
       if($count2==26){
         jsonReturn(1,error,'奖池已空');
         return;
