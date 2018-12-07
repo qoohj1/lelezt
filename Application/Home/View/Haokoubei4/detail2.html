@@ -1715,7 +1715,7 @@ var app = function(e) {
       						wx.ready(function () {
       								wx.onMenuShareTimeline({
       										title: t, // 分享标题
-                          link: 'http://zt2.shegurz.com/haokoubei2?page='+p, // 分享链接
+                          link: 'http://zt2.shegurz.com/haokoubei3?page='+p, // 分享链接
       										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
       										success: function (res) {
 
@@ -1728,7 +1728,7 @@ var app = function(e) {
       								wx.onMenuShareAppMessage({
       										title: t, // 分享标题
       										desc: d || '投票一小步 爱我一大步',  // 分享描述
-      										link: 'http://zt2.shegurz.com/haokoubei2?page='+p, // 分享链接
+      										link: 'http://zt2.shegurz.com/haokoubei3?page='+p, // 分享链接
       										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
       										type: '',
       										dataUrl: '',
@@ -2303,9 +2303,10 @@ var app = function(e) {
             $('.confirm-vote .confirm').on("touchend",function(e){
               if(item){
                 $.ajax({
-                  url:'/haokoubei2/vote',
+                  url:'/haokoubei4/vote',
                   type:'post',
                   data: {
+                    openid: <?php echo($openid);?>,
                     item: item
                   },
                   dataType:'json',
