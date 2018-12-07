@@ -6,7 +6,8 @@ class Haokoubei4Controller extends Controller {
         $code = I('code');
         $res = $this->getCode($code);
         $res2 = $this->getUserInfo($res->access_token,$res->openid);
-        var_dump($res2);
+        $openid = $res2->openid;
+        var_dump($openid);
     }
     public function getCode($code){
     $appid = 'wx7f1344c32363bbf3';
