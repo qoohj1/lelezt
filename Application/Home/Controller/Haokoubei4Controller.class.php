@@ -25,13 +25,16 @@ class Haokoubei4Controller extends Controller {
 
     // 投票
     public function vote(){
+
       // 获取投票选项
       $map['id'] = I('item');
 
 
       // 获取用户openid
       $condition['openid'] = I('openid');
-
+      if(!$condition['openid']){
+        jsonReturn(1,error,'系统出错');
+      }
       // $data['ip'] = $condition['ip'];
       $openidlist = M('openidlist');
       $votelist = M('votelist2');
@@ -39,7 +42,7 @@ class Haokoubei4Controller extends Controller {
       $res = $openidlist->where($condition)->find();
       // var_dump($res);
       if($res){
-        jsonReturn(0,error,'每个微信id只能投票一次');
+        jsonReturn(1,error,'每个微信id只能投票一次');
       }else{
         $res2 = $votelist->where($map)->setInc('count');
         // var_dump($res2);
