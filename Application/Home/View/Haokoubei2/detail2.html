@@ -1983,7 +1983,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei/winnerlist',
+                  url:'/haokoubei2/winnerlist',
                   type:'post',
                   data: {
                     item: 20,
@@ -2014,7 +2014,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei/winnerlist',
+                  url:'/haokoubei2/winnerlist',
                   type:'post',
                   data: {
                     item: 10,
@@ -2371,7 +2371,7 @@ var app = function(e) {
                     oTurntable.css('transform','rotate(0deg)');
                     offOn = !offOn;
                     $.ajax({
-                      url:'/haokoubei/lottery',
+                      url:'/haokoubei2/lottery',
                 			type:'post',
                 			dataType:'json',
                 			success:function(jsondata){
