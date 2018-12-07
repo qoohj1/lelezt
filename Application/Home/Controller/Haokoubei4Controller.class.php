@@ -34,7 +34,7 @@ class Haokoubei4Controller extends Controller {
 
       // $data['ip'] = $condition['ip'];
       $openidlist = M('openidlist');
-      $votelist = M('votelist');
+      $votelist = M('votelist2');
       // var_dump($condition);
       $res = $openidlist->where($condition)->find();
       // var_dump($res);
