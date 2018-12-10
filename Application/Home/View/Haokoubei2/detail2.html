@@ -477,6 +477,15 @@ a,img {
   top:215px;
   background: url(__PUBLIC__/img/haokoubei/dialog2_2.png) no-repeat;
 }
+.p1 .p-content .dialog4{
+  /* -webkit-animation: fadeIn 0.5s ease 0 forwards; */
+  width: 564px;
+  height: 224px;
+  position: absolute;
+  left: 6px;
+  top:203px;
+  background: url(__PUBLIC__/img/haokoubei/end_2.png) no-repeat;
+}
 .p1 .p-content .text2{
   -webkit-animation: fadeIn 0.5s ease 0 forwards;
   width: 167px;
@@ -538,6 +547,9 @@ a,img {
   top:440px;
   background: url(__PUBLIC__/img/haokoubei/qrcode.png) no-repeat;
 }
+.p1 .p-content .step1{
+  display: none;
+}
 .p1 .p-content .step2{
   display: none;
 }
@@ -545,6 +557,9 @@ a,img {
   display: none;
 }
 .p1 .p-content .step4{
+  display: none;
+}
+.p1 .p-content .step5{
   display: none;
 }
 
@@ -1310,7 +1325,7 @@ a,img {
       </div>
       <div class="pop3">
         <div class="p-content">
-          <!-- <div class="confirm"></div> -->
+          <div class="confirm"></div>
         </div>
       </div>
       <div class="p1 page">
@@ -1332,8 +1347,9 @@ a,img {
               <div class="pop1-1 step3"></div>
               <div class="pop1-2 step3"></div>
               <div class="pop1-3 step3"></div>
-              <div class="doctor3 step3"></div>
+              <div class="doctor3 step3 step5"></div>
               <div class="doctor1 step4"></div>
+              <div class="dialog4 step5"></div>
           </div>
       </div>
       <div class="p4">
@@ -1976,7 +1992,10 @@ var app = function(e) {
             this.preventDefault(),
 
             // 抽奖
-            $('.pop3 .confirm').on('touchend', function(){$('.pop3').removeClass('active');$('.pop-qr').addClass('active')})
+            $('.pop3 .confirm').on('touchend', function(){
+              $('.pop3').removeClass('active');
+              $('.step5').css('display','block');
+            });
             $('.pop1 .submit').on('touchend', function(){
               console.log($('.tel1').val());
               if(!e.utils.checkMobile($('.tel1').val()))
