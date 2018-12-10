@@ -1314,7 +1314,7 @@ a,img {
       </div>
       <div class="pop3">
         <div class="p-content">
-          <div class="confirm"></div>
+          <!-- <div class="confirm"></div> -->
         </div>
       </div>
       <div class="p1 page">
@@ -2012,8 +2012,8 @@ var app = function(e) {
                   success:function(jsondata){
                     if(jsondata.error===0){
                       alert(jsondata.data);
-                      $('.pop1').removeClass('active');
-                      $('.pop-qr').addClass('active');
+                      // $('.pop1').removeClass('active');
+                      // $('.pop-qr').addClass('active');
                     }else if(jsondata.error===1){
                       alert(jsondata.data);
                     }
@@ -2043,8 +2043,8 @@ var app = function(e) {
                   success:function(jsondata){
                     if(jsondata.error===0){
                       alert(jsondata.data);
-                      $('.pop2').removeClass('active');
-                      $('.pop-qr').addClass('active');
+                      // $('.pop2').removeClass('active');
+                      // $('.pop-qr').addClass('active');
                     }else if(jsondata.error===1){
                       alert(jsondata.data);
                     }
