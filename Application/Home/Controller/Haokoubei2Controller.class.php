@@ -114,7 +114,7 @@ class Haokoubei2Controller extends Controller {
       $data['tel'] = I('tel');
       $map1['vote'] = $data['vote'];
       $count = M('nicecount')->where($map1)->getField('count');
-      if($count>=0){
+      if($count>0){
         $res = M('nicelist')->add($data);
         $map['id'] = $data['vote'];
         $res2 = M('nicecount')->where($map)->setDec('count');
@@ -133,7 +133,7 @@ class Haokoubei2Controller extends Controller {
       $data['tel'] = I('tel');
       $map1['type'] = $data['item'];
       $count = M('huafeicount')->where($map1)->getField('count');
-      if($count>=0){
+      if($count>0){
         $res = M('huafeilist')->add($data);
         $map['type'] = $data['item'];
         $res2 = M('huafeicount')->where($map)->setDec('count');
@@ -152,7 +152,7 @@ class Haokoubei2Controller extends Controller {
       $data['tel'] = I('tel');
       $map1['type'] = $data['item'];
       $count = M('huafeicount')->where($map1)->getField('count');
-      if($count>=0){
+      if($count>0){
         $res = M('huafeilist')->add($data);
         $map['type'] = $data['item'];
         $res2 = M('huafeicount')->where($map)->setDec('count');
@@ -172,7 +172,7 @@ class Haokoubei2Controller extends Controller {
       $data['tel'] = I('tel');
       $map1['type'] = $data['item'];
       $count = M('huafeicount')->where($map1)->getField('count');
-      if($count>=0){
+      if($count>0){
         $res = M('huafeilist')->add($data);
         $map['type'] = $data['item'];
         $res2 = M('huafeicount')->where($map)->setDec('count');
