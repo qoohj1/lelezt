@@ -104,6 +104,16 @@ a,img {
   display: none
 }
 
+.skip{
+  width: 182px;
+  height: 79px;
+  position: absolute;
+  left: 540px;
+  top:26px;
+  z-index: 99;
+  background: url(__PUBLIC__/img/haokoubei/skip.png) no-repeat;
+}
+
 .pop .p-content {
   width: 100%;
 	height: 100%;
@@ -1306,6 +1316,7 @@ a,img {
           <div class="loading-text">loading...</div>
       </div>
       <div class="page page-video page-video-1">
+        <div class="skip"></div>
         <!-- <div class="black" style='width:100px;height:100px;background-color:black;position: absolute;z-index:9999'></div> -->
         <!-- <video id="video-1" width="750" height="1490" x5-video-player-type="h5" x-webkit-airplay="allow" x5-video-player-fullscreen="true" webkit-playsinline="" playsinline="" x5-video-orientation="portraint" preload="preload">
           <source src="http://n.sinaimg.cn/gd/20180629/ztwy/video_1.mp4" type="video/mp4"></source>
@@ -1892,6 +1903,13 @@ var app = function(e) {
             // document.getElementById("video-1").play();
             },  false);
 
+            $('.skip').on('touchend', function(){
+              document.getElementById("video-1").pause();
+              // document.getElementById("video-1").unload();
+              $(".page-video").removeClass("active")
+              $('.p0').addClass('active');
+
+            })
             $('.play').on('touchend', function(){
               $('.p0-0').removeClass('active');
               document.getElementById('bgMusic').pause();
