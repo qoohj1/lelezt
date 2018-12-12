@@ -18,6 +18,7 @@ class Haokoubei2Controller extends Controller {
     }
     // 投票
     public function vote(){
+      jsonReturn(1,error,'活动已结束');
       // 获取投票选项
       $map['id'] = I('item');
       // 判断ip是否已投票
