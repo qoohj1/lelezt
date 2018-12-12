@@ -1793,7 +1793,7 @@ var app = function(e) {
       						wx.ready(function () {
       								wx.onMenuShareTimeline({
       										title: t, // 分享标题
-                          link: 'http://zt.shegurz.com/haokoubei2?page='+p, // 分享链接
+                          link: 'http://zt.shegurz.com/haokoubei4?page='+p, // 分享链接
       										imgUrl: 'http://zt.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
       										success: function (res) {
 
@@ -1806,7 +1806,7 @@ var app = function(e) {
       								wx.onMenuShareAppMessage({
       										title: t, // 分享标题
       										desc: d || '投票一小步 爱我一大步', // 分享描述
-      										link: 'http://zt.shegurz.com/haokoubei2?page='+p, // 分享链接
+      										link: 'http://zt.shegurz.com/haokoubei4?page='+p, // 分享链接
       										imgUrl: 'http://zt.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
       										type: '',
       										dataUrl: '',
@@ -2063,7 +2063,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei2/winnerlist',
+                  url:'/haokoubei4/winnerlist',
                   type:'post',
                   data: {
                     item: 20,
@@ -2094,7 +2094,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei2/ten',
+                  url:'/haokoubei4/ten',
                   type:'post',
                   data: {
                     item: 10,
@@ -2129,7 +2129,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei2/five',
+                  url:'/haokoubei4/five',
                   type:'post',
                   data: {
                     // vote: item,
@@ -2163,7 +2163,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei2/two',
+                  url:'/haokoubei4/two',
                   type:'post',
                   data: {
                     // vote: item,
@@ -2199,7 +2199,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei2/nice',
+                  url:'/haokoubei4/nice',
                   type:'post',
                   data: {
                     vote: item,
@@ -2490,7 +2490,7 @@ var app = function(e) {
               console.log(item);
               if(item){
                 $.ajax({
-                  url:'/haokoubei2/vote',
+                  url:'/haokoubei4/vote',
                   type:'post',
                   data: {
                     item: item
@@ -2559,7 +2559,7 @@ var app = function(e) {
                     oTurntable.css('transform','rotate(0deg)');
                     offOn = !offOn;
                     $.ajax({
-                      url:'/haokoubei2/lottery',
+                      url:'/haokoubei4/lottery',
                 			type:'post',
                 			dataType:'json',
                       data: {
