@@ -1,5 +1,5 @@
 <?php
-function jsonReturn($error =0 ,$info = null ,$data = null){
+function jsonReturn($error ,$info = null ,$data = null){
     $callback = isset($_REQUEST['callback'])? $_REQUEST['callback'] : '';
     $callback = htmlspecialchars($callback);
 
