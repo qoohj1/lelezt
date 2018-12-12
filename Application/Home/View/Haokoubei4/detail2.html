@@ -2462,6 +2462,7 @@ var app = function(e) {
                   },
                   dataType:'json',
                   success:function(jsondata){
+                    console.log(jsondata);
                     if(jsondata.error===0){
                       alert(jsondata.data);
                       $('.confirm-vote').removeClass('active');
