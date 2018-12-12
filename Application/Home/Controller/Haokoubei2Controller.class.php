@@ -29,8 +29,9 @@ class Haokoubei2Controller extends Controller {
       // var_dump($condition);
       $res = $server_ip->where($condition)->find();
       // var_dump($res);
+      // jsonReturn(0,success,'投票成功');
       if($res){
-        jsonReturn(0,error,'每个ip只能投票一次');
+        jsonReturn(1,error,'每个ip只能投票一次');
       }else{
         $res2 = $votelist->where($map)->setInc('count');
         // var_dump($res2);
@@ -76,13 +77,114 @@ class Haokoubei2Controller extends Controller {
       //     '5' => array('id'=>6,'prize'=>'10元话费','v'=>1),
       //     '6' => array('id'=>7,'prize'=>'谢谢参与','v'=>72)
       // );
-      $prize_arr = array('20元话费'=>0, '10元话费'=>0, '谢谢参与'=>1);
+      $map['id'] = I('item');
+      $map1['type'] = 10;
+      $map2['type'] = 5;
+      $map3['type'] = 2;
+      $count = M('nicecount')->where($map)->getField('count');
+      // var_dump($count);
+      $count1 = M('huafeicount')->where($map1)->getField('count');
+      $count2 = M('huafeicount')->where($map2)->getField('count');
+      $count3 = M('huafeicount')->where($map3)->getField('count');
+      // var_dump($count1);
+      // var_dump($count2);
+      // var_dump($count3);
+      $nice = $count/150;
+      $ten = $count1/150;
+      $five = $count2/150;
+      $two = $count3/150;
+      // var_dump($nice);
+      // var_dump($ten);
+      // var_dump($five);
+      // var_dump($two);
+      // $thx = 0.3-($nice+$ten+$five+$two);
+      $thx = 20/150;
+      // var_dump($thx);
+      $prize_arr = array('精美礼品'=>$nice, '10元话费'=>$ten, '5元话费'=>$five, '2元话费'=>$two, '谢谢参与'=>$thx);
+      // $prize_arr = array('精美礼品'=>0, '10元话费'=>0, '5元话费'=>0, '2元话费'=>0, '谢谢参与'=>0.01);
       $res = $this->random($prize_arr);
       // var_dump($res);
       jsonReturn(0,success,$res);
 
     }
 
+    // 精美礼品中奖接口
+    public function nice(){
+      $data['vote'] = I('vote');
+      $data['tel'] = I('tel');
+      $map1['vote'] = $data['vote'];
+      $count = M('nicecount')->where($map1)->getField('count');
+      if($count>=0){
+        $res = M('nicelist')->add($data);
+        $map['id'] = $data['vote'];
+        $res2 = M('nicecount')->where($map)->setDec('count');
+        if($res&&$res2){
+          jsonReturn(0,success,'提交成功');
+        }else{
+          jsonReturn(1,error,'提交失败');
+        }
+      }else{
+          jsonReturn(1,error,'提交失败');
+      }
+    }
+    // 10元话费中奖接口
+    public function ten(){
+      $data['item'] = I('item');
+      $data['tel'] = I('tel');
+      $map1['type'] = $data['item'];
+      $count = M('huafeicount')->where($map1)->getField('count');
+      if($count>=0){
+        $res = M('huafeilist')->add($data);
+        $map['type'] = $data['item'];
+        $res2 = M('huafeicount')->where($map)->setDec('count');
+        if($res&&$res2){
+          jsonReturn(0,success,'提交成功');
+        }else{
+          jsonReturn(1,error,'提交失败');
+        }
+      }else{
+        jsonReturn(1,error,'提交失败');
+      }
+    }
+    // 5元话费中奖接口
+    public function five(){
+      $data['item'] = I('item');
+      $data['tel'] = I('tel');
+      $map1['type'] = $data['item'];
+      $count = M('huafeicount')->where($map1)->getField('count');
+      if($count>=0){
+        $res = M('huafeilist')->add($data);
+        $map['type'] = $data['item'];
+        $res2 = M('huafeicount')->where($map)->setDec('count');
+        if($res&&$res2){
+          jsonReturn(0,success,'提交成功');
+        }else{
+          jsonReturn(1,error,'提交失败');
+        }
+      }else{
+        jsonReturn(1,error,'提交失败');
+      }
+
+    }
+    // 2元话费中奖接口
+    public function two(){
+      $data['item'] = I('item');
+      $data['tel'] = I('tel');
+      $map1['type'] = $data['item'];
+      $count = M('huafeicount')->where($map1)->getField('count');
+      if($count>=0){
+        $res = M('huafeilist')->add($data);
+        $map['type'] = $data['item'];
+        $res2 = M('huafeicount')->where($map)->setDec('count');
+        if($res&&$res2){
+          jsonReturn(0,success,'提交成功');
+        }else{
+          jsonReturn(1,error,'提交失败');
+        }
+      }else{
+        jsonReturn(1,error,'提交失败');
+      }
+    }
     // 提交中奖信息
     public function winnerlist(){
       $data['item'] = I('item');
