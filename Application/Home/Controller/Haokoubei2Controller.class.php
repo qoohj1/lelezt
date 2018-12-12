@@ -78,6 +78,8 @@ class Haokoubei2Controller extends Controller {
       //     '5' => array('id'=>6,'prize'=>'10元话费','v'=>1),
       //     '6' => array('id'=>7,'prize'=>'谢谢参与','v'=>72)
       // );
+      jsonReturn(1,error,'活动已结束');
+
       $map['id'] = I('item');
       $map1['type'] = 10;
       $map2['type'] = 5;

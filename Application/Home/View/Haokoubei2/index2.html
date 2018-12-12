@@ -2525,7 +2525,13 @@ var app = function(e) {
                       $('.p1').addClass('active');
                       $('.pop').addClass('active');
                     }else if(jsondata.error===1){
-                      alert(jsondata.data)
+                      alert(jsondata.data);
+                      $('.p4').removeClass('active');
+                      $('.step3').css('display','none');
+                      $('.step3').removeClass('active');
+                      $('.p1').addClass('active');
+                      $('.confirm-vote').removeClass('active');
+                      $('.step5').css('display','block');
                     }
                   },
                   error:function(jsondata){
