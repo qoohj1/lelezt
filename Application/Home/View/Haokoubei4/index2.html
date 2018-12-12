@@ -95,7 +95,7 @@ a,img {
   max-height: 1310px
 }
 
-.page,.pop,.pop1,.pop2,.pop3,.pop-qr {
+.page,.pop,.pop1,.pop2,.pop3,.pop4,.pop5,.pop6,.pop-qr {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -110,25 +110,25 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-  background: url(__PUBLIC__/img/haokoubei/turntable.png) no-repeat rgba(0,0,0,.8)!important;
+  background: url(__PUBLIC__/img/haokoubei/turntable_2.png) no-repeat rgba(0,0,0,.8)!important;
 }
 .pop .p-content .pointer{
-  width: 143px;
-  height: 174px;
+  width: 186px;
+  height: 226px;
   position: absolute;
-  left: 304px;
-  top:637px;
+  left: 284px;
+  top:587px;
   z-index: 99;
-  background: url(__PUBLIC__/img/haokoubei/pointer.png) no-repeat;
+  background: url(__PUBLIC__/img/haokoubei/pointer_2.png) no-repeat;
 }
 .pop .p-content .oturntable{
   transition: all 4s;
-  width: 404px;
-  height: 405px;
+  width: 521px;
+  height: 521px;
   position: absolute;
-  left: 173px;
-  top:541px;
-  background: url(__PUBLIC__/img/haokoubei/oturntable.png) no-repeat;
+  left: 116px;
+  top:451px;
+  background: url(__PUBLIC__/img/haokoubei/oturntable_3.png) no-repeat;
 }
 .pop-qr .p-content {
   width: 100%;
@@ -166,7 +166,32 @@ a,img {
 	top: 0;
   background: url(__PUBLIC__/img/haokoubei/lottery3.png) no-repeat rgba(0,0,0,.8)!important;
 }
-.pop1 .p-content .submit,.pop2 .p-content .submit{
+.pop4 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery4.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop5 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery5.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop6 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/haokoubei/lottery6.png) no-repeat rgba(0,0,0,.8)!important;
+}
+
+.pop1 .p-content .submit,.pop2 .p-content .submit,.pop4 .p-content .submit,.pop5 .p-content .submit,.pop6 .p-content .submit{
   width: 459px;
 	height: 62px;
 	position: absolute;
@@ -174,7 +199,7 @@ a,img {
 	top: 899px;
   background: url(__PUBLIC__/img/haokoubei/submit.png) no-repeat rgba(0,0,0,.8)!important;
 }
-.pop1 .p-content .tel1,.pop2 .p-content .tel2{
+.pop1 .p-content .tel1,.pop2 .p-content .tel2,.pop4 .p-content .tel4,.pop5 .p-content .tel5,.pop6 .p-content .tel6{
   width: 459px;
 	height: 62px;
 	position: absolute;
@@ -208,7 +233,7 @@ a,img {
 }
 
 
-.page.active,.pop.active,.pop1.active,.pop2.active,.pop3.active,.p2.active,.p3.active,.p4.active,.pop-qr.active {
+.page.active,.pop.active,.pop1.active,.pop2.active,.pop3.active,.pop4.active,.pop5.active,.pop6.active,.p2.active,.p3.active,.p4.active,.pop-qr.active {
   display: block
 }
 
@@ -273,7 +298,7 @@ a,img {
 .pop{
   z-index: 99
 }
-.pop1,.pop2,.pop3,.pop-qr,.confirm-vote{
+.pop1,.pop2,.pop3,.pop4,.pop5,.pop6,.pop-qr,.confirm-vote{
   z-index: 99
 }
 .confirm-vote .p-content {
@@ -477,6 +502,15 @@ a,img {
   top:215px;
   background: url(__PUBLIC__/img/haokoubei/dialog2_2.png) no-repeat;
 }
+.p1 .p-content .dialog4{
+  /* -webkit-animation: fadeIn 0.5s ease 0 forwards; */
+  width: 564px;
+  height: 224px;
+  position: absolute;
+  left: 6px;
+  top:203px;
+  background: url(__PUBLIC__/img/haokoubei/end_2.png) no-repeat;
+}
 .p1 .p-content .text2{
   -webkit-animation: fadeIn 0.5s ease 0 forwards;
   width: 167px;
@@ -547,6 +581,10 @@ a,img {
 .p1 .p-content .step4{
   display: none;
 }
+.p1 .p-content .step5{
+  display: none;
+}
+
 
 .p2 .p-content {
 	width: 100%;
@@ -1300,11 +1338,6 @@ a,img {
           <div class="oturntable"></div>
         </div>
       </div>
-      <!-- <div class="pop-qr">
-        <div class="p-content">
-          <img src="__PUBLIC__/img/haokoubei/qrcode_2.png" alt="">
-        </div>
-      </div> -->
       <div class="pop1">
         <div class="p-content">
             <input class='tel1' type="text" style='border:0;font-size:32px;'>
@@ -1322,6 +1355,25 @@ a,img {
           <div class="confirm"></div>
         </div>
       </div>
+      <div class="pop4">
+        <div class="p-content">
+          <input class='tel4' type="text" style='border:0;font-size:32px;'>
+          <div class="submit"></div>
+        </div>
+      </div>
+      <div class="pop5">
+        <div class="p-content">
+          <input class='tel5' type="text" style='border:0;font-size:32px;'>
+          <div class="submit"></div>
+        </div>
+      </div>
+      <div class="pop6">
+        <div class="p-content">
+          <input class='tel6' type="text" style='border:0;font-size:32px;'>
+          <div class="submit"></div>
+        </div>
+      </div>
+
       <div class="p1 page">
           <div class="p-content">
               <div class="plane"></div>
@@ -1341,8 +1393,9 @@ a,img {
               <div class="pop1-1 step3"></div>
               <div class="pop1-2 step3"></div>
               <div class="pop1-3 step3"></div>
-              <div class="doctor3 step3"></div>
+              <div class="doctor3 step3 step5"></div>
               <div class="doctor1 step4"></div>
+              <div class="dialog4 step5"></div>
           </div>
       </div>
       <div class="p2">
@@ -1545,7 +1598,7 @@ a,img {
               <div class="vote-btn3" data-index='3'></div>
           </div>
       </div>
-      <div class="vote vote4">
+      <div class="vote vote4 vote31">
           <div class="p-content">
               <div class="return-btn2"></div>
               <div class="vote-btn3" data-index='4'></div>
@@ -1740,8 +1793,8 @@ var app = function(e) {
       						wx.ready(function () {
       								wx.onMenuShareTimeline({
       										title: t, // 分享标题
-                          link: 'http://zt2.shegurz.com/haokoubei3?page='+p, // 分享链接
-      										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+                          link: 'http://zt.shegurz.com/haokoubei2?page='+p, // 分享链接
+      										imgUrl: 'http://zt.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
       										success: function (res) {
 
       										},
@@ -1753,8 +1806,8 @@ var app = function(e) {
       								wx.onMenuShareAppMessage({
       										title: t, // 分享标题
       										desc: d || '投票一小步 爱我一大步', // 分享描述
-      										link: 'http://zt2.shegurz.com/haokoubei3?page='+p, // 分享链接
-      										imgUrl: 'http://zt2.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+      										link: 'http://zt.shegurz.com/haokoubei2?page='+p, // 分享链接
+      										imgUrl: 'http://zt.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
       										type: '',
       										dataUrl: '',
       										success: function () {
@@ -1983,9 +2036,9 @@ var app = function(e) {
 
           // $(".page-video").removeClass("active")
 
-          // $(".p1").addClass("active")
+          $(".p1").addClass("active")
           // $('.step2').css('display','block');
-              // $('.step3').css('display','block');
+              $('.step3').css('display','block');
           // setTimeout(function() {
           //     $('.step1').css('display','none');
           //     $('.step2').css('display','block');
@@ -2000,14 +2053,17 @@ var app = function(e) {
             this.preventDefault(),
 
             // 抽奖
-            $('.pop3 .confirm').on('touchend', function(){$('.pop3').removeClass('active');$('.pop-qr').addClass('active')})
+            $('.pop3 .confirm').on('touchend', function(){
+              $('.pop3').removeClass('active');
+              $('.step5').css('display','block');
+            })
             $('.pop1 .submit').on('touchend', function(){
               console.log($('.tel1').val());
               if(!e.utils.checkMobile($('.tel1').val()))
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei/winnerlist',
+                  url:'/haokoubei2/winnerlist',
                   type:'post',
                   data: {
                     item: 20,
@@ -2017,8 +2073,8 @@ var app = function(e) {
                   success:function(jsondata){
                     if(jsondata.error===0){
                       alert(jsondata.data);
-                      $('.pop1').removeClass('active');
-                      $('.pop-qr').addClass('active');
+                      // $('.pop1').removeClass('active');
+                      // $('.pop-qr').addClass('active');
                     }else if(jsondata.error===1){
                       alert(jsondata.data);
                     }
@@ -2038,7 +2094,7 @@ var app = function(e) {
               {alert('请输入正确的手机格式');}
               else{
                 $.ajax({
-                  url:'/haokoubei/winnerlist',
+                  url:'/haokoubei2/ten',
                   type:'post',
                   data: {
                     item: 10,
@@ -2049,7 +2105,8 @@ var app = function(e) {
                     if(jsondata.error===0){
                       alert(jsondata.data);
                       $('.pop2').removeClass('active');
-                      $('.pop-qr').addClass('active');
+                      $('.step5').css('display','block');
+                      // $('.pop-qr').addClass('active');
                     }else if(jsondata.error===1){
                       alert(jsondata.data);
                     }
@@ -2065,6 +2122,111 @@ var app = function(e) {
               }
 
 
+            })
+            $('.pop4 .submit').on('touchend', function(){
+              console.log($('.tel4').val());
+              if(!e.utils.checkMobile($('.tel4').val()))
+              {alert('请输入正确的手机格式');}
+              else{
+                $.ajax({
+                  url:'/haokoubei2/five',
+                  type:'post',
+                  data: {
+                    // vote: item,
+                    item: 5,
+                    tel: $('.tel4').val()
+                  },
+                  dataType:'json',
+                  success:function(jsondata){
+                    if(jsondata.error===0){
+                      alert(jsondata.data);
+                      $('.pop4').removeClass('active');
+                      $('.step5').css('display','block');
+                      // $('.pop-qr').addClass('active');
+                    }else if(jsondata.error===1){
+                      alert(jsondata.data);
+                    }
+                  },
+                  error:function(jsondata){
+                    // // console.log(jsondata.responseText.data)
+                    // // jsondata = JSON.parse(jsondata);
+                    // JSON.stringify(jsondata)
+                  }
+
+                })
+
+              }
+            })
+            $('.pop5 .submit').on('touchend', function(){
+              console.log($('.tel5').val());
+              if(!e.utils.checkMobile($('.tel5').val()))
+              {alert('请输入正确的手机格式');}
+              else{
+                $.ajax({
+                  url:'/haokoubei2/two',
+                  type:'post',
+                  data: {
+                    // vote: item,
+                    item: 2,
+                    tel: $('.tel5').val()
+                  },
+                  dataType:'json',
+                  success:function(jsondata){
+                    if(jsondata.error===0){
+                      alert(jsondata.data);
+                      $('.pop5').removeClass('active');
+                      $('.step5').css('display','block');
+                      // $('.pop1').removeClass('active');
+                      // $('.pop-qr').addClass('active');
+                    }else if(jsondata.error===1){
+                      alert(jsondata.data);
+                    }
+                  },
+                  error:function(jsondata){
+                    // // console.log(jsondata.responseText.data)
+                    // // jsondata = JSON.parse(jsondata);
+                    // JSON.stringify(jsondata)
+                  }
+
+                })
+
+              }
+            })
+            $('.pop6 .submit').on('touchend', function(){
+              console.log($('.tel6').val());
+              // console.log(item);
+              if(!e.utils.checkMobile($('.tel6').val()))
+              {alert('请输入正确的手机格式');}
+              else{
+                $.ajax({
+                  url:'/haokoubei2/nice',
+                  type:'post',
+                  data: {
+                    vote: item,
+                    // item: 'nice',
+                    tel: $('.tel6').val()
+                  },
+                  dataType:'json',
+                  success:function(jsondata){
+                    if(jsondata.error===0){
+                      alert(jsondata.data);
+                      $('.pop6').removeClass('active');
+                      $('.step5').css('display','block');
+                      // $('.pop1').removeClass('active');
+                      // $('.pop-qr').addClass('active');
+                    }else if(jsondata.error===1){
+                      alert(jsondata.data);
+                    }
+                  },
+                  error:function(jsondata){
+                    // // console.log(jsondata.responseText.data)
+                    // // jsondata = JSON.parse(jsondata);
+                    // JSON.stringify(jsondata)
+                  }
+
+                })
+
+              }
             })
 
             $('.pop1-1').on("touchend",
@@ -2130,7 +2292,7 @@ var app = function(e) {
             }),
             $('.item4>.detail-btn').on("touchend",
             function(){
-              e.utils.share('罗租社区健康服务中心',4);
+              e.utils.share('罗租社区健康服务中心',31);
               e.utils.topFunction();
               $('.p4').removeClass('active');
               $('.vote4').addClass('active');
@@ -2328,10 +2490,9 @@ var app = function(e) {
               console.log(item);
               if(item){
                 $.ajax({
-                  url:'/haokoubei4/vote',
+                  url:'/haokoubei2/vote',
                   type:'post',
                   data: {
-                    openid: "<?php echo($openid);?>",
                     item: item
                   },
                   dataType:'json',
@@ -2389,7 +2550,7 @@ var app = function(e) {
 
             var oPointer = $('.pointer');
             var oTurntable = $('.oturntable');
-            var cat = 60; //总共6个扇形区域，每个区域约60度
+            var cat = 45; //总共6个扇形区域，每个区域约60度
             var num = 0; //转圈结束后停留的度数
             var lottery;
             var offOn=true
@@ -2398,9 +2559,12 @@ var app = function(e) {
                     oTurntable.css('transform','rotate(0deg)');
                     offOn = !offOn;
                     $.ajax({
-                      url:'/haokoubei/lottery',
+                      url:'/haokoubei2/lottery',
                 			type:'post',
                 			dataType:'json',
+                      data: {
+                        item: item
+                      },
                 			success:function(jsondata){
                         console.log(jsondata);
                         if(jsondata.error===0){
@@ -2429,7 +2593,7 @@ var app = function(e) {
                     var timer = null;
                     var index; //命中区域
                     var rdm;
-                    var ratateArr = ['10元话费','谢谢参与','20元话费','谢谢参与','10元话费','谢谢参与']
+                    var ratateArr = ['谢谢参与','5元话费','谢谢参与','精美礼品','10元话费','谢谢参与','精美礼品','2元话费']
                     clearInterval(timer);
                     // timer = setInterval(function () {
                       // console.log(Math.random());
@@ -2439,7 +2603,7 @@ var app = function(e) {
                             index = ratateArr.indexOf(lottery)
                             console.log(index);
 
-                            rdm = cat*index+Math.random()*cat/2+360
+                            rdm = cat*index+Math.random()*cat+360
                             oTurntable.css('transform','rotate('+ -rdm +'deg)');
                             setTimeout(function () {
                                 // offOn = !offOn;
@@ -2448,12 +2612,14 @@ var app = function(e) {
                                 num = rdm % 360;
                                 console.log(num);
                                 $('.pop').removeClass('active');
-                                if (num <= cat * 1) { alert("10元话费"); $('.pop2').addClass('active');}
-                                else if (num <= cat * 2) { alert("谢谢参与"); $('.pop3').addClass('active');}
-                                else if (num <= cat * 3) { alert("20元话费"); $('.pop1').addClass('active');}
-                                else if (num <= cat * 4) { alert("谢谢参与"); }
-                                else if (num <= cat * 5) { alert("10元话费"); }
+                                if (num <= cat * 1) { alert("谢谢参与"); $('.pop3').addClass('active');}
+                                else if (num <= cat * 2) { alert("5元话费"); $('.pop4').addClass('active');}
+                                else if (num <= cat * 3) { alert("谢谢参与"); }
+                                else if (num <= cat * 4) { alert("精美礼品"); $('.pop6').addClass('active');}
+                                else if (num <= cat * 5) { alert("10元话费");$('.pop2').addClass('active'); }
                                 else if (num <= cat * 6) { alert("谢谢参与"); }
+                                else if (num <= cat * 7) { alert("精美礼品"); }
+                                else if (num <= cat * 8) { alert("2元话费"); $('.pop5').addClass('active');}
                             }, 4000);
                     // }, 30);
 
