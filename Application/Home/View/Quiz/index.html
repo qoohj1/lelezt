@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=750,user-scalable=0">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> -->
+  <!--禁止自动识别电话号码-->
+  <meta name="format-detection" content="telephone=no">
+  <!--禁止自动识别邮箱-->
+  <meta content="email=no" name="format-detection">
+  <!--iphone中safari私有meta标签,允许全屏模式浏览,隐藏浏览器导航栏-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!--iphone中safari顶端的状态条的样式black(黑色)-->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- uc强制竖屏 -->
+  <meta name="screen-orientation" content="portrait">
+  <!-- UC强制全屏 -->
+  <meta name="full-screen" content="yes">
+  <!-- UC应用模式 -->
+  <meta name="browsermode" content="application">
+  <!-- QQ强制竖屏 -->
+  <meta name="x5-orientation" content="portrait">
+  <!-- QQ强制全屏 -->
+  <meta name="x5-fullscreen" content="true">
+  <!-- QQ应用模式 -->
+  <meta name="x5-page-mode" content="app">
+  <title>国家基本公共卫生服务答题</title>
+  <!-- <script src="http://guangdong.sinaimg.cn/subject/2017/lib/js/fixViewport750.js"></script> -->
+  <!-- <link rel="stylesheet" href="http://guangdong.sinaimg.cn/subject/2016/0629/animate.css"> -->
+</head>
+<link rel="stylesheet" href="__PUBLIC__/css/haokoubei/animation.css">
+<style>
+#audio-music {
+  display: none;
+  position: absolute;
+  width: 78px;
+  height: 78px;
+  right: 20px;
+  top: 20px;
+  z-index: 9999;
+  background: url(http://n.sinaimg.cn/gd/jobs2018/icon_music.png) center center no-repeat
+}
+#audio-music img{
+  width: 100%
+}
+
+#audio-music.animating {
+  -webkit-animation: music_shake 4s linear infinite;
+  animation: music_shake 4s linear infinite
+}
+
+* {
+  word-wrap: break-word
+}
+
+body,html,p,select {
+  margin: 0;
+  padding: 0
+}
+
+body,html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+img,select {
+  border: 0
+}
+
+img {
+  vertical-align: top
+}
+
+a {
+  text-decoration: none
+}
+
+a,div,img {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent
+}
+
+a,img {
+  -webkit-touch-callout: none
+}
+
+.container,body,html {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  max-height: 1310px
+}
+
+.page,.pop,.pop1,.pop2,.pop3,.pop4,.pop5,.pop6,.pop-qr {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  display: none
+}
+
+.skip{
+  width: 182px;
+  height: 79px;
+  position: absolute;
+  left: 540px;
+  top:26px;
+  z-index: 99;
+  background: url(__PUBLIC__/img/haokoubei/skip.png) no-repeat;
+}
+
+.pop .p-content {
+  width: 100%;
+ height: 100%;
+ position: absolute;
+ left: 0;
+ top: 0;
+  background: url(__PUBLIC__/img/haokoubei/turntable_2.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.page.active,.pop.active,.pop1.active,.pop2.active,.pop3.active,.pop4.active,.pop5.active,.pop6.active,.p2.active,.p3.active,.p4.active,.pop-qr.active {
+  display: block
+}
+
+.page.active .p-content,.pop.active .p-content {
+ -webkit-animation: fadeIn .5s linear 0s both;
+ animation: fadeIn .5s linear 0s both
+}
+
+.page.fadeOut,.pop.fadeOut {
+ -webkit-animation: fadeOut .5s linear 0s both;
+ animation: fadeOut .5s linear 0s both
+}
+
+.loading{
+  background-color: #c6eaf3;
+}
+
+.loading-icon,.page .p-content{
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ left: 0;
+ top: 0;
+  /* z-index: 99 */
+}
+
+.loading-icon {
+  width: 500px;
+  height: 422px;
+  left: 50%;
+  margin-left: -250px;
+  top: 50%;
+  margin-top: -211px
+}
+
+.loading-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: 100px;
+  margin-left: -25px;
+  font-size: 25px;
+  color: white;
+}
+
+.loading-icon .loading-icon-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(__PUBLIC__/img/haokoubei/loading_1.png) no-repeat;
+  /* opacity: 0 */
+}
+
+.loading-icon .loading-icon-dotted {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url(__PUBLIC__/img/haokoubei/dotted.png) no-repeat;
+  /* opacity: 0 */
+}
+
+
+
+
+.p1 {
+  z-index: 4
+}
+.pop{
+  z-index: 99
+}
+.pop1,.pop2,.pop3,.pop4,.pop5,.pop6,.pop-qr,.confirm-vote{
+  z-index: 99
+}
+
+.pop1 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/quiz/pop1.png) no-repeat rgba(0,0,0,.8)!important;
+}
+
+.pop2 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/quiz/pop2.png) no-repeat rgba(0,0,0,.8)!important;
+}
+
+.pop3 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/quiz/pop3.png) no-repeat rgba(0,0,0,.8)!important;
+}
+
+.pop4 .p-content {
+  width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+  background: url(__PUBLIC__/img/quiz/pop4.png) no-repeat rgba(0,0,0,.8)!important;
+}
+.pop1 .p-content .yes{
+  width: 307px;
+	height: 163px;
+	position: absolute;
+	left: 402px;
+	top: 819px;
+  background: url(__PUBLIC__/img/quiz/yes.png) no-repeat;
+}
+.pop1 .p-content .no{
+  width: 309px;
+	height: 159px;
+	position: absolute;
+	left: 87px;
+	top: 823px;
+  background: url(__PUBLIC__/img/quiz/no.png) no-repeat;
+}
+.pop2 .p-content .again{
+  width: 420px;
+	height: 186px;
+	position: absolute;
+	left: 166px;
+	top: 796px;
+  background: url(__PUBLIC__/img/quiz/again.png) no-repeat;
+}
+.pop3 .p-content .again{
+  width: 420px;
+	height: 186px;
+	position: absolute;
+	left: 166px;
+	top: 796px;
+  background: url(__PUBLIC__/img/quiz/again.png) no-repeat;
+}
+.pop4 .p-content .again{
+  width: 420px;
+	height: 186px;
+	position: absolute;
+	left: 166px;
+	top: 796px;
+  background: url(__PUBLIC__/img/quiz/again.png) no-repeat;
+}
+
+
+.no1,.no2,.no3,.no4,.no5,.no6,.no7,.no8,.no9{
+  display: none
+}
+.no1.active,.no2.active,.no3.active,.no4.active,.no5.active,.no6.active,.no7.active,.no8.active,.no9.active{
+  display: block;
+}
+
+.a_sel,.b_sel,.c_sel,.d_sel,.e_sel,.f_sel,.a_mul_sel,.b_mul_sel,.c_mul_sel{
+  display: none
+}
+
+.a_sel.active,.b_sel.active,.c_sel.active,.d_sel.active,.e_sel.active,.f_sel.active,.a_mul_sel.active,.b_mul_sel.active,.c_mul_sel.active{
+  display: block
+}
+
+.p0 .p-content {
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ left: 0;
+ top: 0;
+ background: url(__PUBLIC__/img/quiz/p0.png) no-repeat  #d8eeeb   !important;;
+}
+
+.p0 .p-content .skip{
+  width: 333px;
+  height: 210px;
+  position: absolute;
+  left: 174px;
+  top:853px;
+  background: url(__PUBLIC__/img/quiz/skip.png) no-repeat;
+}
+
+.p0 .p-content #video-1{
+  position: absolute;
+  left: 0;
+  top:400px;
+}
+
+.p1 .p-content {
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ left: 0;
+ top: 0;
+ background: url(__PUBLIC__/img/quiz/p1_bg.jpg) no-repeat;
+}
+
+.p1 .p-content .q1{
+  width: 643px;
+  height: 216px;
+  position: absolute;
+  left: 55px;
+  top:329px;
+  background: url(__PUBLIC__/img/quiz/q1.png) no-repeat;
+}
+
+.p1 .p-content .q2{
+  width: 540px;
+  height: 224px;
+  position: absolute;
+  left: 114px;
+  top:333px;
+  background: url(__PUBLIC__/img/quiz/q2.png) no-repeat;
+}
+
+.p1 .p-content .q3{
+  width: 588px;
+  height: 216px;
+  position: absolute;
+  left: 83px;
+  top:322px;
+  background: url(__PUBLIC__/img/quiz/q3.png) no-repeat;
+}
+
+.p1 .p-content .q4{
+  width: 588px;
+  height: 216px;
+  position: absolute;
+  left: 91px;
+  top:322px;
+  background: url(__PUBLIC__/img/quiz/q4.png) no-repeat;
+}
+
+.p1 .p-content .q5{
+  width: 585px;
+  height: 229px;
+  position: absolute;
+  left: 95px;
+  top:338px;
+  background: url(__PUBLIC__/img/quiz/q5.png) no-repeat;
+}
+
+.p1 .p-content .q6{
+  width: 646px;
+  height: 216px;
+  position: absolute;
+  left: 51px;
+  top:336px;
+  background: url(__PUBLIC__/img/quiz/q6.png) no-repeat;
+}
+
+.p1 .p-content .q7{
+  width: 640px;
+  height: 247px;
+  position: absolute;
+  left: 60px;
+  top:331px;
+  background: url(__PUBLIC__/img/quiz/q7.png) no-repeat;
+}
+
+.p1 .p-content .q8{
+  width: 660px;
+  height: 199px;
+  position: absolute;
+  left: 50px;
+  top:340px;
+  background: url(__PUBLIC__/img/quiz/q8.png) no-repeat;
+}
+
+.p1 .p-content .q9{
+  width: 524px;
+  height: 222px;
+  position: absolute;
+  left: 116px;
+  top:340px;
+  background: url(__PUBLIC__/img/quiz/q9.png) no-repeat;
+}
+
+.p1 .p-content .pagenum{
+  width: 46px;
+  height: 30px;
+  position: absolute;
+  left: 349px;
+  top:1066px;
+}
+
+.p1 .p-content .pagenum1{
+  background: url(__PUBLIC__/img/quiz/pagenum1.png) no-repeat;
+}
+
+.p1 .p-content .pagenum2{
+  background: url(__PUBLIC__/img/quiz/pagenum2.png) no-repeat;
+}
+
+.p1 .p-content .pagenum3{
+  background: url(__PUBLIC__/img/quiz/pagenum3.png) no-repeat;
+}
+
+.p1 .p-content .pagenum4{
+  background: url(__PUBLIC__/img/quiz/pagenum4.png) no-repeat;
+}
+
+.p1 .p-content .pagenum5{
+  background: url(__PUBLIC__/img/quiz/pagenum5.png) no-repeat;
+}
+
+.p1 .p-content .pagenum6{
+  background: url(__PUBLIC__/img/quiz/pagenum6.png) no-repeat;
+}
+
+.p1 .p-content .pagenum7{
+  background: url(__PUBLIC__/img/quiz/pagenum7.png) no-repeat;
+}
+
+.p1 .p-content .pagenum8{
+  background: url(__PUBLIC__/img/quiz/pagenum8.png) no-repeat;
+}
+
+.p1 .p-content .pagenum9{
+  background: url(__PUBLIC__/img/quiz/pagenum9.png) no-repeat;
+}
+
+.p1 .p-content .next{
+  width: 212px;
+  height: 122px;
+  position: absolute;
+  left: 428px;
+  top:1029px;
+  background: url(__PUBLIC__/img/quiz/next.png) no-repeat;
+}
+
+.p1 .p-content .submit{
+  width: 211px;
+  height: 121px;
+  position: absolute;
+  left: 428px;
+  top:1029px;
+  background: url(__PUBLIC__/img/quiz/submit.png) no-repeat;
+}
+
+.p1 .p-content .prev{
+  width: 210px;
+  height: 121px;
+  position: absolute;
+  left: 125px;
+  top:1029px;
+  background: url(__PUBLIC__/img/quiz/prev.png) no-repeat;
+}
+
+.p1 .p-content .q1_a{
+  width: 620px;
+  height: 137px;
+  position: absolute;
+  left: 62px;
+  top:590px;
+  background: url(__PUBLIC__/img/quiz/q1_a.png) no-repeat;
+}
+
+.p1 .p-content .q1_b{
+  width: 620px;
+  height: 123px;
+  position: absolute;
+  left: 61px;
+  top:723px;
+  background: url(__PUBLIC__/img/quiz/q1_b.png) no-repeat;
+}
+
+.p1 .p-content .q1_c{
+  width: 620px;
+  height: 105px;
+  position: absolute;
+  left: 62px;
+  top:852px;
+  background: url(__PUBLIC__/img/quiz/q1_c.png) no-repeat;
+}
+
+.p1 .p-content .q1_a_sel{
+  width: 484px;
+  height: 76px;
+  position: absolute;
+  left: 65px;
+  top:625px;
+  background: url(__PUBLIC__/img/quiz/q1_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q1_b_sel{
+  width: 575px;
+  height: 76px;
+  position: absolute;
+  left: 65px;
+  top:744px;
+  background: url(__PUBLIC__/img/quiz/q1_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q1_c_sel{
+  width: 409px;
+  height: 76px;
+  position: absolute;
+  left: 65px;
+  top:868px;
+  background: url(__PUBLIC__/img/quiz/q1_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q2_a{
+  width: 191px;
+  height: 196px;
+  position: absolute;
+  left: 58px;
+  top:562px;
+  background: url(__PUBLIC__/img/quiz/q2_a.png) no-repeat;
+}
+
+.p1 .p-content .q2_b{
+  width: 183px;
+  height: 156px;
+  position: absolute;
+  left: 263px;
+  top:574px;
+  background: url(__PUBLIC__/img/quiz/q2_b.png) no-repeat;
+}
+
+.p1 .p-content .q2_c{
+  width: 173px;
+  height: 163px;
+  position: absolute;
+  left: 454px;
+  top:574px;
+  background: url(__PUBLIC__/img/quiz/q2_c.png) no-repeat;
+}
+
+.p1 .p-content .q2_d{
+  width: 159px;
+  height: 211px;
+  position: absolute;
+  left: 76px;
+  top:768px;
+  background: url(__PUBLIC__/img/quiz/q2_d.png) no-repeat;
+}
+
+.p1 .p-content .q2_e{
+  width: 164px;
+  height: 242px;
+  position: absolute;
+  left: 270px;
+  top:742px;
+  background: url(__PUBLIC__/img/quiz/q2_e.png) no-repeat;
+}
+
+.p1 .p-content .q2_f{
+  width: 172px;
+  height: 202px;
+  position: absolute;
+  left: 458px;
+  top:747px;
+  background: url(__PUBLIC__/img/quiz/q2_f.png) no-repeat;
+}
+
+.p1 .p-content .q2_a_sel{
+  width: 204px;
+  height: 147px;
+  position: absolute;
+  left: 58px;
+  top:615px;
+  background: url(__PUBLIC__/img/quiz/q2_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q2_b_sel{
+  width: 191px;
+  height: 117px;
+  position: absolute;
+  left: 263px;
+  top:618px;
+  background: url(__PUBLIC__/img/quiz/q2_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q2_c_sel{
+  width: 191px;
+  height: 117px;
+  position: absolute;
+  left: 454px;
+  top:625px;
+  background: url(__PUBLIC__/img/quiz/q2_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q2_d_sel{
+  width: 184px;
+  height: 147px;
+  position: absolute;
+  left: 76px;
+  top:838px;
+  background: url(__PUBLIC__/img/quiz/q2_d_sel.png) no-repeat;
+}
+
+.p1 .p-content .q2_e_sel{
+  width: 179px;
+  height: 147px;
+  position: absolute;
+  left: 270px;
+  top:842px;
+  background: url(__PUBLIC__/img/quiz/q2_e_sel.png) no-repeat;
+}
+
+.p1 .p-content .q2_f_sel{
+  width: 183px;
+  height: 147px;
+  position: absolute;
+  left: 458px;
+  top:808px;
+  background: url(__PUBLIC__/img/quiz/q2_f_sel.png) no-repeat;
+}
+
+.p1 .p-content .q3_a{
+  width: 472px;
+  height: 142px;
+  position: absolute;
+  left: 58px;
+  top:574px;
+  background: url(__PUBLIC__/img/quiz/q3_a.png) no-repeat;
+}
+
+.p1 .p-content .q3_b{
+  width: 187px;
+  height: 223px;
+  position: absolute;
+  left: 74px;
+  top:742px;
+  background: url(__PUBLIC__/img/quiz/q3_b.png) no-repeat;
+}
+
+.p1 .p-content .q3_c{
+  width: 204px;
+  height: 201px;
+  position: absolute;
+  left: 259px;
+  top:742px;
+  background: url(__PUBLIC__/img/quiz/q3_c.png) no-repeat;
+}
+
+.p1 .p-content .q3_d{
+  width: 183px;
+  height: 222px;
+  position: absolute;
+  left: 479px;
+  top:742px;
+  background: url(__PUBLIC__/img/quiz/q3_d.png) no-repeat;
+}
+
+.p1 .p-content .q3_a_sel{
+  width: 453px;
+  height: 149px;
+  position: absolute;
+  left: 178px;
+  top:551px;
+  background: url(__PUBLIC__/img/quiz/q3_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q3_b_sel{
+  width: 175px;
+  height: 157px;
+  position: absolute;
+  left: 76px;
+  top:809px;
+  background: url(__PUBLIC__/img/quiz/q3_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q3_c_sel{
+  width: 197px;
+  height: 123px;
+  position: absolute;
+  left: 260px;
+  top:813px;
+  background: url(__PUBLIC__/img/quiz/q3_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q3_d_sel{
+  width: 174px;
+  height: 155px;
+  position: absolute;
+  left: 478px;
+  top:810px;
+  background: url(__PUBLIC__/img/quiz/q3_d_sel.png) no-repeat;
+}
+
+.p1 .p-content .q4_a{
+  width: 508px;
+  height: 69px;
+  position: absolute;
+  left: 81px;
+  top:506px;
+  background: url(__PUBLIC__/img/quiz/q4_a.png) no-repeat;
+}
+
+.p1 .p-content .q4_b{
+  width: 538px;
+  height: 222px;
+  position: absolute;
+  left: 76px;
+  top:581px;
+  background: url(__PUBLIC__/img/quiz/q4_b.png) no-repeat;
+}
+
+.p1 .p-content .q4_c{
+  width: 541px;
+  height: 100px;
+  position: absolute;
+  left: 88px;
+  top:824px;
+  background: url(__PUBLIC__/img/quiz/q4_c.png) no-repeat;
+}
+
+.p1 .p-content .q4_d{
+  width: 296px;
+  height: 85px;
+  position: absolute;
+  left: 74px;
+  top:926px;
+  background: url(__PUBLIC__/img/quiz/q4_d.png) no-repeat;
+}
+
+.p1 .p-content .q4_a_sel{
+  width: 562px;
+  height: 72px;
+  position: absolute;
+  left: 36px;
+  top:497px;
+  background: url(__PUBLIC__/img/quiz/q4_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q4_b_sel{
+  width: 582px;
+  height: 230px;
+  position: absolute;
+  left: 36px;
+  top:579px;
+  background: url(__PUBLIC__/img/quiz/q4_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q4_c_sel{
+  width: 582px;
+  height: 103px;
+  position: absolute;
+  left: 36px;
+  top:833px;
+  background: url(__PUBLIC__/img/quiz/q4_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q4_d_sel{
+  width: 338px;
+  height: 72px;
+  position: absolute;
+  left: 36px;
+  top:933px;
+  background: url(__PUBLIC__/img/quiz/q4_d_sel.png) no-repeat;
+}
+
+.p1 .p-content .q5_a{
+  width: 573px;
+  height: 109px;
+  position: absolute;
+  left: 67px;
+  top:581px;
+  background: url(__PUBLIC__/img/quiz/q5_a.png) no-repeat;
+}
+
+.p1 .p-content .q5_b{
+  width: 589px;
+  height: 126px;
+  position: absolute;
+  left: 65px;
+  top:691px;
+  background: url(__PUBLIC__/img/quiz/q5_b.png) no-repeat;
+}
+
+.p1 .p-content .q5_c{
+  width: 587px;
+  height: 111px;
+  position: absolute;
+  left: 62px;
+  top:817px;
+  background: url(__PUBLIC__/img/quiz/q5_c.png) no-repeat;
+}
+
+.p1 .p-content .q5_d{
+  width: 328px;
+  height: 81px;
+  position: absolute;
+  left: 62px;
+  top:926px;
+  background: url(__PUBLIC__/img/quiz/q5_d.png) no-repeat;
+}
+
+.p1 .p-content .q5_a_sel{
+  width: 629px;
+  height: 93px;
+  position: absolute;
+  left: 27px;
+  top:590px;
+  background: url(__PUBLIC__/img/quiz/q5_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q5_b_sel{
+  width: 629px;
+  height: 132px;
+  position: absolute;
+  left: 24px;
+  top:677px;
+  background: url(__PUBLIC__/img/quiz/q5_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q5_c_sel{
+  width: 608px;
+  height: 115px;
+  position: absolute;
+  left: 23px;
+  top:819px;
+  background: url(__PUBLIC__/img/quiz/q5_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q5_d_sel{
+  width: 373px;
+  height: 77px;
+  position: absolute;
+  left: 26px;
+  top:936px;
+  background: url(__PUBLIC__/img/quiz/q5_d_sel.png) no-repeat;
+}
+
+.p1 .p-content .q6_a{
+  width: 563px;
+  height: 159px;
+  position: absolute;
+  left: 67px;
+  top:581px;
+  background: url(__PUBLIC__/img/quiz/q6_a.png) no-repeat;
+}
+
+.p1 .p-content .q6_b{
+  width: 577px;
+  height: 163px;
+  position: absolute;
+  left: 65px;
+  top:739px;
+  background: url(__PUBLIC__/img/quiz/q6_b.png) no-repeat;
+}
+
+.p1 .p-content .q6_c{
+  width: 568px;
+  height: 99px;
+  position: absolute;
+  left: 62px;
+  top:892px;
+  background: url(__PUBLIC__/img/quiz/q6_c.png) no-repeat;
+}
+
+.p1 .p-content .q6_a_sel{
+  width: 603px;
+  height: 163px;
+  position: absolute;
+  left: 19px;
+  top:575px;
+  background: url(__PUBLIC__/img/quiz/q6_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q6_b_sel{
+  width: 603px;
+  height: 163px;
+  position: absolute;
+  left: 17px;
+  top:745px;
+  background: url(__PUBLIC__/img/quiz/q6_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q6_c_sel{
+  width: 499px;
+  height: 81px;
+  position: absolute;
+  left: 18px;
+  top:904px;
+  background: url(__PUBLIC__/img/quiz/q6_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q7_a{
+  width: 217px;
+  height: 188px;
+  position: absolute;
+  left: 108px;
+  top:597px;
+  background: url(__PUBLIC__/img/quiz/q7_a.png) no-repeat;
+}
+
+.p1 .p-content .q7_b{
+  width: 217px;
+  height: 186px;
+  position: absolute;
+  left: 363px;
+  top:595px;
+  background: url(__PUBLIC__/img/quiz/q7_b.png) no-repeat;
+}
+
+.p1 .p-content .q7_c{
+  width: 273px;
+  height: 196px;
+  position: absolute;
+  left: 109px;
+  top:805px;
+  background: url(__PUBLIC__/img/quiz/q7_c.png) no-repeat;
+}
+
+.p1 .p-content .q7_d{
+  width: 250px;
+  height: 190px;
+  position: absolute;
+  left: 400px;
+  top:800px;
+  background: url(__PUBLIC__/img/quiz/q7_d.png) no-repeat;
+}
+
+.p1 .p-content .q7_a_sel{
+  width: 244px;
+  height: 171px;
+  position: absolute;
+  left: 79px;
+  top:612px;
+  background: url(__PUBLIC__/img/quiz/q7_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q7_b_sel{
+  width: 248px;
+  height: 171px;
+  position: absolute;
+  left: 353px;
+  top:614px;
+  background: url(__PUBLIC__/img/quiz/q7_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q7_c_sel{
+  width: 306px;
+  height: 187px;
+  position: absolute;
+  left: 77px;
+  top:814px;
+  background: url(__PUBLIC__/img/quiz/q7_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q7_d_sel{
+  width: 300px;
+  height: 187px;
+  position: absolute;
+  left: 385px;
+  top:813px;
+  background: url(__PUBLIC__/img/quiz/q7_d_sel.png) no-repeat;
+}
+
+.p1 .p-content .q8_a{
+  width: 224px;
+  height: 219px;
+  position: absolute;
+  left: 108px;
+  top:553px;
+  background: url(__PUBLIC__/img/quiz/q8_a.png) no-repeat;
+}
+
+.p1 .p-content .q8_b{
+  width: 267px;
+  height: 215px;
+  position: absolute;
+  left: 363px;
+  top:553px;
+  background: url(__PUBLIC__/img/quiz/q8_b.png) no-repeat;
+}
+
+.p1 .p-content .q8_c{
+  width: 217px;
+  height: 224px;
+  position: absolute;
+  left: 109px;
+  top:783px;
+  background: url(__PUBLIC__/img/quiz/q8_c.png) no-repeat;
+}
+
+.p1 .p-content .q8_d{
+  width: 155px;
+  height: 199px;
+  position: absolute;
+  left: 400px;
+  top:775px;
+  background: url(__PUBLIC__/img/quiz/q8_d.png) no-repeat;
+}
+
+.p1 .p-content .q8_a_sel{
+  width: 240px;
+  height: 164px;
+  position: absolute;
+  left: 95px;
+  top:612px;
+  background: url(__PUBLIC__/img/quiz/q8_a_sel.png) no-repeat;
+}
+
+.p1 .p-content .q8_b_sel{
+  width: 274px;
+  height: 164px;
+  position: absolute;
+  left: 353px;
+  top:614px;
+  background: url(__PUBLIC__/img/quiz/q8_b_sel.png) no-repeat;
+}
+
+.p1 .p-content .q8_c_sel{
+  width: 260px;
+  height: 164px;
+  position: absolute;
+  left: 88px;
+  top:846px;
+  background: url(__PUBLIC__/img/quiz/q8_c_sel.png) no-repeat;
+}
+
+.p1 .p-content .q8_d_sel{
+  width: 205px;
+  height: 124px;
+  position: absolute;
+  left: 385px;
+  top:854px;
+  background: url(__PUBLIC__/img/quiz/q8_d_sel.png) no-repeat;
+}
+
+.p1 .p-content .q9_a img{
+  display: inline-block;
+  width: 201px;
+  height: 346px;
+  position: absolute;
+  left: 160px;
+  top:585px;
+  z-index: 1
+}
+
+.p1 .p-content .q9_b img{
+  display: inline-block;
+  width: 347px;
+  height: 202px;
+  position: absolute;
+  left: 218px;
+  top:798px;
+  z-index: 2
+}
+
+.p1 .p-content .q9_c img{
+  display: inline-block;
+  width: 205px;
+  height: 204px;
+  position: absolute;
+  left: 384px;
+  top:564px;
+}
+
+.p1 .p-content .q9_a_sel img{
+  width: 263px;
+  height: 369px;
+  position: absolute;
+  left: 98px;
+  top:575px;
+  z-index: 1
+}
+
+.p1 .p-content .q9_b_sel img{
+  width: 394px;
+  height: 210px;
+  position: absolute;
+  left: 207px;
+  top:797px;
+  z-index: 2
+}
+
+.p1 .p-content .q9_c_sel img{
+  width: 237px;
+  height: 220px;
+  position: absolute;
+  left: 384px;
+  top: 548px;
+  background: url(__PUBLIC__/img/quiz/q9_c_sel.png) no-repeat;
+}
+
+@media (max-height:1180px) {
+ video {
+    /* object-fit: fill; */
+    /* width: 100%; */
+    /* margin-top: 0;
+    top: 0 */
+  }
+}
+</style>
+<body>
+  <div id="audio-music" class="animating">
+    <!-- <audio id="bgMusic" loop src="__PUBLIC__/music/music2.mp3"></audio> -->
+  </div>
+
+  <div class="container">
+
+      <div class="loading page active">
+          <div class="loading-icon">
+              <div class="loading-icon-img"></div>
+              <div class="loading-icon-dotted"></div>
+          </div>
+          <div class="loading-text">loading...</div>
+      </div>
+      <div class="pop1">
+        <div class="p-content">
+          <div class="yes"></div>
+          <div class="no"></div>
+        </div>
+      </div>
+      <div class="pop2">
+        <div class="p-content">
+          <div class="again"></div>
+        </div>
+      </div>
+      <div class="pop3">
+        <div class="p-content">
+          <div class="again"></div>
+        </div>
+      </div>
+      <div class="pop4">
+        <div class="p-content">
+          <div class="again"></div>
+        </div>
+      </div>
+      <div class="p0 page">
+          <div class="p-content">
+            <video id="video-1" width="100%" height="423px" x-webkit-airplay="allow"  x5-video-orientation="landscape" webkit-playsinline="true"    playsinline="true"  preload controls>
+             <source src="__PUBLIC__/video/h5_5.mp4" type="video/mp4"></source>
+            </video>
+            <div class="skip"></div>
+          </div>
+      </div>
+      <div class="p1 page">
+          <div class="p-content">
+            <div class="no1 active">
+              <div class="q1"></div>
+              <div class="q1_a a"></div>
+              <div class="q1_b b"></div>
+              <div class="q1_c c"></div>
+              <div class="q1_a_sel a_sel"></div>
+              <div class="q1_b_sel b_sel"></div>
+              <div class="q1_c_sel c_sel"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum1"></div>
+            </div>
+            <div class="no2">
+              <div class="q2"></div>
+              <div class="q2_a a"></div>
+              <div class="q2_b b"></div>
+              <div class="q2_c c"></div>
+              <div class="q2_d d"></div>
+              <div class="q2_e e"></div>
+              <div class="q2_f f"></div>
+              <div class="q2_a_sel a_sel"></div>
+              <div class="q2_b_sel b_sel"></div>
+              <div class="q2_c_sel c_sel"></div>
+              <div class="q2_d_sel d_sel"></div>
+              <div class="q2_e_sel e_sel"></div>
+              <div class="q2_f_sel f_sel"></div>
+              <div class="prev"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum2"></div>
+            </div>
+            <div class="no3">
+              <div class="q3"></div>
+              <div class="q3_a a"></div>
+              <div class="q3_b b"></div>
+              <div class="q3_c c"></div>
+              <div class="q3_d d"></div>
+              <div class="q3_a_sel a_sel"></div>
+              <div class="q3_b_sel b_sel"></div>
+              <div class="q3_c_sel c_sel"></div>
+              <div class="q3_d_sel d_sel"></div>
+              <div class="prev"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum3"></div>
+            </div>
+            <div class="no4">
+              <div class="q4"></div>
+              <div class="q4_a a"></div>
+              <div class="q4_b b"></div>
+              <div class="q4_c c"></div>
+              <div class="q4_d d"></div>
+              <div class="q4_a_sel a_sel"></div>
+              <div class="q4_b_sel b_sel"></div>
+              <div class="q4_c_sel c_sel"></div>
+              <div class="q4_d_sel d_sel"></div>
+              <div class="prev"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum4"></div>
+            </div>
+            <div class="no5">
+              <div class="q5"></div>
+              <div class="q5_a a"></div>
+              <div class="q5_b b"></div>
+              <div class="q5_c c"></div>
+              <div class="q5_d d"></div>
+              <div class="q5_a_sel a_sel"></div>
+              <div class="q5_b_sel b_sel"></div>
+              <div class="q5_c_sel c_sel"></div>
+              <div class="q5_d_sel d_sel"></div>
+              <div class="prev"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum5"></div>
+            </div>
+            <div class="no6">
+              <div class="q6"></div>
+              <div class="q6_a a_mul"></div>
+              <div class="q6_b b_mul"></div>
+              <div class="q6_c c_mul"></div>
+              <div class="q6_a_sel a_mul_sel"></div>
+              <div class="q6_b_sel b_mul_sel"></div>
+              <div class="q6_c_sel c_mul_sel"></div>
+              <div class="prev"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum6"></div>
+            </div>
+            <div class="no7">
+              <div class="q7"></div>
+              <div class="q7_a a"></div>
+              <div class="q7_b b"></div>
+              <div class="q7_c c"></div>
+              <div class="q7_d d"></div>
+              <div class="q7_a_sel a_sel"></div>
+              <div class="q7_b_sel b_sel"></div>
+              <div class="q7_c_sel c_sel"></div>
+              <div class="q7_d_sel d_sel"></div>
+              <div class="prev"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum7"></div>
+            </div>
+            <div class="no8">
+              <div class="q8"></div>
+              <div class="q8_a a"></div>
+              <div class="q8_b b"></div>
+              <div class="q8_c c"></div>
+              <div class="q8_d d"></div>
+              <div class="q8_a_sel a_sel"></div>
+              <div class="q8_b_sel b_sel"></div>
+              <div class="q8_c_sel c_sel"></div>
+              <div class="q8_d_sel d_sel"></div>
+              <div class="prev"></div>
+              <div class="next"></div>
+              <div class="pagenum pagenum8"></div>
+            </div>
+            <div class="no9">
+              <div class="q9"></div>
+              <div class="q9_a a"><img src="__PUBLIC__/img/quiz/q9_a.png" alt=""></div>
+              <div class="q9_b b"><img src="__PUBLIC__/img/quiz/q9_b.png" alt=""></div>
+              <div class="q9_c c"><img src="__PUBLIC__/img/quiz/q9_c.png" alt=""></div>
+              <div class="q9_a_sel a_sel"><img src="__PUBLIC__/img/quiz/q9_a_sel.png" alt=""></div>
+              <div class="q9_b_sel b_sel"><img src="__PUBLIC__/img/quiz/q9_b_sel.png" alt=""></div>
+              <div class="q9_c_sel c_sel"><img src="__PUBLIC__/img/quiz/q9_c_sel.png" alt=""></div>
+              <div class="submit"></div>
+              <div class="prev"></div>
+              <div class="pagenum pagenum9"></div>
+            </div>
+          </div>
+      </div>
+
+  </div>
+</body>
+</html>
+<script src="http://guangdong.sinaimg.cn/subject/2017/lib/js/zepto.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+"use strict";
+var app = function(e) {
+    return e.utils = {
+        share: function(t,d) {
+          $.ajax({
+             url:"http://www.shegurz.com/jssdk/jssdk.php",
+             dataType:"jsonp",
+             data: {
+               url: location.href.split('#')[0]
+             },
+             jsonp: 'callback',
+             jsonpCallback: 'success_jsonpCallback',
+             success:function(jsondata){
+                 wx.config({
+                     debug: false,
+                     appId: jsondata.appId,
+                     timestamp: jsondata.timestamp,
+                     nonceStr: jsondata.nonceStr,
+                     signature: jsondata.signature,
+                     jsApiList: [
+                         'onMenuShareTimeline', 'onMenuShareAppMessage'
+                     ]
+                 });
+                 wx.ready(function () {
+                     wx.onMenuShareTimeline({
+                         title: t, // 分享标题
+                          link: 'http://zt.shegurz.com/quiz', // 分享链接
+                         imgUrl: 'http://zt.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+                         success: function (res) {
+
+                         },
+                         cancel: function (res) {
+
+                         }
+                     });
+
+                     wx.onMenuShareAppMessage({
+                         title: t, // 分享标题
+                         desc: d || '国家基本公共卫生服务答题', // 分享描述
+                         link: 'http://zt.shegurz.com/quiz', // 分享链接
+                         imgUrl: 'http://zt.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
+                         type: '',
+                         dataUrl: '',
+                         success: function () {
+
+                         },
+                         cancel: function () {
+
+                         }
+                     });
+                     wx.error(function(res){
+                         console.log(JSON.stringify(res));
+                     });
+                 })
+
+             }
+         })
+
+        },
+        checkMobile: function(phone) {
+          var telReg = !!phone.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/);
+          return telReg;
+        },
+        topFunction: function(){
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        },
+        getQueryString: function(n) {
+            var t = new RegExp("(^|&)" + n + "=([^&]*)(&|$)", "i"),
+            i = window.location.search.replace(/&amp;(amp;)?/g, "&").substr(1).match(t);
+            return null !== i ? unescape(i[2]) : null
+        },
+        isWeixin: function() {
+            return "micromessenger" == navigator.userAgent.toLowerCase().match(/MicroMessenger/i)
+        },
+        getRandomInt: function(n, t) {
+            return Math.floor(Math.random() * (t - n + 1) + n)
+        },
+        loadImages: function(n, t) {
+            var i = {
+                sources: n,
+                images: n instanceof Array ? [] : {},
+                config: t || {},
+                loadedImages: 0,
+                totalImages: 0,
+                countTotalImages: function() {
+                    for (var n in this.totalImages = 0,
+                    this.sources) this.totalImages += 1;
+                    return this.totalImages
+                },
+                load: function(n, t) {
+                    this.images[n] = new Image;
+                    var i = this;
+                    this.images[n].onload = function() {
+                        i.loadedImages += 1;
+                        var n = Math.floor(i.loadedImages / i.totalImages * 100);
+                        i.config.onProgress && i.config.onProgress(n),
+                        i.loadedImages >= i.totalImages && (i.config.onComplete && i.config.onComplete(i.images), i.config instanceof Function && i.config(i.images))
+                    },
+                    this.images[n].onerror = function(n) {
+                        console.log(n)
+                    },
+                    t && (this.images[n].crossOrigin = "*"),
+                    this.images[n].src = this.sources[n]
+                }
+            };
+            if (i.countTotalImages(), i.totalImages) for (var s in i.sources) i.config.crossOrigin ? i.load(s, !0) : i.load(s);
+            else i.config.onComplete && i.config.onComplete(i.images),
+            i.config instanceof Function && i.config(i.images)
+        }
+    },
+    e.preload = {
+        sources: [],
+        onProgress: function(n) {
+            $(".loading-text").html(n + "%")
+        },
+        onComplete: function() {
+            $(".loading").removeClass("active")
+            $('.p0').addClass('active');
+
+        },
+        main: function() {
+            e.utils.loadImages(this.sources, {
+                onProgress: this.onProgress,
+                onComplete: this.onComplete
+            })
+        }
+    },
+    e.musics = {
+        bg: "bgMusic",
+        others: [],
+        main: function() {
+            if (this.bg || this.others.length) {
+                var i = this,
+                s = document.getElementById(this.bg),
+                a = !0;
+                $(s).parent().on("touchstart",
+                function() {
+                    a = !1;
+                    var n = $(this);
+                    event.stopPropagation(),
+                    n.hasClass("animating") ? (n.removeClass("animating"), s.pause()) : (n.addClass("animating"), s.play())
+                }),
+                $(document).one("touchstart",
+                function() {
+                    s && s.paused && a && (s.play(), s.paused && $(document).one("touchend",
+                    function() {
+                        s.play()
+                    }));
+                    for (var n = 0; n < i.others.length; n++) {
+                        var t = document.getElementById(i.others[n]);
+                        t.play(),
+                        t.pause()
+                    }
+                })
+            }
+        }
+    },
+
+    e.events = {
+        preventDefault: function() {
+            $(document).on("touchmove",
+            function(n) {
+                n.preventDefault()
+            })
+        },
+        main: function() {
+            this.preventDefault();
+
+            // 滑动禁止触发touchend
+            var locked = false;
+            window.addEventListener('touchmove', function(ev){
+                locked || (locked = true, window.addEventListener('touchend', stopTouchendPropagation, true));
+            }, true);
+            function stopTouchendPropagation(ev){
+                ev.stopPropagation();
+                window.removeEventListener('touchend', stopTouchendPropagation, true);
+                locked = false;
+            };
+
+            $('.skip').on("touchend", function(e){
+              $('.p0').removeClass('active');
+              $('.p1').addClass('active');
+            });
+            $('.again').on("touchend", function(e){
+              $('.pop2').removeClass('active');
+              $('.pop3').removeClass('active');
+              $('.pop4').removeClass('active');
+              $('.p1 .p-content').children().removeClass('active');
+              $('.p1 .p-content').children().children().removeClass('active');
+              $('.no1').addClass('active');
+            });
+            $('.yes').on("touchend", function(e){
+              $('.pop1').removeClass('active');
+              $('.p1 .p-content').children().removeClass('active');
+              $('.p1 .p-content').children().children().removeClass('active');
+              $('.no1').addClass('active');
+            });
+            $('.no').on("touchend", function(e){
+              $('.yes').css('display','none');
+              $('.no').css('display','none');
+            });
+
+            $('.next').on("touchend",function(e){
+              $(this).parent().removeClass('active');
+              $(this).parent().next().addClass('active');
+            });
+            $('.prev').on("touchend",function(e){
+              $(this).parent().removeClass('active');
+              $(this).parent().prev().addClass('active');
+            });
+            function clearItems(e) {
+              $(e).parent().find('.a_sel').removeClass('active');
+              $(e).parent().find('.b_sel').removeClass('active');
+              $(e).parent().find('.c_sel').removeClass('active');
+              $(e).parent().find('.d_sel').removeClass('active');
+              $(e).parent().find('.e_sel').removeClass('active');
+              $(e).parent().find('.f_sel').removeClass('active');
+
+            };
+            $('.a').on("touchend", function(e){
+              clearItems(this);
+              $(this).parent().find('.a_sel').addClass('active');
+            });
+            $('.b').on("touchend", function(e){
+              clearItems(this);
+              $(this).parent().find('.b_sel').addClass('active');
+            });
+            $('.c').on("touchend", function(e){
+              clearItems(this);
+              $(this).parent().find('.c_sel').addClass('active');
+            });
+            $('.d').on("touchend", function(e){
+              clearItems(this);
+              $(this).parent().find('.d_sel').addClass('active');
+            });
+            $('.e').on("touchend", function(e){
+              clearItems(this);
+              $(this).parent().find('.e_sel').addClass('active');
+            });
+            $('.f').on("touchend", function(e){
+              clearItems(this);
+              $(this).parent().find('.f_sel').addClass('active');
+            });
+            $('.a_mul').on("touchend", function(e){
+                $(this).parent().find('.a_mul_sel').addClass('active');
+            });
+            $('.a_mul_sel').on("touchend", function(e){
+                $(this).removeClass('active');
+            });
+            $('.b_mul').on("touchend", function(e){
+              $(this).parent().find('.b_mul_sel').addClass('active');
+            });
+            $('.b_mul_sel').on("touchend", function(e){
+                $(this).removeClass('active');
+            });
+            $('.c_mul').on("touchend", function(e){
+              $(this).parent().find('.c_mul_sel').addClass('active');
+            });
+            $('.c_mul_sel').on("touchend", function(e){
+                $(this).removeClass('active');
+            });
+            function calculate() {
+              var score = 1;
+              var answer = ['A','C','D','D','ABC','C','D','A'];
+              if($('.no1 .a_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no3 .c_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no4 .d_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no5 .d_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no6 .a_mul_sel').hasClass('active')&&$('.no6 .b_mul_sel').hasClass('active')&&$('.no6 .c_mul_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no7 .c_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no8 .d_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no9 .a_sel').hasClass('active')){
+                score++;
+              };
+
+              return score;
+            };
+            function checkFinish(){
+              if($('.no1').children().hasClass('active')&&$('.no2').children().hasClass('active')&&$('.no3').children().hasClass('active')&&$('.no4').children().hasClass('active')&&$('.no5').children().hasClass('active')&&$('.no6').children().hasClass('active')&&$('.no7').children().hasClass('active')&&$('.no8').children().hasClass('active')&&$('.no9').children().hasClass('active')){
+                return true;
+              }else{
+                return false;
+              }
+            };
+            $('.submit').on("touchend", function(){
+                if(!checkFinish()){
+                  alert('请先完成所有题目');
+                }else{
+                  var score = calculate();
+                  console.log(score);
+                  e.utils.share('答对'+score+'题。');
+                  switch(true)
+                  {
+                    case score>=0&&score<=3:
+                      console.log(1);
+                      $('.pop1').addClass('active');
+                      break;
+                    case score>=4&&score<=6:
+                      console.log(2);
+                      $('.pop2').addClass('active');
+                      break;
+                    case score>=7&&score<=8:
+                      console.log(3);
+                      $('.pop3').addClass('active');
+                      break;
+                    case score>=9:
+                      console.log(4);
+                      $('.pop4').addClass('active');
+                      break;
+                  }
+                }
+
+            });
+        }
+    },
+    e.main = function() {
+        e.utils.share('国家基本公共卫生服务答题','国家基本公共卫生服务答题'),
+        e.utils.loadImages(['__PUBLIC__/img/haokoubei/loading.png'],
+        function() {
+            e.preload.sources = ["__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/pop1.png","__PUBLIC__/img/quiz/pop2.png","__PUBLIC__/img/quiz/pop3.png","__PUBLIC__/img/quiz/pop4.png","__PUBLIC__/img/quiz/yes.png","__PUBLIC__/img/quiz/no.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/p0.png","__PUBLIC__/img/quiz/skip.png","__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/q1.png","__PUBLIC__/img/quiz/q2.png","__PUBLIC__/img/quiz/q3.png","__PUBLIC__/img/quiz/q4.png","__PUBLIC__/img/quiz/q5.png","__PUBLIC__/img/quiz/q6.png","__PUBLIC__/img/quiz/q7.png","__PUBLIC__/img/quiz/q8.png","__PUBLIC__/img/quiz/q9.png","__PUBLIC__/img/quiz/pagenum1.png","__PUBLIC__/img/quiz/pagenum2.png","__PUBLIC__/img/quiz/pagenum3.png","__PUBLIC__/img/quiz/pagenum4.png","__PUBLIC__/img/quiz/pagenum5.png","__PUBLIC__/img/quiz/pagenum6.png","__PUBLIC__/img/quiz/pagenum7.png","__PUBLIC__/img/quiz/pagenum8.png","__PUBLIC__/img/quiz/pagenum9.png","__PUBLIC__/img/quiz/next.png","__PUBLIC__/img/quiz/submit.png","__PUBLIC__/img/quiz/prev.png","__PUBLIC__/img/quiz/q1_a.png","__PUBLIC__/img/quiz/q1_b.png","__PUBLIC__/img/quiz/q1_c.png","__PUBLIC__/img/quiz/q1_a_sel.png","__PUBLIC__/img/quiz/q1_b_sel.png","__PUBLIC__/img/quiz/q1_c_sel.png","__PUBLIC__/img/quiz/q2_a.png","__PUBLIC__/img/quiz/q2_b.png","__PUBLIC__/img/quiz/q2_c.png","__PUBLIC__/img/quiz/q2_d.png","__PUBLIC__/img/quiz/q2_e.png","__PUBLIC__/img/quiz/q2_f.png","__PUBLIC__/img/quiz/q2_a_sel.png","__PUBLIC__/img/quiz/q2_b_sel.png","__PUBLIC__/img/quiz/q2_c_sel.png","__PUBLIC__/img/quiz/q2_d_sel.png","__PUBLIC__/img/quiz/q2_e_sel.png","__PUBLIC__/img/quiz/q2_f_sel.png","__PUBLIC__/img/quiz/q3_a.png","__PUBLIC__/img/quiz/q3_b.png","__PUBLIC__/img/quiz/q3_c.png","__PUBLIC__/img/quiz/q3_d.png","__PUBLIC__/img/quiz/q3_a_sel.png","__PUBLIC__/img/quiz/q3_b_sel.png","__PUBLIC__/img/quiz/q3_c_sel.png","__PUBLIC__/img/quiz/q3_d_sel.png","__PUBLIC__/img/quiz/q4_a.png","__PUBLIC__/img/quiz/q4_b.png","__PUBLIC__/img/quiz/q4_c.png","__PUBLIC__/img/quiz/q4_d.png","__PUBLIC__/img/quiz/q4_a_sel.png","__PUBLIC__/img/quiz/q4_b_sel.png","__PUBLIC__/img/quiz/q4_c_sel.png","__PUBLIC__/img/quiz/q4_d_sel.png","__PUBLIC__/img/quiz/q5_a.png","__PUBLIC__/img/quiz/q5_b.png","__PUBLIC__/img/quiz/q5_c.png","__PUBLIC__/img/quiz/q5_d.png","__PUBLIC__/img/quiz/q5_a_sel.png","__PUBLIC__/img/quiz/q5_b_sel.png","__PUBLIC__/img/quiz/q5_c_sel.png","__PUBLIC__/img/quiz/q5_d_sel.png","__PUBLIC__/img/quiz/q6_a.png","__PUBLIC__/img/quiz/q6_b.png","__PUBLIC__/img/quiz/q6_c.png","__PUBLIC__/img/quiz/q6_a_sel.png","__PUBLIC__/img/quiz/q6_b_sel.png","__PUBLIC__/img/quiz/q6_c_sel.png","__PUBLIC__/img/quiz/q7_a.png","__PUBLIC__/img/quiz/q7_b.png","__PUBLIC__/img/quiz/q7_c.png","__PUBLIC__/img/quiz/q7_d.png","__PUBLIC__/img/quiz/q7_a_sel.png","__PUBLIC__/img/quiz/q7_b_sel.png","__PUBLIC__/img/quiz/q7_c_sel.png","__PUBLIC__/img/quiz/q7_d_sel.png","__PUBLIC__/img/quiz/q8_a.png","__PUBLIC__/img/quiz/q8_b.png","__PUBLIC__/img/quiz/q8_c.png","__PUBLIC__/img/quiz/q8_d.png","__PUBLIC__/img/quiz/q8_a_sel.png","__PUBLIC__/img/quiz/q8_b_sel.png","__PUBLIC__/img/quiz/q8_c_sel.png","__PUBLIC__/img/quiz/q8_d_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png","__PUBLIC__/img/quiz/q9_a.png","__PUBLIC__/img/quiz/q9_b.png","__PUBLIC__/img/quiz/q9_c.png","__PUBLIC__/img/quiz/q9_a_sel.png","__PUBLIC__/img/quiz/q9_b_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png"],
+            e.preload.main()
+        }),
+        e.musics.main(),
+        e.events.main()
+    },
+    e
+} (app || {});
+app.main();
+</script>
