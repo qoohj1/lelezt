@@ -1365,7 +1365,7 @@ var app = function(e) {
 
                      wx.onMenuShareAppMessage({
                          title: t, // 分享标题
-                         desc: d || '国家基本公共卫生服务答题', // 分享描述
+                         desc: d || '活动由宝安区卫生和计划生育局主办', // 分享描述
                          link: 'http://zt.shegurz.com/quiz', // 分享链接
                          imgUrl: 'http://zt.shegurz.com/Public/img/haokoubei/sun.png', // 分享图标
                          type: '',
@@ -1662,7 +1662,7 @@ var app = function(e) {
                 }else{
                   var score = calculate();
                   console.log(score);
-                  e.utils.share('答对'+score+'题。');
+                  // e.utils.share('答对'+score+'题。');
                   switch(true)
                   {
                     case score>=0&&score<=3:
@@ -1688,7 +1688,7 @@ var app = function(e) {
         }
     },
     e.main = function() {
-        e.utils.share('国家基本公共卫生服务答题','国家基本公共卫生服务答题'),
+        e.utils.share('国家基本公共卫生服务，您了解多少','活动由宝安区卫生和计划生育局主办'),
         e.utils.loadImages(['__PUBLIC__/img/haokoubei/loading.png'],
         function() {
             e.preload.sources = ["__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/pop1_2.png","__PUBLIC__/img/quiz/pop2_2.png","__PUBLIC__/img/quiz/pop3_2.png","__PUBLIC__/img/quiz/pop4_2.png","__PUBLIC__/img/quiz/answer.png","__PUBLIC__/img/quiz/answer.jpg","__PUBLIC__/img/quiz/yes.png","__PUBLIC__/img/quiz/no.png","__PUBLIC__/img/quiz/again_2.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/p0.png","__PUBLIC__/img/quiz/skip.png","__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/q1.png","__PUBLIC__/img/quiz/q2_2.png","__PUBLIC__/img/quiz/q3.png","__PUBLIC__/img/quiz/q4.png","__PUBLIC__/img/quiz/q5.png","__PUBLIC__/img/quiz/q6.png","__PUBLIC__/img/quiz/q7.png","__PUBLIC__/img/quiz/q8.png","__PUBLIC__/img/quiz/q9.png","__PUBLIC__/img/quiz/pagenum1.png","__PUBLIC__/img/quiz/pagenum2.png","__PUBLIC__/img/quiz/pagenum3.png","__PUBLIC__/img/quiz/pagenum4.png","__PUBLIC__/img/quiz/pagenum5.png","__PUBLIC__/img/quiz/pagenum6.png","__PUBLIC__/img/quiz/pagenum7.png","__PUBLIC__/img/quiz/pagenum8.png","__PUBLIC__/img/quiz/pagenum9.png","__PUBLIC__/img/quiz/next.png","__PUBLIC__/img/quiz/submit.png","__PUBLIC__/img/quiz/prev.png","__PUBLIC__/img/quiz/q1_a.png","__PUBLIC__/img/quiz/q1_b.png","__PUBLIC__/img/quiz/q1_c.png","__PUBLIC__/img/quiz/q1_a_sel.png","__PUBLIC__/img/quiz/q1_b_sel.png","__PUBLIC__/img/quiz/q1_c_sel.png","__PUBLIC__/img/quiz/q2_a.png","__PUBLIC__/img/quiz/q2_b.png","__PUBLIC__/img/quiz/q2_c.png","__PUBLIC__/img/quiz/q2_d.png","__PUBLIC__/img/quiz/q2_e.png","__PUBLIC__/img/quiz/q2_f.png","__PUBLIC__/img/quiz/q2_a_sel.png","__PUBLIC__/img/quiz/q2_b_sel.png","__PUBLIC__/img/quiz/q2_c_sel.png","__PUBLIC__/img/quiz/q2_d_sel.png","__PUBLIC__/img/quiz/q2_e_sel.png","__PUBLIC__/img/quiz/q2_f_sel.png","__PUBLIC__/img/quiz/q3_a.png","__PUBLIC__/img/quiz/q3_b.png","__PUBLIC__/img/quiz/q3_c.png","__PUBLIC__/img/quiz/q3_d.png","__PUBLIC__/img/quiz/q3_a_sel.png","__PUBLIC__/img/quiz/q3_b_sel.png","__PUBLIC__/img/quiz/q3_c_sel.png","__PUBLIC__/img/quiz/q3_d_sel.png","__PUBLIC__/img/quiz/q4_a.png","__PUBLIC__/img/quiz/q4_b.png","__PUBLIC__/img/quiz/q4_c.png","__PUBLIC__/img/quiz/q4_d.png","__PUBLIC__/img/quiz/q4_a_sel.png","__PUBLIC__/img/quiz/q4_b_sel.png","__PUBLIC__/img/quiz/q4_c_sel.png","__PUBLIC__/img/quiz/q4_d_sel.png","__PUBLIC__/img/quiz/q5_a.png","__PUBLIC__/img/quiz/q5_b.png","__PUBLIC__/img/quiz/q5_c.png","__PUBLIC__/img/quiz/q5_d.png","__PUBLIC__/img/quiz/q5_a_sel.png","__PUBLIC__/img/quiz/q5_b_sel.png","__PUBLIC__/img/quiz/q5_c_sel.png","__PUBLIC__/img/quiz/q5_d_sel.png","__PUBLIC__/img/quiz/q6_a.png","__PUBLIC__/img/quiz/q6_b.png","__PUBLIC__/img/quiz/q6_c.png","__PUBLIC__/img/quiz/q6_a_sel.png","__PUBLIC__/img/quiz/q6_b_sel.png","__PUBLIC__/img/quiz/q6_c_sel.png","__PUBLIC__/img/quiz/q7_a.png","__PUBLIC__/img/quiz/q7_b.png","__PUBLIC__/img/quiz/q7_c.png","__PUBLIC__/img/quiz/q7_d.png","__PUBLIC__/img/quiz/q7_a_sel.png","__PUBLIC__/img/quiz/q7_b_sel.png","__PUBLIC__/img/quiz/q7_c_sel.png","__PUBLIC__/img/quiz/q7_d_sel.png","__PUBLIC__/img/quiz/q8_a.png","__PUBLIC__/img/quiz/q8_b.png","__PUBLIC__/img/quiz/q8_c.png","__PUBLIC__/img/quiz/q8_d.png","__PUBLIC__/img/quiz/q8_a_sel.png","__PUBLIC__/img/quiz/q8_b_sel.png","__PUBLIC__/img/quiz/q8_c_sel.png","__PUBLIC__/img/quiz/q8_d_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png","__PUBLIC__/img/quiz/q9_a.png","__PUBLIC__/img/quiz/q9_b.png","__PUBLIC__/img/quiz/q9_c.png","__PUBLIC__/img/quiz/q9_a_sel.png","__PUBLIC__/img/quiz/q9_b_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png"],
