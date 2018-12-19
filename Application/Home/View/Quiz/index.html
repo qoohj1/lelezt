@@ -189,7 +189,24 @@ a,img {
 }
 
 
-
+.p2{
+  display: none;
+  z-index: 10;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+.p2.active{
+  display: block
+}
+.p2 .p-content {
+	width: 100%;
+  height: 6997px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: url(__PUBLIC__/img/quiz/answer.jpg) no-repeat;
+}
 
 .p1 {
   z-index: 4
@@ -207,7 +224,7 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-  background: url(__PUBLIC__/img/quiz/pop1.png) no-repeat rgba(0,0,0,.8)!important;
+  background: url(__PUBLIC__/img/quiz/pop1_2.png) no-repeat rgba(0,0,0,.8)!important;
 }
 
 .pop2 .p-content {
@@ -216,7 +233,7 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-  background: url(__PUBLIC__/img/quiz/pop2.png) no-repeat rgba(0,0,0,.8)!important;
+  background: url(__PUBLIC__/img/quiz/pop2_2.png) no-repeat rgba(0,0,0,.8)!important;
 }
 
 .pop3 .p-content {
@@ -225,7 +242,7 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-  background: url(__PUBLIC__/img/quiz/pop3.png) no-repeat rgba(0,0,0,.8)!important;
+  background: url(__PUBLIC__/img/quiz/pop3_2.png) no-repeat rgba(0,0,0,.8)!important;
 }
 
 .pop4 .p-content {
@@ -234,14 +251,14 @@ a,img {
 	position: absolute;
 	left: 0;
 	top: 0;
-  background: url(__PUBLIC__/img/quiz/pop4.png) no-repeat rgba(0,0,0,.8)!important;
+  background: url(__PUBLIC__/img/quiz/pop4_2.png) no-repeat rgba(0,0,0,.8)!important;
 }
 .pop1 .p-content .yes{
   width: 307px;
 	height: 163px;
 	position: absolute;
 	left: 402px;
-	top: 819px;
+	top: 775px;
   background: url(__PUBLIC__/img/quiz/yes.png) no-repeat;
 }
 .pop1 .p-content .no{
@@ -249,32 +266,40 @@ a,img {
 	height: 159px;
 	position: absolute;
 	left: 87px;
-	top: 823px;
+	top: 777px;
   background: url(__PUBLIC__/img/quiz/no.png) no-repeat;
 }
+.answer{
+  width: 578px;
+  height: 115px;
+  position: absolute;
+  background: url(__PUBLIC__/img/quiz/answer.png) no-repeat;
+  top: 916px;
+  left: 104px;
+}
 .pop2 .p-content .again{
-  width: 420px;
-	height: 186px;
+  width: 347px;
+	height: 153px;
 	position: absolute;
-	left: 166px;
-	top: 796px;
-  background: url(__PUBLIC__/img/quiz/again.png) no-repeat;
+	left: 213px;
+	top: 759px;
+  background: url(__PUBLIC__/img/quiz/again_2.png) no-repeat;
 }
 .pop3 .p-content .again{
-  width: 420px;
-	height: 186px;
+  width: 347px;
+	height: 153px;
 	position: absolute;
-	left: 166px;
-	top: 796px;
-  background: url(__PUBLIC__/img/quiz/again.png) no-repeat;
+	left: 198px;
+	top: 767px;
+  background: url(__PUBLIC__/img/quiz/again_2.png) no-repeat;
 }
 .pop4 .p-content .again{
-  width: 420px;
-	height: 186px;
+  width: 347px;
+	height: 153px;
 	position: absolute;
-	left: 166px;
-	top: 796px;
-  background: url(__PUBLIC__/img/quiz/again.png) no-repeat;
+	left: 201px;
+	top: 763px;
+  background: url(__PUBLIC__/img/quiz/again_2.png) no-repeat;
 }
 
 
@@ -285,11 +310,11 @@ a,img {
   display: block;
 }
 
-.a_sel,.b_sel,.c_sel,.d_sel,.e_sel,.f_sel,.a_mul_sel,.b_mul_sel,.c_mul_sel{
+.a_sel,.b_sel,.c_sel,.d_sel,.e_sel,.f_sel,.a_mul_sel,.b_mul_sel,.c_mul_sel,.d_mul_sel,.e_mul_sel,.f_mul_sel{
   display: none
 }
 
-.a_sel.active,.b_sel.active,.c_sel.active,.d_sel.active,.e_sel.active,.f_sel.active,.a_mul_sel.active,.b_mul_sel.active,.c_mul_sel.active{
+.a_sel.active,.b_sel.active,.c_sel.active,.d_sel.active,.e_sel.active,.f_sel.active,.a_mul_sel.active,.b_mul_sel.active,.c_mul_sel.active,.d_mul_sel.active,.e_mul_sel.active,.f_mul_sel.active{
   display: block
 }
 
@@ -336,12 +361,12 @@ a,img {
 }
 
 .p1 .p-content .q2{
-  width: 540px;
-  height: 224px;
+  width: 627px;
+  height: 225px;
   position: absolute;
-  left: 114px;
+  left: 64px;
   top:333px;
-  background: url(__PUBLIC__/img/quiz/q2.png) no-repeat;
+  background: url(__PUBLIC__/img/quiz/q2_2.png) no-repeat;
 }
 
 .p1 .p-content .q3{
@@ -408,7 +433,7 @@ a,img {
 }
 
 .p1 .p-content .pagenum{
-  width: 46px;
+  width: 55px;
   height: 30px;
   position: absolute;
   left: 349px;
@@ -1137,21 +1162,25 @@ a,img {
         <div class="p-content">
           <div class="yes"></div>
           <div class="no"></div>
+          <div class="answer"></div>
         </div>
       </div>
       <div class="pop2">
         <div class="p-content">
           <div class="again"></div>
+          <div class="answer"></div>
         </div>
       </div>
       <div class="pop3">
         <div class="p-content">
           <div class="again"></div>
+          <div class="answer"></div>
         </div>
       </div>
       <div class="pop4">
         <div class="p-content">
           <div class="again"></div>
+          <div class="answer"></div>
         </div>
       </div>
       <div class="p0 page">
@@ -1177,18 +1206,18 @@ a,img {
             </div>
             <div class="no2">
               <div class="q2"></div>
-              <div class="q2_a a"></div>
-              <div class="q2_b b"></div>
-              <div class="q2_c c"></div>
-              <div class="q2_d d"></div>
-              <div class="q2_e e"></div>
-              <div class="q2_f f"></div>
-              <div class="q2_a_sel a_sel"></div>
-              <div class="q2_b_sel b_sel"></div>
-              <div class="q2_c_sel c_sel"></div>
-              <div class="q2_d_sel d_sel"></div>
-              <div class="q2_e_sel e_sel"></div>
-              <div class="q2_f_sel f_sel"></div>
+              <div class="q2_a a_mul"></div>
+              <div class="q2_b b_mul"></div>
+              <div class="q2_c c_mul"></div>
+              <div class="q2_d d_mul"></div>
+              <div class="q2_e e_mul"></div>
+              <div class="q2_f f_mul"></div>
+              <div class="q2_a_sel a_mul_sel"></div>
+              <div class="q2_b_sel b_mul_sel"></div>
+              <div class="q2_c_sel c_mul_sel"></div>
+              <div class="q2_d_sel d_mul_sel"></div>
+              <div class="q2_e_sel e_mul_sel"></div>
+              <div class="q2_f_sel f_mul_sel"></div>
               <div class="prev"></div>
               <div class="next"></div>
               <div class="pagenum pagenum2"></div>
@@ -1289,7 +1318,9 @@ a,img {
             </div>
           </div>
       </div>
-
+      <div class="p2">
+        <div class="p-content"></div>
+      </div>
   </div>
 </body>
 </html>
@@ -1476,6 +1507,14 @@ var app = function(e) {
                 locked = false;
             };
 
+            $('.answer').on("touchend", function(e){
+              $('.p1').removeClass('active');
+              $('.p2').addClass('active');
+              $('.pop1').removeClass('active');
+              $('.pop2').removeClass('active');
+              $('.pop3').removeClass('active');
+              $('.pop4').removeClass('active');
+            });
             $('.skip').on("touchend", function(e){
               document.getElementById("video-1").pause();
               $('.p0').removeClass('active');
@@ -1559,10 +1598,31 @@ var app = function(e) {
             $('.c_mul_sel').on("touchend", function(e){
                 $(this).removeClass('active');
             });
+            $('.d_mul').on("touchend", function(e){
+              $(this).parent().find('.d_mul_sel').addClass('active');
+            });
+            $('.d_mul_sel').on("touchend", function(e){
+                $(this).removeClass('active');
+            });
+            $('.e_mul').on("touchend", function(e){
+              $(this).parent().find('.e_mul_sel').addClass('active');
+            });
+            $('.e_mul_sel').on("touchend", function(e){
+                $(this).removeClass('active');
+            });
+            $('.f_mul').on("touchend", function(e){
+              $(this).parent().find('.f_mul_sel').addClass('active');
+            });
+            $('.f_mul_sel').on("touchend", function(e){
+                $(this).removeClass('active');
+            });
             function calculate() {
-              var score = 1;
-              var answer = ['A','C','D','D','ABC','C','D','A'];
+              var score = 0;
+              var answer = ['A','ABCD','C','D','D','ABC','C','D','A'];
               if($('.no1 .a_sel').hasClass('active')){
+                score++;
+              };
+              if($('.no2 .a_mul_sel').hasClass('active')&&$('.no2 .b_mul_sel').hasClass('active')&&$('.no2 .c_mul_sel').hasClass('active')&&$('.no2 .d_mul_sel').hasClass('active')&&$('.no2 .e_mul_sel').hasClass('active')&&$('.no2 .f_mul_sel').hasClass('active')){
                 score++;
               };
               if($('.no3 .c_sel').hasClass('active')){
@@ -1631,7 +1691,7 @@ var app = function(e) {
         e.utils.share('国家基本公共卫生服务答题','国家基本公共卫生服务答题'),
         e.utils.loadImages(['__PUBLIC__/img/haokoubei/loading.png'],
         function() {
-            e.preload.sources = ["__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/pop1.png","__PUBLIC__/img/quiz/pop2.png","__PUBLIC__/img/quiz/pop3.png","__PUBLIC__/img/quiz/pop4.png","__PUBLIC__/img/quiz/yes.png","__PUBLIC__/img/quiz/no.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/p0.png","__PUBLIC__/img/quiz/skip.png","__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/q1.png","__PUBLIC__/img/quiz/q2.png","__PUBLIC__/img/quiz/q3.png","__PUBLIC__/img/quiz/q4.png","__PUBLIC__/img/quiz/q5.png","__PUBLIC__/img/quiz/q6.png","__PUBLIC__/img/quiz/q7.png","__PUBLIC__/img/quiz/q8.png","__PUBLIC__/img/quiz/q9.png","__PUBLIC__/img/quiz/pagenum1.png","__PUBLIC__/img/quiz/pagenum2.png","__PUBLIC__/img/quiz/pagenum3.png","__PUBLIC__/img/quiz/pagenum4.png","__PUBLIC__/img/quiz/pagenum5.png","__PUBLIC__/img/quiz/pagenum6.png","__PUBLIC__/img/quiz/pagenum7.png","__PUBLIC__/img/quiz/pagenum8.png","__PUBLIC__/img/quiz/pagenum9.png","__PUBLIC__/img/quiz/next.png","__PUBLIC__/img/quiz/submit.png","__PUBLIC__/img/quiz/prev.png","__PUBLIC__/img/quiz/q1_a.png","__PUBLIC__/img/quiz/q1_b.png","__PUBLIC__/img/quiz/q1_c.png","__PUBLIC__/img/quiz/q1_a_sel.png","__PUBLIC__/img/quiz/q1_b_sel.png","__PUBLIC__/img/quiz/q1_c_sel.png","__PUBLIC__/img/quiz/q2_a.png","__PUBLIC__/img/quiz/q2_b.png","__PUBLIC__/img/quiz/q2_c.png","__PUBLIC__/img/quiz/q2_d.png","__PUBLIC__/img/quiz/q2_e.png","__PUBLIC__/img/quiz/q2_f.png","__PUBLIC__/img/quiz/q2_a_sel.png","__PUBLIC__/img/quiz/q2_b_sel.png","__PUBLIC__/img/quiz/q2_c_sel.png","__PUBLIC__/img/quiz/q2_d_sel.png","__PUBLIC__/img/quiz/q2_e_sel.png","__PUBLIC__/img/quiz/q2_f_sel.png","__PUBLIC__/img/quiz/q3_a.png","__PUBLIC__/img/quiz/q3_b.png","__PUBLIC__/img/quiz/q3_c.png","__PUBLIC__/img/quiz/q3_d.png","__PUBLIC__/img/quiz/q3_a_sel.png","__PUBLIC__/img/quiz/q3_b_sel.png","__PUBLIC__/img/quiz/q3_c_sel.png","__PUBLIC__/img/quiz/q3_d_sel.png","__PUBLIC__/img/quiz/q4_a.png","__PUBLIC__/img/quiz/q4_b.png","__PUBLIC__/img/quiz/q4_c.png","__PUBLIC__/img/quiz/q4_d.png","__PUBLIC__/img/quiz/q4_a_sel.png","__PUBLIC__/img/quiz/q4_b_sel.png","__PUBLIC__/img/quiz/q4_c_sel.png","__PUBLIC__/img/quiz/q4_d_sel.png","__PUBLIC__/img/quiz/q5_a.png","__PUBLIC__/img/quiz/q5_b.png","__PUBLIC__/img/quiz/q5_c.png","__PUBLIC__/img/quiz/q5_d.png","__PUBLIC__/img/quiz/q5_a_sel.png","__PUBLIC__/img/quiz/q5_b_sel.png","__PUBLIC__/img/quiz/q5_c_sel.png","__PUBLIC__/img/quiz/q5_d_sel.png","__PUBLIC__/img/quiz/q6_a.png","__PUBLIC__/img/quiz/q6_b.png","__PUBLIC__/img/quiz/q6_c.png","__PUBLIC__/img/quiz/q6_a_sel.png","__PUBLIC__/img/quiz/q6_b_sel.png","__PUBLIC__/img/quiz/q6_c_sel.png","__PUBLIC__/img/quiz/q7_a.png","__PUBLIC__/img/quiz/q7_b.png","__PUBLIC__/img/quiz/q7_c.png","__PUBLIC__/img/quiz/q7_d.png","__PUBLIC__/img/quiz/q7_a_sel.png","__PUBLIC__/img/quiz/q7_b_sel.png","__PUBLIC__/img/quiz/q7_c_sel.png","__PUBLIC__/img/quiz/q7_d_sel.png","__PUBLIC__/img/quiz/q8_a.png","__PUBLIC__/img/quiz/q8_b.png","__PUBLIC__/img/quiz/q8_c.png","__PUBLIC__/img/quiz/q8_d.png","__PUBLIC__/img/quiz/q8_a_sel.png","__PUBLIC__/img/quiz/q8_b_sel.png","__PUBLIC__/img/quiz/q8_c_sel.png","__PUBLIC__/img/quiz/q8_d_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png","__PUBLIC__/img/quiz/q9_a.png","__PUBLIC__/img/quiz/q9_b.png","__PUBLIC__/img/quiz/q9_c.png","__PUBLIC__/img/quiz/q9_a_sel.png","__PUBLIC__/img/quiz/q9_b_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png"],
+            e.preload.sources = ["__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/pop1_2.png","__PUBLIC__/img/quiz/pop2_2.png","__PUBLIC__/img/quiz/pop3_2.png","__PUBLIC__/img/quiz/pop4_2.png","__PUBLIC__/img/quiz/answer.png","__PUBLIC__/img/quiz/answer.jpg","__PUBLIC__/img/quiz/yes.png","__PUBLIC__/img/quiz/no.png","__PUBLIC__/img/quiz/again_2.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/again.png","__PUBLIC__/img/quiz/p0.png","__PUBLIC__/img/quiz/skip.png","__PUBLIC__/img/quiz/p1_bg.jpg","__PUBLIC__/img/quiz/q1.png","__PUBLIC__/img/quiz/q2_2.png","__PUBLIC__/img/quiz/q3.png","__PUBLIC__/img/quiz/q4.png","__PUBLIC__/img/quiz/q5.png","__PUBLIC__/img/quiz/q6.png","__PUBLIC__/img/quiz/q7.png","__PUBLIC__/img/quiz/q8.png","__PUBLIC__/img/quiz/q9.png","__PUBLIC__/img/quiz/pagenum1.png","__PUBLIC__/img/quiz/pagenum2.png","__PUBLIC__/img/quiz/pagenum3.png","__PUBLIC__/img/quiz/pagenum4.png","__PUBLIC__/img/quiz/pagenum5.png","__PUBLIC__/img/quiz/pagenum6.png","__PUBLIC__/img/quiz/pagenum7.png","__PUBLIC__/img/quiz/pagenum8.png","__PUBLIC__/img/quiz/pagenum9.png","__PUBLIC__/img/quiz/next.png","__PUBLIC__/img/quiz/submit.png","__PUBLIC__/img/quiz/prev.png","__PUBLIC__/img/quiz/q1_a.png","__PUBLIC__/img/quiz/q1_b.png","__PUBLIC__/img/quiz/q1_c.png","__PUBLIC__/img/quiz/q1_a_sel.png","__PUBLIC__/img/quiz/q1_b_sel.png","__PUBLIC__/img/quiz/q1_c_sel.png","__PUBLIC__/img/quiz/q2_a.png","__PUBLIC__/img/quiz/q2_b.png","__PUBLIC__/img/quiz/q2_c.png","__PUBLIC__/img/quiz/q2_d.png","__PUBLIC__/img/quiz/q2_e.png","__PUBLIC__/img/quiz/q2_f.png","__PUBLIC__/img/quiz/q2_a_sel.png","__PUBLIC__/img/quiz/q2_b_sel.png","__PUBLIC__/img/quiz/q2_c_sel.png","__PUBLIC__/img/quiz/q2_d_sel.png","__PUBLIC__/img/quiz/q2_e_sel.png","__PUBLIC__/img/quiz/q2_f_sel.png","__PUBLIC__/img/quiz/q3_a.png","__PUBLIC__/img/quiz/q3_b.png","__PUBLIC__/img/quiz/q3_c.png","__PUBLIC__/img/quiz/q3_d.png","__PUBLIC__/img/quiz/q3_a_sel.png","__PUBLIC__/img/quiz/q3_b_sel.png","__PUBLIC__/img/quiz/q3_c_sel.png","__PUBLIC__/img/quiz/q3_d_sel.png","__PUBLIC__/img/quiz/q4_a.png","__PUBLIC__/img/quiz/q4_b.png","__PUBLIC__/img/quiz/q4_c.png","__PUBLIC__/img/quiz/q4_d.png","__PUBLIC__/img/quiz/q4_a_sel.png","__PUBLIC__/img/quiz/q4_b_sel.png","__PUBLIC__/img/quiz/q4_c_sel.png","__PUBLIC__/img/quiz/q4_d_sel.png","__PUBLIC__/img/quiz/q5_a.png","__PUBLIC__/img/quiz/q5_b.png","__PUBLIC__/img/quiz/q5_c.png","__PUBLIC__/img/quiz/q5_d.png","__PUBLIC__/img/quiz/q5_a_sel.png","__PUBLIC__/img/quiz/q5_b_sel.png","__PUBLIC__/img/quiz/q5_c_sel.png","__PUBLIC__/img/quiz/q5_d_sel.png","__PUBLIC__/img/quiz/q6_a.png","__PUBLIC__/img/quiz/q6_b.png","__PUBLIC__/img/quiz/q6_c.png","__PUBLIC__/img/quiz/q6_a_sel.png","__PUBLIC__/img/quiz/q6_b_sel.png","__PUBLIC__/img/quiz/q6_c_sel.png","__PUBLIC__/img/quiz/q7_a.png","__PUBLIC__/img/quiz/q7_b.png","__PUBLIC__/img/quiz/q7_c.png","__PUBLIC__/img/quiz/q7_d.png","__PUBLIC__/img/quiz/q7_a_sel.png","__PUBLIC__/img/quiz/q7_b_sel.png","__PUBLIC__/img/quiz/q7_c_sel.png","__PUBLIC__/img/quiz/q7_d_sel.png","__PUBLIC__/img/quiz/q8_a.png","__PUBLIC__/img/quiz/q8_b.png","__PUBLIC__/img/quiz/q8_c.png","__PUBLIC__/img/quiz/q8_d.png","__PUBLIC__/img/quiz/q8_a_sel.png","__PUBLIC__/img/quiz/q8_b_sel.png","__PUBLIC__/img/quiz/q8_c_sel.png","__PUBLIC__/img/quiz/q8_d_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png","__PUBLIC__/img/quiz/q9_a.png","__PUBLIC__/img/quiz/q9_b.png","__PUBLIC__/img/quiz/q9_c.png","__PUBLIC__/img/quiz/q9_a_sel.png","__PUBLIC__/img/quiz/q9_b_sel.png","__PUBLIC__/img/quiz/q9_c_sel.png"],
             e.preload.main()
         }),
         e.musics.main(),
