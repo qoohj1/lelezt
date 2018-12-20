@@ -1668,18 +1668,30 @@ var app = function(e) {
                     case score>=0&&score<=3:
                       console.log(1);
                       $('.pop1').addClass('active');
+                      setTimeout(function(){
+                        $('.p2').addClass('active');
+                      },2000);
                       break;
                     case score>=4&&score<=6:
                       console.log(2);
                       $('.pop2').addClass('active');
+                      setTimeout(function(){
+                        $('.p2').addClass('active');
+                      },2000);
                       break;
                     case score>=7&&score<=8:
                       console.log(3);
                       $('.pop3').addClass('active');
+                      setTimeout(function(){
+                        $('.p2').addClass('active');
+                      },2000);
                       break;
                     case score>=9:
                       console.log(4);
                       $('.pop4').addClass('active');
+                      setTimeout(function(){
+                        $('.p2').addClass('active');
+                      },2000);
                       break;
                   }
                 }
