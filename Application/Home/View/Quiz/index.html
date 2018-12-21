@@ -1618,36 +1618,80 @@ var app = function(e) {
             });
             function calculate() {
               var score = 0;
+              var first = 0,
+              second = 0,
+              third = 0,
+              fourth = 0,
+              fifth = 0,
+              sixth = 0,
+              seventh = 0,
+              eighth = 0,
+              ninth = 0,
+              tenth = 0;
               var answer = ['A','ABCD','C','D','D','ABC','C','D','A'];
               if($('.no1 .a_sel').hasClass('active')){
                 score++;
+                first++;
               };
               if($('.no2 .a_mul_sel').hasClass('active')&&$('.no2 .b_mul_sel').hasClass('active')&&$('.no2 .c_mul_sel').hasClass('active')&&$('.no2 .d_mul_sel').hasClass('active')&&$('.no2 .e_mul_sel').hasClass('active')&&$('.no2 .f_mul_sel').hasClass('active')){
                 score++;
+                second++;
               };
               if($('.no3 .c_sel').hasClass('active')){
                 score++;
+                third++;
               };
               if($('.no4 .d_sel').hasClass('active')){
                 score++;
+                fourth++;
               };
               if($('.no5 .d_sel').hasClass('active')){
                 score++;
+                fifth++;
               };
               if($('.no6 .a_mul_sel').hasClass('active')&&$('.no6 .b_mul_sel').hasClass('active')&&$('.no6 .c_mul_sel').hasClass('active')){
                 score++;
+                sixth++;
               };
               if($('.no7 .c_sel').hasClass('active')){
                 score++;
+                seventh++;
               };
               if($('.no8 .d_sel').hasClass('active')){
                 score++;
+                eighth++;
               };
               if($('.no9 .a_sel').hasClass('active')){
                 score++;
+                ninth++;
               };
+              $.ajax({
+                url:'/quiz/staticstic',
+                type:'post',
+                data: {
+                  first: first,
+                  second: second,
+                  third: third,
+                  fourth: fourth,
+                  fifth: fifth,
+                  sixth: sixth,
+                  seventh: seventh,
+                  eighth: eighth,
+                  ninth: ninth,
+                  tenth: tenth
+                },
+                dataType:'json',
+                success:function(jsondata){
+                },
+                error:function(jsondata){
+                  // // console.log(jsondata.responseText.data)
+                  // // jsondata = JSON.parse(jsondata);
+                  // JSON.stringify(jsondata)
+                }
 
+              })
               return score;
+
             };
             function checkFinish(){
               if($('.no1').children().hasClass('active')&&$('.no2').children().hasClass('active')&&$('.no3').children().hasClass('active')&&$('.no4').children().hasClass('active')&&$('.no5').children().hasClass('active')&&$('.no6').children().hasClass('active')&&$('.no7').children().hasClass('active')&&$('.no8').children().hasClass('active')&&$('.no9').children().hasClass('active')){
